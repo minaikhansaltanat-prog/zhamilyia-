@@ -5,3 +5,9 @@ tunnel-url.txt
 package.json
 package-lock.json
 CLAUDE.md
+# Large video files (>100MB, GitHub limit)
+video/IMG_3296.MOV
+video/IMG_6132.MOV
+video/IMG_4342.MOV
+video/IMG_6041.MOV
+video/IMG_3066.MOV

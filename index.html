@@ -795,35 +795,37 @@ body.menu-open nav { opacity: 0; pointer-events: none; }
 .review-panel { display: none; }
 .review-panel.active { display: block; }
 
-/* Video / Audio review cards */
+/* Video review cards */
 .video-review-card {
-  flex: 0 0 320px; scroll-snap-align: start;
+  flex: 0 0 260px; scroll-snap-align: start;
   border-radius: 16px; overflow: hidden;
   background: var(--dark);
-  position: relative; aspect-ratio: 9/16;
-  max-height: 360px; cursor: pointer;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.22);
   transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s;
+  display: flex; flex-direction: column;
 }
-.video-review-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.25); }
-.video-review-card img { width:100%;height:100%;object-fit:cover;display:block; }
-.video-review-overlay {
-  position:absolute;inset:0;
-  background: linear-gradient(to top, rgba(12,10,6,0.85) 0%, transparent 55%);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+.video-review-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.32); }
+.video-review-card video {
+  width: 100%; display: block;
+  height: 400px; object-fit: cover;
+  background: #000;
+  border-radius: 16px 16px 0 0;
 }
-.video-review-play {
-  width:56px;height:56px;border-radius:50%;
-  background:rgba(200,149,42,0.9);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 0 0 6px rgba(200,149,42,0.2);
+.video-review-footer {
+  padding: 12px 14px;
+  background: var(--dark2);
+  border-top: 1px solid rgba(200,149,42,0.15);
+  border-radius: 0 0 16px 16px;
 }
-.video-review-play svg { width:22px;height:22px;fill:#0C0A06;margin-left:3px; }
 .video-review-name {
-  position:absolute;bottom:16px;left:16px;right:16px;
-  color:#fff;font-size:14px;font-weight:600;
+  color: #fff; font-size: 13px; font-weight: 600; line-height: 1.3;
 }
-.video-review-city { font-size:12px;color:rgba(255,255,255,0.65);margin-top:2px;font-weight:400; }
+.video-review-city { font-size: 11px; color: rgba(255,255,255,0.5); margin-top:2px; }
+@media (max-width: 600px) {
+  .video-review-card { flex: 0 0 220px; }
+  .video-review-card video { height: 320px; }
+}
 
 /* Audio review cards */
 .audio-review-card {
@@ -1986,49 +1988,73 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
       <div class="carousel-wrap" style="padding:0 32px">
         <div class="carousel-track" id="video-reviews-track">
 
-          <a class="video-review-card" href="https://youtube.com/channel/UCOWcbjUoi3KrkN0SPh-VUYw" target="_blank" rel="noopener">
-            <img src="Photo/Photo00387.jpg" alt="Видео пікір">
-            <div class="video-review-overlay">
-              <div class="video-review-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="video-review-card">
+            <video controls preload="metadata" poster="video/WhatsApp Image 2026-06-16 at 00.52.37.jpeg">
+              <source src="video/134DC6DC2910C0B83B23A0C58934D6AD_video_dashinit.mp4" type="video/mp4">
+            </video>
+            <div class="video-review-footer">
+              <div class="video-review-name">Клиент пікірі #1</div>
+              <div class="video-review-city">Видео отзыв</div>
             </div>
-            <div class="video-review-name">Айгүл Бекова<div class="video-review-city">Нур-Сұлтан · MLM серіктес</div></div>
-          </a>
+          </div>
 
-          <a class="video-review-card" href="https://youtube.com/channel/UCOWcbjUoi3KrkN0SPh-VUYw" target="_blank" rel="noopener">
-            <img src="Photo/Photo00395.jpg" alt="Видео пікір">
-            <div class="video-review-overlay">
-              <div class="video-review-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="video-review-card">
+            <video controls preload="metadata">
+              <source src="video/document_5298720162600494892.mp4" type="video/mp4">
+            </video>
+            <div class="video-review-footer">
+              <div class="video-review-name">Клиент пікірі #2</div>
+              <div class="video-review-city">Видео отзыв</div>
             </div>
-            <div class="video-review-name">Динара Сейткали<div class="video-review-city">Алматы · Кәсіпкер</div></div>
-          </a>
+          </div>
 
-          <a class="video-review-card" href="https://youtube.com/channel/UCOWcbjUoi3KrkN0SPh-VUYw" target="_blank" rel="noopener">
-            <img src="Photo/Photo00457.jpg" alt="Видео пікір">
-            <div class="video-review-overlay">
-              <div class="video-review-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="video-review-card">
+            <video controls preload="metadata">
+              <source src="video/IMG_3297.MOV" type="video/quicktime">
+              <source src="video/IMG_3297.MOV" type="video/mp4">
+            </video>
+            <div class="video-review-footer">
+              <div class="video-review-name">Клиент пікірі #3</div>
+              <div class="video-review-city">Видео отзыв</div>
             </div>
-            <div class="video-review-name">Зарина Нурова<div class="video-review-city">Шымкент · ТОП-лидер</div></div>
-          </a>
+          </div>
 
-          <a class="video-review-card" href="https://youtube.com/channel/UCOWcbjUoi3KrkN0SPh-VUYw" target="_blank" rel="noopener">
-            <img src="Photo/Photo00575.jpg" alt="Видео пікір">
-            <div class="video-review-overlay">
-              <div class="video-review-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="video-review-card">
+            <video controls preload="metadata">
+              <source src="video/IMG_4341.MOV" type="video/quicktime">
+              <source src="video/IMG_4341.MOV" type="video/mp4">
+            </video>
+            <div class="video-review-footer">
+              <div class="video-review-name">Клиент пікірі #4</div>
+              <div class="video-review-city">Видео отзыв</div>
             </div>
-            <div class="video-review-name">Мадина Қасымова<div class="video-review-city">Алматы · Онлайн кәсіпкер</div></div>
-          </a>
+          </div>
 
-          <a class="video-review-card" href="https://youtube.com/channel/UCOWcbjUoi3KrkN0SPh-VUYw" target="_blank" rel="noopener">
-            <img src="Photo/Photo00609.jpg" alt="Видео пікір">
-            <div class="video-review-overlay">
-              <div class="video-review-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="video-review-card">
+            <video controls preload="metadata">
+              <source src="video/IMG_6472.MOV" type="video/quicktime">
+              <source src="video/IMG_6472.MOV" type="video/mp4">
+            </video>
+            <div class="video-review-footer">
+              <div class="video-review-name">Клиент пікірі #5</div>
+              <div class="video-review-city">Видео отзыв</div>
             </div>
-            <div class="video-review-name">Сандугаш Ергали<div class="video-review-city">Нур-Сұлтан · Эксперт</div></div>
-          </a>
+          </div>
+
+          <div class="video-review-card">
+            <video controls preload="metadata">
+              <source src="video/IMG_6473.MOV" type="video/quicktime">
+              <source src="video/IMG_6473.MOV" type="video/mp4">
+            </video>
+            <div class="video-review-footer">
+              <div class="video-review-name">Клиент пікірі #6</div>
+              <div class="video-review-city">Видео отзыв</div>
+            </div>
+          </div>
 
         </div>
-        <button class="carousel-btn carousel-btn-prev" data-track="video-reviews-track" aria-label="Артқа" style="background:var(--gold);color:#fff">‹</button>
-        <button class="carousel-btn carousel-btn-next" data-track="video-reviews-track" aria-label="Алға" style="background:var(--gold);color:#fff">›</button>
+        <button class="carousel-btn carousel-btn-prev" data-track="video-reviews-track" aria-label="Артқа" style="background:var(--gold);color:#0C0A06">‹</button>
+        <button class="carousel-btn carousel-btn-next" data-track="video-reviews-track" aria-label="Алға" style="background:var(--gold);color:#0C0A06">›</button>
       </div>
     </div>
 
