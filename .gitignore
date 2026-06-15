@@ -1,0 +1,7 @@
+node_modules/
+temporary screenshots/
+tunnel-url.txt
+*.mjs
+package.json
+package-lock.json
+CLAUDE.md

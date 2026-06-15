@@ -1,0 +1,2438 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Жәмила Оразбай — MLM ТОП-лидер, ментор, маркетолог, бренд-менеджер. ЖИ жүйелерімен бизнесіңізді жаңа деңгейге шығарыңыз.">
+<meta property="og:title" content="Жәмила Оразбай — MLM ТОП-лидер · ЖИ-маркетинг">
+<meta property="og:description" content="ЖИ жүйелері мен жеке менторлық арқылы MLM бизнесіңізді жаңа деңгейге шығарамын.">
+<meta property="og:type" content="website">
+<title>Жәмила Оразбай — MLM ТОП-лидер · ЖИ-маркетинг · Ментор</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & TOKENS ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --gold:       #C8952A;
+  --gold-light: #E8BC5A;
+  --gold-dark:  #8B6518;
+  --gold-glow:  rgba(200,149,42,0.20);
+  --gold-bg:    #FDF6E7;
+  --dark:       #0C0A06;
+  --dark2:      #18140A;
+  --dark3:      #22190B;
+  --cream:      #F8F5EE;
+  --white:      #FFFFFF;
+  --text:       #1A1A1A;
+  --muted:      #666666;
+  --border:     #E5DFD2;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+  --ease-spring: cubic-bezier(0.34, 1.3, 0.64, 1);
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--white);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; }
+a  { text-decoration: none; color: inherit; }
+
+/* ─── TYPOGRAPHY ─── */
+.eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 5px 14px;
+  border: 1px solid rgba(200,149,42,0.35);
+  border-radius: 100px;
+  background: rgba(200,149,42,0.08);
+}
+.eyebrow--light {
+  color: var(--gold-light);
+  border-color: rgba(232,188,90,0.30);
+  background: rgba(232,188,90,0.08);
+}
+
+h1, .h1 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 58px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+h2, .h2 {
+  font-family: var(--font-body);
+  font-size: clamp(26px, 3.5vw, 38px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+h3, .h3 {
+  font-size: clamp(17px, 2vw, 20px);
+  font-weight: 600;
+  line-height: 1.35;
+}
+.body-lg { font-size: 17px; line-height: 1.75; }
+.body-sm { font-size: 14px; line-height: 1.6; }
+
+/* ─── BUTTONS ─── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out), background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+.btn:hover  { transform: translateY(-2px); }
+.btn:active { transform: translateY(0px); }
+.btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+.btn-gold {
+  background: var(--gold);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(200,149,42,0.35), 0 1px 4px rgba(200,149,42,0.20);
+}
+.btn-gold:hover {
+  background: #D9A535;
+  box-shadow: 0 8px 28px rgba(200,149,42,0.45), 0 2px 8px rgba(200,149,42,0.25);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--gold-light);
+  border: 1.5px solid rgba(232,188,90,0.5);
+}
+.btn-ghost:hover {
+  background: rgba(232,188,90,0.1);
+  border-color: var(--gold-light);
+}
+
+.btn-dark {
+  background: var(--dark);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+}
+.btn-dark:hover {
+  background: var(--dark2);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.35);
+}
+
+/* ─── LAYOUT ─── */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+section { position: relative; }
+.section-pad { padding: 72px 0; }
+.section-pad-sm { padding: 56px 0; }
+
+.section-header { margin-bottom: 48px; }
+.section-header--center { text-align: center; }
+.section-header .eyebrow { margin-bottom: 16px; }
+.section-header h2 { margin-bottom: 12px; }
+.section-header .lead { color: var(--muted); font-size: 16px; max-width: 560px; }
+.section-header--center .lead { margin: 0 auto; }
+
+/* ─── ANIMATIONS ─── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── NAV ─── */
+#nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 24px;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+#nav.scrolled {
+  background: rgba(12,10,6,0.97);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+.nav-logo span { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold-light); }
+
+.nav-cta {
+  padding: 9px 20px;
+  font-size: 14px;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px; height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 24px; height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform 0.3s var(--ease-spring), opacity 0.3s;
+}
+
+/* ─── MOBILE MENU ─── */
+#mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: var(--dark);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease-out);
+}
+#mobile-menu.open { opacity: 1; pointer-events: auto; }
+#mobile-menu a {
+  font-size: 24px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  transition: color 0.2s;
+}
+#mobile-menu a:hover { color: var(--gold-light); }
+.mobile-menu-close {
+  position: absolute;
+  top: 20px; right: 24px;
+  background: none; border: none; cursor: pointer;
+  color: rgba(255,255,255,0.7);
+  font-size: 28px;
+  line-height: 1;
+  padding: 4px;
+  transition: color 0.2s;
+}
+.mobile-menu-close:hover { color: #fff; }
+.mobile-menu-wa {
+  margin-top: 8px;
+  font-size: 15px !important;
+  color: #25D366 !important;
+  font-weight: 600 !important;
+}
+
+/* ─── HERO ─── */
+#hero {
+  min-height: 100vh;
+  background: var(--dark);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-glow {
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+}
+.hero-glow-1 {
+  background: radial-gradient(circle, rgba(200,149,42,0.18) 0%, transparent 70%);
+  top: -100px; right: 20%;
+}
+.hero-glow-2 {
+  background: radial-gradient(circle, rgba(200,149,42,0.08) 0%, transparent 70%);
+  bottom: -100px; left: -100px;
+}
+
+.hero-inner {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 80px 20px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  align-items: flex-end;
+  gap: 0;
+  overflow: hidden;
+}
+
+.hero-text .eyebrow { margin-bottom: 24px; }
+.hero-h1 {
+  color: #fff;
+  margin-bottom: 24px;
+}
+.hero-h1 em {
+  font-style: normal;
+  color: var(--gold-light);
+}
+.hero-sub {
+  color: rgba(255,255,255,0.65);
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 480px;
+  margin-bottom: 36px;
+}
+.hero-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.hero-stat-num {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+}
+.hero-stat-label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.50);
+  margin-top: 4px;
+  letter-spacing: 0.04em;
+}
+
+/* ─── HERO ANIMATIONS ─── */
+@keyframes heroTextIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroPhotoIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ─── HERO PHOTO ─── */
+.hero-text {
+  opacity: 0;
+  animation: heroTextIn 0.8s cubic-bezier(0.16,1,0.3,1) 0.05s forwards;
+}
+.hero-photo-wrap {
+  opacity: 0;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  animation: heroPhotoIn 0.9s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;
+}
+.hero-photo-frame {
+  position: relative;
+  max-width: 560px;
+  width: 100%;
+  overflow: visible;
+}
+
+/* Gold aura behind photo */
+.hero-photo-frame::before {
+  content: '';
+  position: absolute;
+  inset: -40px;
+  background: radial-gradient(ellipse 70% 80% at 55% 40%,
+    rgba(200,149,42,0.22) 0%,
+    rgba(200,149,42,0.08) 45%,
+    transparent 70%);
+  filter: blur(32px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-photo-frame img {
+  width: 100%;
+  display: block;
+  max-height: 740px;
+  object-fit: cover;
+  object-position: top center;
+  position: relative;
+  z-index: 1;
+  filter: brightness(1.04) contrast(1.06) saturate(1.12);
+  /* Mask: fade bottom + left into dark background */
+  -webkit-mask-image:
+    linear-gradient(to bottom, black 45%, transparent 100%),
+    linear-gradient(to right, transparent 0%, black 22%, black 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to bottom, black 45%, transparent 100%),
+    linear-gradient(to right, transparent 0%, black 22%, black 100%);
+  mask-composite: intersect;
+}
+
+/* Extra bottom darkness layer for seamless blend */
+.hero-photo-frame::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 45%;
+  background: linear-gradient(to top, var(--dark) 0%, rgba(12,10,6,0.65) 35%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hero-badge {
+  position: absolute;
+  bottom: -16px;
+  left: -20px;
+  background: var(--dark2);
+  border: 1px solid rgba(200,149,42,0.25);
+  border-radius: 12px;
+  padding: 12px 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-badge-icon {
+  width: 36px; height: 36px;
+  background: rgba(200,149,42,0.15);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+.hero-badge-text { font-size: 13px; color: rgba(255,255,255,0.85); font-weight: 500; }
+.hero-badge-text strong { display: block; color: var(--gold-light); font-weight: 600; font-size: 14px; }
+
+.scroll-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.35);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.scroll-arrow {
+  width: 20px; height: 20px;
+  border-right: 1.5px solid rgba(255,255,255,0.3);
+  border-bottom: 1.5px solid rgba(255,255,255,0.3);
+  transform: rotate(45deg);
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+@keyframes scrollBounce {
+  0%, 100% { transform: rotate(45deg) translateY(0); }
+  50% { transform: rotate(45deg) translateY(5px); }
+}
+
+/* ─── ABOUT ─── */
+#about { background: var(--cream); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 56px;
+  align-items: center;
+}
+.about-photo {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+  position: relative;
+}
+.about-photo img { width: 100%; height: 620px; object-fit: cover; object-position: top center; }
+.about-photo::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 40%;
+  background: linear-gradient(to top, rgba(200,149,42,0.08), transparent);
+  pointer-events: none;
+}
+
+.about-text h2 { color: var(--text); margin-bottom: 20px; }
+.about-text p { color: var(--muted); margin-bottom: 16px; font-size: 16px; }
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 32px;
+}
+.about-stat {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: box-shadow 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+}
+.about-stat:hover {
+  box-shadow: 0 8px 24px rgba(200,149,42,0.12), 0 2px 6px rgba(0,0,0,0.04);
+  transform: translateY(-2px);
+}
+.about-stat-num {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.about-stat-label { font-size: 13px; color: var(--muted); font-weight: 500; }
+
+/* ─── SERVICES ─── */
+#services { background: var(--white); }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.service-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 24px;
+  transition: box-shadow 0.3s var(--ease-out), transform 0.3s var(--ease-out), border-color 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease-out);
+}
+.service-card:hover {
+  box-shadow: 0 12px 40px rgba(200,149,42,0.12), 0 4px 12px rgba(0,0,0,0.06);
+  transform: translateY(-4px);
+  border-color: rgba(200,149,42,0.25);
+}
+.service-card:hover::before { transform: scaleX(1); }
+
+.service-icon {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  background: var(--gold-bg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  margin-bottom: 18px;
+  transition: background 0.3s, transform 0.3s var(--ease-spring);
+}
+.service-card:hover .service-icon { background: rgba(200,149,42,0.18); transform: scale(1.1) rotate(-3deg); }
+.service-card h3 { margin-bottom: 10px; font-size: 17px; }
+.service-card p { color: var(--muted) !important; font-size: 14px; line-height: 1.6; }
+
+/* ─── PROCESS ─── */
+#process { background: var(--dark); }
+#process .section-header h2 { color: #fff; }
+#process .section-header .lead { color: rgba(255,255,255,0.50); }
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.process-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 28px 24px;
+  position: relative;
+  transition: background 0.3s, border-color 0.3s, transform 0.3s var(--ease-out);
+}
+.process-card:hover {
+  background: rgba(200,149,42,0.08);
+  border-color: rgba(200,149,42,0.25);
+  transform: translateY(-3px);
+}
+.process-num {
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 700;
+  color: rgba(200,149,42,0.25);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.process-card:hover .process-num { color: rgba(200,149,42,0.45); }
+.process-card h3 { color: #fff; font-size: 17px; margin-bottom: 10px; }
+.process-card p { color: rgba(255,255,255,0.50); font-size: 14px; line-height: 1.65; }
+.process-who {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.process-who::before { content: '→ '; }
+
+.process-note {
+  margin-top: 40px;
+  border: 1px solid rgba(200,149,42,0.25);
+  border-radius: 14px;
+  padding: 24px 28px;
+  background: rgba(200,149,42,0.06);
+  text-align: center;
+  color: var(--gold-light);
+  font-size: 16px;
+  font-weight: 500;
+}
+.process-note strong { color: var(--gold-light); font-weight: 700; }
+
+/* ─── RESULTS ─── */
+#results { background: var(--cream); }
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.result-card {
+  background: var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s;
+}
+.result-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(200,149,42,0.12), 0 4px 12px rgba(0,0,0,0.06);
+}
+.result-card-img {
+  height: 220px;
+  overflow: hidden;
+  background: var(--border);
+  position: relative;
+}
+.result-card-img img { width: 100%; height: 100%; object-fit: cover; }
+.result-card-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(200,149,42,0.25), transparent 50%);
+}
+.result-card-body { padding: 22px; }
+.result-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  background: var(--gold-bg);
+  padding: 3px 10px;
+  border-radius: 100px;
+  margin-bottom: 10px;
+}
+.result-card-body h3 { font-size: 17px; margin-bottom: 8px; }
+.result-card-body p { color: var(--muted); font-size: 14px; }
+
+.results-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+  padding: 32px;
+  background: var(--dark);
+  border-radius: 20px;
+}
+.results-stat-num {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.results-stat-label { color: rgba(255,255,255,0.55); font-size: 13px; }
+
+/* ─── CAROUSEL (gallery + reviews) ─── */
+.carousel-wrap {
+  position: relative;
+}
+.carousel-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+  padding-bottom: 2px;
+}
+.carousel-track::-webkit-scrollbar { display: none; }
+.carousel-track.dragging { cursor: grabbing; scroll-behavior: auto; }
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; font-weight: 700; line-height: 1;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.carousel-btn:hover { transform: translateY(-50%) scale(1.1); }
+.carousel-btn:active { transform: translateY(-50%) scale(0.95); }
+.carousel-btn-prev { left: -24px; }
+.carousel-btn-next { right: -24px; }
+
+/* Gallery carousel */
+.gallery-carousel .carousel-track { gap: 14px; }
+.gallery-carousel .gallery-item {
+  flex: 0 0 400px;
+  height: 300px;
+  scroll-snap-align: start;
+}
+.gallery-carousel .carousel-btn {
+  background: rgba(200,149,42,0.92);
+  color: #0C0A06;
+  box-shadow: 0 4px 16px rgba(200,149,42,0.35);
+}
+
+/* Reviews carousel */
+.reviews-carousel { padding: 0 0 8px; }
+.reviews-carousel .carousel-track { gap: 20px; align-items: stretch; }
+.reviews-carousel .review-card {
+  flex: 0 0 380px;
+  scroll-snap-align: start;
+}
+.reviews-carousel .carousel-btn {
+  background: var(--gold);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(200,149,42,0.3);
+}
+
+@media (max-width: 900px) {
+  .gallery-carousel .gallery-item { flex: 0 0 300px; height: 220px; }
+  .reviews-carousel .review-card { flex: 0 0 300px; }
+  .carousel-btn { width: 38px; height: 38px; font-size: 18px; }
+  .carousel-btn-prev { left: -10px; }
+  .carousel-btn-next { right: -10px; }
+}
+@media (max-width: 600px) {
+  .gallery-carousel .gallery-item { flex: 0 0 260px; height: 190px; }
+  .reviews-carousel .review-card { flex: 0 0 280px; }
+  .carousel-btn { display: none; }
+}
+
+/* ─── REVIEWS ─── */
+#reviews { background: var(--white); }
+.review-card {
+  background: var(--cream);
+  border-radius: 16px;
+  padding: 28px 24px;
+  position: relative;
+  border: 1px solid var(--border);
+  transition: box-shadow 0.3s, transform 0.3s var(--ease-out);
+}
+.review-card:hover {
+  box-shadow: 0 12px 36px rgba(200,149,42,0.10), 0 4px 12px rgba(0,0,0,0.04);
+  transform: translateY(-3px);
+}
+.review-quote {
+  font-size: 42px;
+  color: var(--gold-light);
+  line-height: 0.8;
+  font-family: var(--font-display);
+  margin-bottom: 12px;
+  opacity: 0.6;
+}
+.review-stars { color: var(--gold); font-size: 15px; margin-bottom: 14px; letter-spacing: 3px; }
+.review-text { color: var(--muted); font-size: 14px; line-height: 1.7; margin-bottom: 20px; }
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.review-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--border);
+  overflow: hidden;
+  border: 2px solid var(--gold-bg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  color: var(--gold);
+  font-weight: 700;
+}
+.review-name { font-weight: 600; font-size: 14px; }
+.review-city { font-size: 12px; color: var(--muted); }
+
+/* ─── GALLERY ─── */
+#gallery { background: var(--dark2); }
+#gallery .section-header h2 { color: #fff; }
+#gallery .section-header .lead { color: rgba(255,255,255,0.45); }
+
+.gallery-item {
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease-out), filter 0.4s;
+}
+.gallery-item:hover img { transform: scale(1.04); filter: brightness(0.85); }
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(200,149,42,0.4) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+
+/* Lightbox */
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+#lightbox.open { opacity: 1; pointer-events: auto; }
+#lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; }
+#lightbox-close {
+  position: absolute;
+  top: 20px; right: 28px;
+  font-size: 36px;
+  color: rgba(255,255,255,0.7);
+  cursor: pointer;
+  background: none; border: none;
+  transition: color 0.2s;
+  line-height: 1;
+}
+#lightbox-close:hover { color: #fff; }
+
+/* ─── PODCAST ─── */
+#podcast { background: var(--white); }
+.podcast-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.podcast-embed {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  aspect-ratio: 16/9;
+  background: var(--dark);
+}
+.podcast-embed iframe { width: 100%; height: 100%; border: 0; }
+.podcast-info h2 { margin-bottom: 12px; }
+.podcast-info p { color: var(--muted); margin-bottom: 24px; }
+.article-list { display: flex; flex-direction: column; gap: 16px; margin-top: 24px; }
+.article-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.article-item:hover {
+  border-color: rgba(200,149,42,0.3);
+  box-shadow: 0 4px 16px rgba(200,149,42,0.08);
+}
+.article-num {
+  flex-shrink: 0;
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: var(--gold-bg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold-dark);
+}
+.article-item h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.article-item p { font-size: 13px; color: var(--muted); }
+
+/* ─── PACKAGE ─── */
+#package { background: var(--dark); position: relative; overflow: hidden; }
+.package-glow {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px; height: 400px;
+  background: radial-gradient(ellipse, rgba(200,149,42,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.package-card {
+  max-width: 760px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(200,149,42,0.25);
+  border-radius: 24px;
+  padding: 48px;
+  position: relative;
+}
+.package-badge {
+  position: absolute;
+  top: -14px; right: 32px;
+  background: var(--gold);
+  color: var(--dark);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 100px;
+}
+
+.package-card .eyebrow { margin-bottom: 16px; }
+.package-card h2 { color: #fff; margin-bottom: 8px; }
+.package-subtitle { color: rgba(255,255,255,0.5); margin-bottom: 36px; font-size: 15px; }
+
+.package-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+.package-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: rgba(255,255,255,0.80);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.check-icon {
+  flex-shrink: 0;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: rgba(200,149,42,0.2);
+  border: 1px solid rgba(200,149,42,0.4);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold-light);
+  font-size: 11px;
+  margin-top: 1px;
+}
+
+.package-price {
+  border-top: 1px solid rgba(255,255,255,0.10);
+  padding-top: 28px;
+  margin-bottom: 28px;
+}
+.price-old {
+  font-size: 15px;
+  color: rgba(255,255,255,0.35);
+  text-decoration: line-through;
+  margin-bottom: 6px;
+}
+.price-new {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.price-monthly {
+  font-size: 13px;
+  color: rgba(255,255,255,0.40);
+}
+
+.package-urgency {
+  margin-top: 20px;
+  background: rgba(200,149,42,0.10);
+  border: 1px solid rgba(200,149,42,0.20);
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 14px;
+  color: var(--gold-light);
+  text-align: center;
+  font-weight: 500;
+}
+
+/* ─── PLATFORM ─── */
+#platform { background: var(--cream); }
+.platform-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+.platform-features { display: flex; flex-direction: column; gap: 16px; }
+.platform-feature {
+  display: flex;
+  gap: 16px;
+  background: var(--white);
+  border-radius: 14px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s var(--ease-out);
+}
+.platform-feature:hover {
+  border-color: rgba(200,149,42,0.3);
+  box-shadow: 0 6px 24px rgba(200,149,42,0.08);
+  transform: translateX(4px);
+}
+.platform-icon {
+  flex-shrink: 0;
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  background: var(--gold-bg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+}
+.platform-feature h3 { font-size: 16px; margin-bottom: 6px; }
+.platform-feature p { color: var(--muted) !important; font-size: 13px; }
+.platform-feature p a { color: var(--muted) !important; text-decoration: none; pointer-events: none; }
+
+.platform-form-wrap {
+  background: var(--dark);
+  border-radius: 20px;
+  padding: 36px;
+  border: 1px solid rgba(200,149,42,0.15);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  position: sticky;
+  top: 88px;
+}
+.platform-form-wrap h3 { color: #fff; font-size: 22px; margin-bottom: 8px; }
+.platform-form-wrap p { color: rgba(255,255,255,0.50); font-size: 14px; margin-bottom: 24px; }
+
+.form-field {
+  margin-bottom: 14px;
+}
+.form-field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  padding: 12px 14px;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 14px;
+  transition: border-color 0.2s, background 0.2s;
+  outline: none;
+}
+.form-field input::placeholder,
+.form-field select option,
+.form-field textarea::placeholder { color: rgba(255,255,255,0.30); }
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: var(--gold);
+  background: rgba(200,149,42,0.08);
+}
+.form-field select { cursor: pointer; }
+
+.form-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+.form-link-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.2s;
+}
+.form-link-btn:hover { transform: translateY(-1px); }
+.form-link-tg {
+  background: rgba(41,182,246,0.12);
+  border: 1px solid rgba(41,182,246,0.2);
+  color: #29B6F6;
+}
+.form-link-wa {
+  background: rgba(37,211,102,0.12);
+  border: 1px solid rgba(37,211,102,0.2);
+  color: #25D366;
+}
+
+/* ─── AI vs TRADITIONAL ─── */
+#ai { background: var(--white); }
+.ai-table-wrap {
+  overflow-x: auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+}
+.ai-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.ai-table thead { background: var(--dark); }
+.ai-table thead th {
+  padding: 16px 20px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+}
+.ai-table thead th:first-child { border-radius: 0; color: rgba(255,255,255,0.7); font-size: 13px; }
+.ai-table thead th:last-child { color: var(--gold-light); }
+
+.ai-table tbody tr { border-bottom: 1px solid var(--border); }
+.ai-table tbody tr:last-child { border-bottom: none; }
+.ai-table tbody td {
+  padding: 14px 20px;
+  color: var(--text);
+  vertical-align: middle;
+}
+.ai-table tbody tr:hover { background: var(--cream); }
+.ai-table tbody td:nth-child(2) { color: var(--muted); }
+.ai-table tbody td:nth-child(3) { color: var(--gold-dark); font-weight: 600; }
+.ai-table tbody td:nth-child(4) { color: #2E7D32; font-weight: 700; font-size: 15px; }
+
+.ai-table tfoot { background: var(--dark); }
+.ai-table tfoot td {
+  padding: 16px 20px;
+  color: rgba(255,255,255,0.6);
+  font-size: 13px;
+}
+.ai-table tfoot td:nth-child(2) { color: rgba(255,255,255,0.4); }
+.ai-table tfoot td:nth-child(3) { color: var(--gold); font-weight: 600; font-size: 14px; }
+.ai-table tfoot td:nth-child(4) { color: var(--gold-light); font-weight: 700; font-size: 15px; }
+.ai-table tfoot td:first-child { font-weight: 700; color: #fff; border-radius: 0; }
+
+.ai-summary {
+  margin-top: 28px;
+  text-align: center;
+  padding: 24px;
+  background: var(--dark);
+  border-radius: 14px;
+  color: var(--gold-light);
+  font-size: 17px;
+  font-weight: 500;
+}
+.ai-summary strong { font-weight: 700; color: #fff; }
+
+/* ─── CONTACT / FOOTER ─── */
+#contact { background: var(--dark); }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+.contact-form h2 { color: #fff; margin-bottom: 8px; }
+.contact-form .lead { color: rgba(255,255,255,0.50); font-size: 15px; margin-bottom: 32px; }
+
+.contact-info h3 { color: #fff; font-size: 22px; margin-bottom: 24px; }
+.contact-detail {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.contact-detail:last-of-type { border-bottom: none; }
+.contact-detail-icon {
+  flex-shrink: 0;
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  background: rgba(200,149,42,0.12);
+  border: 1px solid rgba(200,149,42,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+.contact-detail-label { font-size: 11px; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 3px; }
+.contact-detail-val { font-size: 15px; color: rgba(255,255,255,0.85); font-weight: 500; }
+.contact-detail-val a { color: rgba(255,255,255,0.85); transition: color 0.2s; }
+.contact-detail-val a:hover { color: var(--gold-light); }
+
+.social-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+}
+.social-btn {
+  display: flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  font-size: 18px;
+  transition: transform 0.2s var(--ease-spring), background 0.2s;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+.social-btn:hover { transform: translateY(-3px) scale(1.05); background: rgba(200,149,42,0.15); border-color: rgba(200,149,42,0.3); }
+
+footer {
+  background: rgba(0,0,0,0.4);
+  padding: 20px 0;
+  text-align: center;
+}
+footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
+
+/* ─── FLOATING WHATSAPP ─── */
+#wa-float {
+  position: fixed;
+  bottom: 28px;
+  right: 24px;
+  z-index: 900;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.45), 0 2px 8px rgba(0,0,0,0.2);
+  transition: transform 0.25s var(--ease-spring), box-shadow 0.25s;
+  cursor: pointer;
+}
+#wa-float:hover {
+  transform: scale(1.12);
+  box-shadow: 0 8px 32px rgba(37,211,102,0.55), 0 4px 12px rgba(0,0,0,0.25);
+}
+#wa-float:active { transform: scale(0.95); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; text-align: center; padding-top: 80px; padding-bottom: 40px; gap: 28px; }
+  .hero-text { order: 2; }
+  .hero-photo-wrap { order: 1; }
+  .hero-sub { margin-left: auto; margin-right: auto; }
+  .hero-btns { justify-content: center; }
+  .hero-stats { justify-content: center; gap: 20px; }
+  .hero-badge { left: 50%; transform: translateX(-50%); bottom: -12px; }
+  .scroll-hint { display: none; }
+  .hero-photo-frame { max-width: 340px; margin: 0 auto; }
+  .hero-photo-frame img { max-height: 420px; }
+  .hero-photo-frame::before { inset: -20px; }
+  .hero-inner { padding-bottom: 20px; gap: 0; }
+  .hero-glow-1 { width: 300px; height: 300px; right: 0; }
+
+  .about-grid,
+  .podcast-grid,
+  .platform-grid,
+  .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+  .about-photo img { height: 400px; }
+  .platform-form-wrap { position: static; }
+
+  .services-grid,
+  .results-grid,
+  .reviews-grid { grid-template-columns: 1fr; }
+  .process-grid { grid-template-columns: 1fr 1fr; }
+  .package-features { grid-template-columns: 1fr; }
+  .results-stats { grid-template-columns: 1fr; }
+
+  .section-pad { padding: 48px 0; }
+  .section-pad-sm { padding: 40px 0; }
+  .section-header { margin-bottom: 32px; }
+
+  .nav-links, .nav-cta { display: none !important; }
+  .hamburger { display: flex !important; }
+
+  .btn { width: 100%; justify-content: center; }
+  .hero-btns .btn { width: auto; }
+  @media (max-width: 480px) {
+    .hero-btns .btn { width: 100%; }
+  }
+}
+
+@media (max-width: 600px) {
+  .process-grid { grid-template-columns: 1fr; gap: 12px; }
+  .process-card { padding: 20px 18px; }
+  .process-num { font-size: 36px; margin-bottom: 8px; }
+  .process-who { margin-top: 10px; }
+
+  .about-stats { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .about-stat { padding: 18px 12px; }
+
+  .results-stats { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .results-stat { padding: 16px 10px; }
+  .results-stat-num { font-size: 28px; }
+  .results-stat-label { font-size: 11px; }
+
+  .result-card-img { height: 160px; }
+  .result-card-body { padding: 14px 16px; }
+  .result-card-body h3 { font-size: 15px; margin-bottom: 6px; }
+  .results-grid { gap: 14px; }
+
+  .reviews-grid { gap: 14px; }
+  .review-card { padding: 20px; }
+
+  .service-card { padding: 22px 18px; }
+
+  .section-pad { padding: 40px 0; }
+  .section-pad-sm { padding: 32px 0; }
+  .section-header { margin-bottom: 24px; }
+
+  .package-card { padding: 28px 20px; }
+  .ai-table { font-size: 12px; }
+  .ai-table thead th, .ai-table tbody td, .ai-table tfoot td { padding: 10px 12px; }
+  .form-links { flex-direction: column; }
+  #wa-float { bottom: 20px; right: 16px; width: 52px; height: 52px; font-size: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- FLOATING WHATSAPP -->
+<a id="wa-float" href="https://wa.me/77474106388" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.123 1.529 5.855L.057 23.454a.5.5 0 00.587.648l5.804-1.524A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.65-.5-5.18-1.374l-.364-.215-3.782.992.992-3.682-.233-.378A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" role="dialog" aria-modal="true">
+  <button id="lightbox-close" aria-label="Жабу">&#x2715;</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<!-- NAVIGATION -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#hero">Жәмила <span>Оразбай</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">Мен туралы</a></li>
+      <li><a href="#services">Қызметтер</a></li>
+      <li><a href="#results">Нәтижелер</a></li>
+      <li><a href="#podcast">Контент</a></li>
+      <li><a href="#platform">Платформа</a></li>
+      <li><a href="#contact">Байланыс</a></li>
+    </ul>
+    <a href="https://wa.me/77474106388" target="_blank" class="btn btn-gold nav-cta" rel="noopener">
+      Кеңес алу
+    </a>
+    <button class="hamburger" id="hamburger-btn" aria-label="Меню ашу" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Навигация">
+  <button class="mobile-menu-close" id="menu-close" aria-label="Жабу">&#x2715;</button>
+  <a href="#about"    onclick="closeMenu()">Мен туралы</a>
+  <a href="#services" onclick="closeMenu()">Қызметтер</a>
+  <a href="#results"  onclick="closeMenu()">Нәтижелер</a>
+  <a href="#podcast"  onclick="closeMenu()">Контент</a>
+  <a href="#platform" onclick="closeMenu()">Платформа</a>
+  <a href="#contact"  onclick="closeMenu()">Байланыс</a>
+  <a href="https://wa.me/77474106388" target="_blank" rel="noopener" class="mobile-menu-wa">
+    📱 WhatsApp: +7 747 410 63 88
+  </a>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!--  HERO                                  -->
+<!-- ═══════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+  <div class="hero-inner">
+
+    <!-- Text -->
+    <div class="hero-text">
+      <span class="eyebrow eyebrow--light">Кәсіпкерлер · Эксперттер · Онлайн бизнес иелері үшін</span>
+      <h1 class="hero-h1" style="margin-top:20px">
+        Өзіңді және өніміңді упаковать етіп,<br>
+        контент пен сатуды <em>автоматтандыр!</em>
+      </h1>
+      <p class="hero-sub">
+        Жеке брендіңізді нарыққа дұрыс шығарамын, сату воронкасын орнатамын — ЖИ арқылы бизнесіңіз ұйықтап жатқанда да кіріс әкеледі.
+      </p>
+      <div class="hero-btns">
+        <a href="https://wa.me/77474106388?text=Сәлем%20Жәмила!%20Тегін%20кеңеске%20жазылғым%20келеді." target="_blank" rel="noopener" class="btn btn-gold">
+          Тегін кеңес алу →
+        </a>
+        <a href="#services" class="btn btn-ghost">Қызметтерді қарау</a>
+      </div>
+
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num" data-count="10">10+</div>
+          <div class="hero-stat-label">Жыл тәжірибе</div>
+        </div>
+        <div>
+          <div class="hero-stat-num" data-count="500">500+</div>
+          <div class="hero-stat-label">Команда мүшелері</div>
+        </div>
+        <div>
+          <div class="hero-stat-num" data-count="12">12+</div>
+          <div class="hero-stat-label">Регион саны</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Photo -->
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-frame">
+        <img src="ava.jpeg" alt="Жәмила Оразбай — MLM ТОП-лидер">
+      </div>
+      <div class="hero-badge">
+        <div class="hero-badge-icon">🏆</div>
+        <div class="hero-badge-text">
+          <strong>ТОП-лидер</strong>
+          MLM · Алматы, ҚР
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-arrow"></div>
+    <span>scroll</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!--  ABOUT                                 -->
+<!-- ═══════════════════════════════════════ -->
+<section id="about" class="section-pad">
+  <div class="container">
+    <div class="about-grid">
+
+      <div class="about-photo fade-up">
+        <img src="Photo/Photo00395.jpg" alt="Жәмила Оразбай — ментор, маркетолог">
+      </div>
+
+      <div class="about-text fade-up" style="transition-delay:0.12s">
+        <span class="eyebrow" style="margin-bottom:20px">Менің жолым</span>
+        <h2>10 жыл бойы кәсіпкерлер мен эксперттерді нарыққа шығарамын.</h2>
+        <p style="margin-top:20px">
+          Мен өзім нолден бастадым — ешқандай байланыс, бастапқы капиталсыз. 10 жыл ішінде 500+ кәсіпкерге жеке брендін упаковать ету мен сату жүйесін орнатуға көмектестім.
+        </p>
+        <p>
+          Бүгін мен бизнестің барлық бағытын жабамын: жеке бренд стратегиясынан бастап, ЖИ-рекрутинг, автоматты сату воронкасы, чат-бот, контент жүйесіне дейін.
+        </p>
+        <p>
+          ЖИ технологияларын бизнеске қосқан сәттен нәтижелер 3–4 есе тездеді. Осы жүйені сіздің бизнесіңізге де орнатамын.
+        </p>
+
+        <div class="about-stats">
+          <div class="about-stat fade-up">
+            <div class="about-stat-num counter" data-target="10">10+</div>
+            <div class="about-stat-label">Жыл тәжірибе</div>
+          </div>
+          <div class="about-stat fade-up" style="transition-delay:0.08s">
+            <div class="about-stat-num counter" data-target="500">500+</div>
+            <div class="about-stat-label">Эксперт & кәсіпкер</div>
+          </div>
+          <div class="about-stat fade-up" style="transition-delay:0.16s">
+            <div class="about-stat-num counter" data-target="12">12</div>
+            <div class="about-stat-label">Регион саны</div>
+          </div>
+          <div class="about-stat fade-up" style="transition-delay:0.24s">
+            <div class="about-stat-num counter" data-target="50">50М+</div>
+            <div class="about-stat-label">₸ айлық айналым</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!--  SERVICES                              -->
+<!-- ═══════════════════════════════════════ -->
+<section id="services" class="section-pad" style="background:var(--white)">
+  <div class="container">
+    <div class="section-header section-header--center fade-up">
+      <span class="eyebrow">Қызметтер</span>
+      <h2 style="margin-top:16px">Упаковка. Автоматтандыру. Масштаб.</h2>
+      <p class="lead" style="margin-top:12px">Кәсіпкерлер мен эксперттер үшін — брендтен автоматты сату жүйесіне дейін.</p>
+    </div>
+    <div class="services-grid">
+
+      <!-- УПАКОВКА -->
+      <div class="service-card fade-up">
+        <div class="service-icon">✨</div>
+        <h3>Жеке бренд упаковкасы</h3>
+        <p>Тәжірибеңіз бен нарықтағы бағаңызды анықтаймыз. Позиционирование, фирмстиль, контент стратегиясы — бәрі сіздің мінезіңізге сай.</p>
+      </div>
+
+      <div class="service-card fade-up" style="transition-delay:0.07s">
+        <div class="service-icon">💎</div>
+        <h3>Өнімді нарыққа дайындау</h3>
+        <p>Білім немесе өніміңізді нарыққа дұрыс упаковать ету: оффер жасау, баға стратегиясы, тапсырыс беру жолы.</p>
+      </div>
+
+      <div class="service-card fade-up" style="transition-delay:0.14s">
+        <div class="service-icon">📊</div>
+        <h3>Эксперт позиционировать ету</h3>
+        <p>Instagram, Telegram, сайт арқылы нарықта дұрыс орын алу. Аудиторияңыз сізді эксперт ретінде таниды.</p>
+      </div>
+
+      <!-- АВТОМАТТАНДЫРУ -->
+      <div class="service-card fade-up" style="transition-delay:0.07s">
+        <div class="service-icon">🤖</div>
+        <h3>ЖИ сату воронкасы</h3>
+        <p>Клиентті тартудан сатып алуға дейінгі бүкіл жол автоматтандырылады. Ұйықтап жатқанда да сату жүреді.</p>
+      </div>
+
+      <div class="service-card fade-up" style="transition-delay:0.14s">
+        <div class="service-icon">💬</div>
+        <h3>Чат-бот + CRM жүйесі</h3>
+        <p>WhatsApp, Telegram чат-боты тәулік бойы клиентке жауап береді, сұрыптайды, мәмілеге жетелейді.</p>
+      </div>
+
+      <div class="service-card fade-up" style="transition-delay:0.21s">
+        <div class="service-icon">📱</div>
+        <h3>ЖИ контент + маркетинг</h3>
+        <p>Контент жоспары, аватар, таргет — барлығы ЖИ арқылы автоматты. Сіздің уақытыңызды алмайды.</p>
+      </div>
+
+      <!-- МАСШТАБ -->
+      <div class="service-card fade-up" style="transition-delay:0.14s">
+        <div class="service-icon">📈</div>
+        <h3>Сату каналдарын масштабтау</h3>
+        <p>Жұмыс жасайтын каналдарды анықтаймыз және 2–5 есе масштабтаймыз. Нәтиже — бірнеше ай ішінде.</p>
+      </div>
+
+      <div class="service-card fade-up" style="transition-delay:0.21s">
+        <div class="service-icon">📚</div>
+        <h3>Онлайн мектеп / курс іске қосу</h3>
+        <p>Білімді өнімге айналдырамыз: курс, марафон, коучинг — нолден іске қосу және автоматты сату.</p>
+      </div>
+
+      <div class="service-card fade-up" style="transition-delay:0.28s">
+        <div class="service-icon">🎯</div>
+        <h3>Жеке менторлық</h3>
+        <p>Мен қасыңызда жүріп стратегия, сценарий, нәтижені бақылаймын. Қадам-қадам жетекшілік — нәтижеге дейін.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!--  PROCESS                               -->
+<!-- ═══════════════════════════════════════ -->
+<section id="process" class="section-pad">
+  <div class="container">
+    <div class="section-header section-header--center fade-up">
+      <span class="eyebrow eyebrow--light">Процесс</span>
+      <h2 style="margin-top:16px;color:#fff">Упаковкадан автоматты сатуға — 6 қадам</h2>
+      <p class="lead" style="margin-top:12px;color:rgba(255,255,255,.45)">
+        Кәсіпіңіздің деңгейін көтеріп, ЖИ жүйелері арқылы сату каналдарыңызды автоматтандырамыз.
+      </p>
+    </div>
+
+    <div class="process-grid">
+
+      <div class="process-card fade-up">
+        <div class="process-num">01</div>
+        <h3>Аудит + стратегия</h3>
+        <p>Сіздің нишаңызды, бәсекелестерді, мақсатты аудиторияны талдаймыз. Упаковка мен сату стратегиясын жасаймыз.</p>
+        <span class="process-who">Жәмила + сіз (оффлайн/онлайн)</span>
+      </div>
+
+      <div class="process-card fade-up" style="transition-delay:0.07s">
+        <div class="process-num">02</div>
+        <h3>Жеке бренд упаковкасы</h3>
+        <p>Позиционирование, стиль, оффер, баға стратегиясы жасалады. Нарық сізді эксперт ретінде таниды.</p>
+        <span class="process-who">Жәмила · бренд команда</span>
+      </div>
+
+      <div class="process-card fade-up" style="transition-delay:0.14s">
+        <div class="process-num">03</div>
+        <h3>Автоматты сату жүйесі орнатылады</h3>
+        <p>Сайт, CRM, воронка, чат-бот іске қосылады. Клиент тартудан мәмілеге дейін — автомат.</p>
+        <span class="process-who">IT команда + Жәмила</span>
+      </div>
+
+      <div class="process-card fade-up" style="transition-delay:0.07s">
+        <div class="process-num">04</div>
+        <h3>ЖИ контент + маркетинг жіберіледі</h3>
+        <p>Контент автоматты жасалады, таргет жарнама іске қосылады, ЖИ аватар тәулік бойы жауап береді.</p>
+        <span class="process-who">ЖИ жүйесі · автомат</span>
+      </div>
+
+      <div class="process-card fade-up" style="transition-delay:0.14s">
+        <div class="process-num">05</div>
+        <h3>Клиенттер мен тапсырыстар ағыны басталады</h3>
+        <p>Воронка жұмыс жасайды. Сіз ұйықтап жатсаңыз да өтінімдер, тапсырыстар, төлемдер келіп жатады.</p>
+        <span class="process-who">Жүйе · автомат</span>
+      </div>
+
+      <div class="process-card fade-up" style="transition-delay:0.21s">
+        <div class="process-num">06</div>
+        <h3>Нәтижені өлшеп, масштабтаймыз</h3>
+        <p>Ай сайын аналитика, оптимизация, масштаб. Кіріс пен клиент санын бірге өсіреміз.</p>
+        <span class="process-who">Жәмила · ай сайын</span>
+      </div>
+
+    </div>
+
+    <div class="process-note fade-up" style="transition-delay:0.2s">
+      <strong>Маңызды:</strong> ЖИ — бізге жұмыс жасайтын ҚҰРАЛ. Сіз эксперт ретінде стратегияны басқарасыз, жүйе сату мен клиент тартуды өзі жасайды.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!--  RESULTS                               -->
+<!-- ═══════════════════════════════════════ -->
+<section id="results" class="section-pad" style="background:var(--cream)">
+  <div class="container">
+    <div class="section-header section-header--center fade-up">
+      <span class="eyebrow">Нәтижелер</span>
+      <h2 style="margin-top:16px">Нақты адамдардың нақты нәтижелері</h2>
+      <p class="lead" style="margin-top:12px">Сенімді дәлелдер. Санмен өлшенген жетістіктер.</p>
+    </div>
+
+    <div class="results-grid">
+
+      <div class="result-card fade-up">
+        <div class="result-card-img">
+          <img src="Photo/Photo00457.jpg" alt="Команда нәтижелері">
+        </div>
+        <div class="result-card-body">
+          <span class="result-tag">Команда</span>
+          <h3>«3 айда 80 серіктес»</h3>
+          <p>Айгүл, Нур-Сұлтан — ЖИ-рекрутинг жүйесін қосқаннан кейін команда 3 есе өсті.</p>
+        </div>
+      </div>
+
+      <div class="result-card fade-up" style="transition-delay:0.08s">
+        <div class="result-card-img">
+          <img src="Photo/Photo00575.jpg" alt="Тауар айналым">
+        </div>
+        <div class="result-card-body">
+          <span class="result-tag">Айналым</span>
+          <h3>«Айлық айналым ×3»</h3>
+          <p>Динара, Алматы — 4 ай ішінде тауар айналымды 3 есе арттырды. ЖИ чат-бот + таргет.</p>
+        </div>
+      </div>
+
+      <div class="result-card fade-up" style="transition-delay:0.16s">
+        <div class="result-card-img">
+          <img src="Photo/Photo00609.jpg" alt="Жеке бренд">
+        </div>
+        <div class="result-card-body">
+          <span class="result-tag">Бренд</span>
+          <h3>«Жаңа регион ашты»</h3>
+          <p>Бота, Шымкент — 2 ай ішінде жаңа регион ашып, 50+ серіктес жинады.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="results-stats fade-up" style="transition-delay:0.2s">
+      <div style="text-align:center">
+        <div class="results-stat-num counter" data-target="500">500+</div>
+        <div class="results-stat-label">Серіктес нәтижеге жетті</div>
+      </div>
+      <div style="text-align:center">
+        <div class="results-stat-num counter" data-target="12">12</div>
+        <div class="results-stat-label">Регион ашылды</div>
+      </div>
+      <div style="text-align:center">
+        <div class="results-stat-num counter" data-target="50">50М+</div>
+        <div class="results-stat-label">₸ командалық айналым</div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:28px" class="fade-up">
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="btn" style="background:transparent;border:1.5px solid var(--border);color:var(--gold-dark);font-size:14px">
+        Толық кейстарды Instagram-да қараңыз →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!--  REVIEWS                               -->
+<!-- ═══════════════════════════════════════ -->
+<section id="reviews" class="section-pad" style="background:var(--white)">
+  <div class="container">
+    <div class="section-header section-header--center fade-up">
+      <span class="eyebrow">Пікірлер</span>
+      <h2 style="margin-top:16px">Олар ne айтады?</h2>
+      <p class="lead" style="margin-top:12px">Нақты серіктестер мен клиенттердің пікірлері.</p>
+    </div>
+
+    <div class="carousel-wrap reviews-carousel fade-up" style="padding:0 32px">
+      <div class="carousel-track" id="reviews-track">
+
+        <div class="review-card">
+          <div class="review-quote">"</div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Жәмила апаймен жұмыс жасай бастағаннан кейін менің командам 2 есеге өсті. ЖИ жүйесі шынымен жұмыс жасайды! Алғашқыда күмәндандым, бірақ нәтижені көргеннен кейін — сенімдімін.</p>
+          <div class="review-author">
+            <div class="review-avatar">А</div>
+            <div>
+              <div class="review-name">Айгүл Бекова</div>
+              <div class="review-city">Нур-Сұлтан · MLM серіктес</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-quote">"</div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Маркетинг стратегиясын жасап берді — нарықта өзімді дұрыс позициялай бастадым. Айлық кіріс 40%-ке өсті. Жәмила апай тек маман ғана емес, нағыз ментор!</p>
+          <div class="review-author">
+            <div class="review-avatar">Д</div>
+            <div>
+              <div class="review-name">Динара Сейткали</div>
+              <div class="review-city">Алматы · Кәсіпкер</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-quote">"</div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Бренд-менеджмент қызметі өмірімді өзгертті. Енді менің брендім бар, нарықта танылдым. ЖИ аватар мен контент — тіпті сенбейтіндей нәтиже бергені рас.</p>
+          <div class="review-author">
+            <div class="review-avatar">З</div>
+            <div>
+              <div class="review-name">Зарина Нурова</div>
+              <div class="review-city">Шымкент · ТОП-лидер</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-quote">"</div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Жеке бренд упаковкасы мен сату воронкасын орнатқаннан кейін кірісім 3 айда 2,5 есеге өсті. Ешқандай жарнамасыз — тек жүйе жұмыс жасады!</p>
+          <div class="review-author">
+            <div class="review-avatar">М</div>
+            <div>
+              <div class="review-name">Мадина Қасымова</div>
+              <div class="review-city">Алматы · Онлайн кәсіпкер</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-quote">"</div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Өзімді упаковать етіп, Instagram-да дұрыс позициялай бастадым. 1 ай ішінде алғашқы 5 клиентімді алдым. Жәмила апайдың жүйесі шынымен жұмыс жасайды!</p>
+          <div class="review-author">
+            <div class="review-avatar">С</div>
+            <div>
+              <div class="review-name">Сандугаш Ергали</div>
+              <div class="review-city">Нур-Сұлтан · Эксперт</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <button class="carousel-btn carousel-btn-prev" data-track="reviews-track" aria-label="Артқа">‹</button>
+      <button class="carousel-btn carousel-btn-next" data-track="reviews-track" aria-label="Алға">›</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!--  GALLERY                               -->
+<!-- ═══════════════════════════════════════ -->
+<section id="gallery" class="section-pad">
+  <div class="container">
+    <div class="section-header section-header--center fade-up">
+      <span class="eyebrow eyebrow--light">Галерея</span>
+      <h2 style="margin-top:16px;color:#fff">Жұмыс барысынан фотолар</h2>
+      <p class="lead" style="margin-top:12px;color:rgba(255,255,255,.4)">Команда, оқыту, іс-шаралар — барлығы осында.</p>
+    </div>
+
+    <div class="carousel-wrap gallery-carousel fade-up" style="padding:0 32px">
+      <div class="carousel-track" id="gallery-track">
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="Photo/Photo00387.jpg" alt="Жәмила Оразбай">
+          <div class="gallery-overlay"></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="Photo/Photo00395.jpg" alt="Жәмила Оразбай">
+          <div class="gallery-overlay"></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="Photo/Photo00457.jpg" alt="Команда">
+          <div class="gallery-overlay"></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="Photo/Photo00575.jpg" alt="Команда фотосессия">
+          <div class="gallery-overlay"></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="Photo/Photo00609.jpg" alt="Команда">
+          <div class="gallery-overlay"></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="Photo/Photo00590.jpg" alt="Жұмыс барысы">
+          <div class="gallery-overlay"></div>
+        </div>
+      </div>
+      <button class="carousel-btn carousel-btn-prev" data-track="gallery-track" aria-label="Артқа">‹</button>
+      <button class="carousel-btn carousel-btn-next" data-track="gallery-track" aria-label="Алға">›</button>
+    </div>
+    </div>
+
+    <div style="text-align:center;margin-top:28px" class="fade-up">
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="btn btn-ghost" style="display:inline-flex">
+        Барлық фотоларды Instagram-да қараңыз →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!--  PODCAST / CONTENT                     -->
+<!-- ═══════════════════════════════════════ -->
+<section id="podcast" class="section-pad" style="background:var(--white)">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="eyebrow">Менің контентім</span>
+      <h2 style="margin-top:16px">Тыңдаңыз. Оқыңыз. Іске асырыңыз.</h2>
+      <p class="lead" style="margin-top:12px">«АШЫҚ ӘҢГІМЕ» подкасты арқылы бизнес туралы білімді тегін алыңыз.</p>
+    </div>
+
+    <div class="podcast-grid">
+
+      <div class="fade-up">
+        <div class="podcast-embed">
+          <iframe
+            src="https://www.youtube.com/embed?listType=user_uploads&list=UCOWcbjUoi3KrkN0SPh-VUYw"
+            title="АШЫҚ ӘҢГІМЕ подкасты — Жамила Оразбай"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap">
+          <a href="https://www.youtube.com/channel/UCOWcbjUoi3KrkN0SPh-VUYw" target="_blank" rel="noopener"
+             class="btn" style="background:#FF0000;color:#fff;font-size:14px;padding:10px 20px;flex:1;justify-content:center">
+            ▶ YouTube каналы
+          </a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener"
+             class="btn" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;font-size:14px;padding:10px 20px;flex:1;justify-content:center">
+            📸 Instagram
+          </a>
+        </div>
+      </div>
+
+      <div class="podcast-info fade-up" style="transition-delay:0.12s">
+        <span class="eyebrow">Мақалалар</span>
+        <h2 style="margin-top:16px;font-size:26px">Пайдалы материалдар</h2>
+        <p style="margin-top:12px">MLM, рекрутинг, ЖИ, тұлғалық өсу тақырыптарындағы мақалалар.</p>
+
+        <div class="article-list">
+          <div class="article-item">
+            <div class="article-num">01</div>
+            <div>
+              <h4>ЖИ рекрутинг: жаңа серіктесті қалай автоматты тарту керек?</h4>
+              <p>ChatGPT, таргет, чат-бот — бәрі бір жүйеде</p>
+            </div>
+          </div>
+          <div class="article-item">
+            <div class="article-num">02</div>
+            <div>
+              <h4>MLM-де жеке бренд: неге ол тауарыңыздан маңыздырақ?</h4>
+              <p>Нарықта өзіңізді қалай орналастыруыңыз керек</p>
+            </div>
+          </div>
+          <div class="article-item">
+            <div class="article-num">03</div>
+            <div>
+              <h4>Регион ашу — дайын жоспар: 90 күнде нәтижеге жету</h4>
+              <p>Іс-тәжірибеден алынған қадам-қадам нұсқаулық</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:20px">
+          <a href="tel:+77474106388" class="btn btn-dark" style="font-size:14px;padding:12px 22px">
+            📞 +7 747 410 63 88
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!--  PACKAGE                               -->
+<!-- ═══════════════════════════════════════ -->
+<section id="package" class="section-pad">
+  <div class="package-glow"></div>
+  <div class="container">
+    <div class="section-header section-header--center fade-up" style="margin-bottom:36px">
+      <span class="eyebrow eyebrow--light">Серіктестік пакеті</span>
+      <h2 style="margin-top:16px;color:#fff">Жүйеге қосылыңыз.</h2>
+      <p class="lead" style="margin-top:12px;color:rgba(255,255,255,.45)">Бизнесіңізді жаңа деңгейге шығаратын кешенді пакет.</p>
+    </div>
+
+    <div class="package-card fade-up">
+      <div class="package-badge">5 орын ғана</div>
+
+      <span class="eyebrow eyebrow--light">Premium пакет</span>
+      <h2 style="margin-top:16px">Толық ЖИ Жүйе</h2>
+      <p class="package-subtitle">Бизнесіңізді автоматтандырудың барлығы — бір жерде.</p>
+
+      <div class="package-features">
+        <div class="package-feature">
+          <span class="check-icon">✓</span>
+          ЖИ-рекрутинг жүйесі (24/7)
+        </div>
+        <div class="package-feature">
+          <span class="check-icon">✓</span>
+          Команда оқыту платформасы
+        </div>
+        <div class="package-feature">
+          <span class="check-icon">✓</span>
+          Жеке бренд упаковкасы (сайт + CRM + чат-бот)
+        </div>
+        <div class="package-feature">
+          <span class="check-icon">✓</span>
+          ЖИ фотосессия + аватар + контент
+        </div>
+        <div class="package-feature">
+          <span class="check-icon">✓</span>
+          Айлық ЖИ таргетолог 24/7
+        </div>
+        <div class="package-feature">
+          <span class="check-icon">✓</span>
+          Подкаст жасау (оффлайн, Жәмила қасыңызда)
+        </div>
+        <div class="package-feature">
+          <span class="check-icon">✓</span>
+          Ай сайын нәтиже есебі
+        </div>
+        <div class="package-feature">
+          <span class="check-icon">✓</span>
+          Жеке менторлық кездесулер
+        </div>
+      </div>
+
+      <div class="package-price">
+        <p class="price-old">Нарықтағы бағасы: 2 000 000+ ₸</p>
+        <p class="price-new">Бағаны сұрату →</p>
+        <p class="price-monthly">Айлық ұстау: ~100 000 ₸/ай (хостинг + ЖИ жазылымдар)</p>
+      </div>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="https://wa.me/77474106388?text=Сәлем!%20Premium%20пакетке%20өтінім%20қалдырғым%20келеді." target="_blank" rel="noopener"
+           class="btn btn-gold" style="flex:1;justify-content:center">
+          Өтінім қалдыру →
+        </a>
+        <a href="tel:+77474106388" class="btn btn-ghost" style="flex:0 0 auto;padding:14px 20px">
+          📞 Қоңырау
+        </a>
+      </div>
+
+      <div class="package-urgency">
+        ⚡ Қазір тек <strong>5 орын</strong> бар. Сіздің саланыздағы орынды алып қалыңыз.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!--  TEAM PLATFORM                         -->
+<!-- ═══════════════════════════════════════ -->
+<section id="platform" class="section-pad" style="background:var(--cream)">
+  <div class="container">
+    <div class="section-header fade-up" style="max-width:560px">
+      <span class="eyebrow">Команда платформасы</span>
+      <h2 style="margin-top:16px">Жаңа серіктестерге арналған</h2>
+      <p class="lead" style="margin-top:12px">Тіркеліп, оқып, жылдам іске қосылыңыз. Барлығы онлайн.</p>
+    </div>
+
+    <div class="platform-grid">
+
+      <div class="platform-features">
+        <div class="platform-feature fade-up">
+          <div class="platform-icon">📋</div>
+          <div>
+            <h3>Жылдам тіркелу</h3>
+            <p>Жаңа серіктес аты, байланысы, деңгейімен тіркеледі. Жәмилаға хабарлама дереу жетеді.</p>
+          </div>
+        </div>
+        <div class="platform-feature fade-up" style="transition-delay:0.08s">
+          <div class="platform-icon">🎓</div>
+          <div>
+            <h3>Оқыту панелі</h3>
+            <p>Видео сабақтар, PDF материалдар, тапсырмалар — бәрі бір жерде. YouTube + PDF.</p>
+          </div>
+        </div>
+        <div class="platform-feature fade-up" style="transition-delay:0.16s">
+          <div class="platform-icon">🤖</div>
+          <div>
+            <h3>Чат-бот 24/7</h3>
+            <p>Сұрақтарға автоматты жауап. Telegram жабық топ + WhatsApp Bot — бір уақытта жұмыс жасайды.</p>
+          </div>
+        </div>
+        <div class="platform-feature fade-up" style="transition-delay:0.24s">
+          <div class="platform-icon">📊</div>
+          <div>
+            <h3>Нәтиже деңгейі</h3>
+            <p>Жаңа серіктес өз прогресін өзі көреді. Progress tracker арқылы мотивация жоғары болады.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Registration form -->
+      <div class="platform-form-wrap fade-up" style="transition-delay:0.12s">
+        <h3>Командаға қосылу</h3>
+        <p>Өтінімді толтырыңыз — Жәмила апай 24 сағат ішінде хабарласады.</p>
+
+        <form onsubmit="handleFormSubmit(event, 'registration')">
+          <div class="form-field">
+            <label>Атыңыз</label>
+            <input type="text" placeholder="Аты-жөніңіз" required>
+          </div>
+          <div class="form-field">
+            <label>Телефон</label>
+            <input type="tel" placeholder="+7 (___) ___ __ __" required>
+          </div>
+          <div class="form-field">
+            <label>Тәжірибе деңгейі</label>
+            <select>
+              <option value="">Таңдаңыз...</option>
+              <option>Жаңадан бастаушы</option>
+              <option>1-2 жыл тәжірибем бар</option>
+              <option>3+ жыл тәжірибем бар</option>
+              <option>ТОП-лидер</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;margin-top:4px">
+            Командаға қосылу →
+          </button>
+        </form>
+
+        <div class="form-links">
+          <a href="https://t.me/+7IajzTZcKQs2ZDQy" target="_blank" rel="noopener" class="form-link-btn form-link-tg">
+            ✈ Telegram топ
+          </a>
+          <a href="https://wa.me/77474106388" target="_blank" rel="noopener" class="form-link-btn form-link-wa">
+            💬 WhatsApp
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!--  AI vs TRADITIONAL                     -->
+<!-- ═══════════════════════════════════════ -->
+<section id="ai" class="section-pad" style="background:var(--white)">
+  <div class="container">
+    <div class="section-header section-header--center fade-up">
+      <span class="eyebrow">Экономика</span>
+      <h2 style="margin-top:16px">ЖИ vs Дәстүрлі — Математика</h2>
+      <p class="lead" style="margin-top:12px">ЖИ жүйесінің экономикалық тиімділігін бірден түсіну.</p>
+    </div>
+
+    <div class="ai-table-wrap fade-up">
+      <table class="ai-table">
+        <thead>
+          <tr>
+            <th>Маман / Қызмет</th>
+            <th>Дәстүрлі шығын/ай</th>
+            <th>ЖИ жүйесімен</th>
+            <th>Үнем</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>СММ маман</strong></td>
+            <td>150 000 – 300 000 ₸</td>
+            <td rowspan="6" style="vertical-align:middle;text-align:center;font-size:28px;background:rgba(200,149,42,0.05)">
+              <div style="color:var(--gold);font-family:var(--font-display);font-size:24px;font-weight:700;white-space:nowrap">~100 000 ₸</div>
+              <div style="color:var(--muted);font-size:12px;margin-top:6px">барлық жүйе</div>
+            </td>
+            <td>150–300 000 ₸</td>
+          </tr>
+          <tr><td><strong>Таргетолог</strong></td><td>150 000 – 350 000 ₸</td><td>150–350 000 ₸</td></tr>
+          <tr><td><strong>Дизайнер</strong></td><td>100 000 – 200 000 ₸</td><td>100–200 000 ₸</td></tr>
+          <tr><td><strong>Мобилограф</strong></td><td>150 000 – 300 000 ₸</td><td>150–300 000 ₸</td></tr>
+          <tr><td><strong>Оқыту тренері</strong></td><td>100 000 – 200 000 ₸</td><td>100–200 000 ₸</td></tr>
+          <tr><td><strong>Сату менеджері</strong></td><td>100 000 + 15% комис.</td><td>100 000+ ₸</td></tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>ЖЫЛДЫҚ ҮНЕМ</td>
+            <td>800 000–1 700 000 ₸/ай</td>
+            <td>~100 000 ₸/ай</td>
+            <td>9–20 млн ₸/жыл</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="ai-summary fade-up" style="transition-delay:0.12s">
+      <strong>10 маманның жұмысын</strong> — 1 ЖИ жүйесі атқарады. Сіз тек нәтижені бақылайсыз.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!--  CONTACT / FOOTER                      -->
+<!-- ═══════════════════════════════════════ -->
+<section id="contact" class="section-pad">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- Form -->
+      <div class="contact-form fade-up">
+        <span class="eyebrow eyebrow--light" style="margin-bottom:16px">Бүгін бастаңыз</span>
+        <h2 style="margin-top:16px">Алғашқы 30 минуттық кеңес — тегін</h2>
+        <p class="lead" style="margin-top:12px">Өтінімді қалдырыңыз. 24 сағат ішінде хабарласамыз.</p>
+
+        <form onsubmit="handleFormSubmit(event,'contact')" style="margin-top:8px">
+          <div class="form-field">
+            <label>Атыңыз</label>
+            <input type="text" placeholder="Аты-жөніңіз" required>
+          </div>
+          <div class="form-field">
+            <label>Телефон</label>
+            <input type="tel" placeholder="+7 (___) ___ __ __" required>
+          </div>
+          <div class="form-field">
+            <label>Маған ең қажеті</label>
+            <select required>
+              <option value="">Таңдаңыз...</option>
+              <option>ЖИ-рекрутинг жүйесі</option>
+              <option>Команда оқыту</option>
+              <option>Жеке бренд упаковкасы</option>
+              <option>Менторлық</option>
+              <option>Маркетинг стратегиясы</option>
+              <option>Бренд-менеджмент</option>
+              <option>Барлығы қызықты</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;font-size:16px;padding:16px">
+            Тегін кеңеске жазылу →
+          </button>
+        </form>
+      </div>
+
+      <!-- Info -->
+      <div class="fade-up" style="transition-delay:0.12s">
+        <h3 style="color:#fff;font-size:22px;margin-bottom:24px">Байланыс</h3>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📞</div>
+          <div>
+            <div class="contact-detail-label">Телефон</div>
+            <div class="contact-detail-val">
+              <a href="tel:+77474106388">+7 747 410 63 88</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">💬</div>
+          <div>
+            <div class="contact-detail-label">WhatsApp</div>
+            <div class="contact-detail-val">
+              <a href="https://wa.me/77474106388" target="_blank" rel="noopener">Жазу → +7 747 410 63 88</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">✉️</div>
+          <div>
+            <div class="contact-detail-label">Email</div>
+            <div class="contact-detail-val">
+              <a href="mailto:Orazbajzamila@gmail.com">Orazbajzamila@gmail.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📻</div>
+          <div>
+            <div class="contact-detail-label">YouTube подкаст</div>
+            <div class="contact-detail-val">
+              <a href="https://www.youtube.com/channel/UCOWcbjUoi3KrkN0SPh-VUYw" target="_blank" rel="noopener">«АШЫҚ ӘҢГІМЕ» канал</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📍</div>
+          <div>
+            <div class="contact-detail-label">Орналасқан жері</div>
+            <div class="contact-detail-val">Алматы, Қазақстан</div>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color:rgba(255,255,255,0.7)"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/channel/UCOWcbjUoi3KrkN0SPh-VUYw" target="_blank" rel="noopener" class="social-btn" aria-label="YouTube">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color:rgba(255,255,255,0.7)"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+          </a>
+          <a href="https://t.me/+7IajzTZcKQs2ZDQy" target="_blank" rel="noopener" class="social-btn" aria-label="Telegram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color:rgba(255,255,255,0.7)"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          </a>
+          <a href="https://wa.me/77474106388" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp" style="color:#25D366">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.123 1.529 5.855L.057 23.454a.5.5 0 00.587.648l5.804-1.524A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.65-.5-5.18-1.374l-.364-.215-3.782.992.992-3.682-.233-.378A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer style="background:rgba(0,0,0,0.5);padding:20px 0;text-align:center;border-top:1px solid rgba(255,255,255,0.05)">
+  <div class="container">
+    <p style="color:rgba(255,255,255,0.25);font-size:13px">
+      © 2024–2025 Жәмила Оразбай. Барлық құқықтар қорғалған. ·
+      <a href="mailto:Orazbajzamila@gmail.com" style="color:rgba(255,255,255,0.35);transition:color 0.2s" onmouseover="this.style.color='rgba(200,149,42,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Orazbajzamila@gmail.com</a>
+    </p>
+  </div>
+</footer>
+
+<!-- ─── SCRIPTS ─── -->
+<script>
+/* NAV SCROLL */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+/* HAMBURGER MENU */
+const hamburgerBtn = document.getElementById('hamburger-btn');
+const mobileMenu   = document.getElementById('mobile-menu');
+const menuClose    = document.getElementById('menu-close');
+
+function openMenu() {
+  mobileMenu.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  hamburgerBtn.setAttribute('aria-expanded', 'true');
+}
+function closeMenu() {
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+  hamburgerBtn.setAttribute('aria-expanded', 'false');
+}
+
+hamburgerBtn.addEventListener('click', openMenu);
+menuClose.addEventListener('click', closeMenu);
+mobileMenu.addEventListener('click', e => { if (e.target === mobileMenu) closeMenu(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+/* INTERSECTION OBSERVER — fade-up */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+/* COUNTER ANIMATION */
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target, 10);
+  const originalText = el.textContent;
+  const hasSuffix = originalText.includes('+') || originalText.includes('М') || originalText.includes('м');
+  const suffix = originalText.replace(/^\d+/, '').trim();
+  const duration = 1400;
+  const start = performance.now();
+  function tick(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const val = Math.round(eased * target);
+    if (progress < 1) {
+      el.textContent = val + (suffix || '');
+      requestAnimationFrame(tick);
+    } else {
+      el.textContent = originalText;
+    }
+  }
+  requestAnimationFrame(tick);
+}
+
+const counterIO = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounter(entry.target);
+      counterIO.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.4 });
+
+document.querySelectorAll('.counter').forEach(el => {
+  counterIO.observe(el);
+});
+
+/* ─── CAROUSELS ─── */
+document.querySelectorAll('.carousel-wrap').forEach(wrap => {
+  const track = wrap.querySelector('.carousel-track');
+  if (!track) return;
+
+  /* Button navigation */
+  wrap.querySelectorAll('.carousel-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const trackId = btn.dataset.track;
+      const t = document.getElementById(trackId) || track;
+      const item = t.firstElementChild;
+      const gap = parseInt(getComputedStyle(t).gap) || 16;
+      const step = (item ? item.offsetWidth + gap : 400);
+      t.scrollBy({ left: btn.classList.contains('carousel-btn-next') ? step : -step, behavior: 'smooth' });
+    });
+  });
+
+  /* Drag-to-scroll */
+  let isDragging = false, startX = 0, scrollStart = 0;
+  track.addEventListener('mousedown', e => {
+    isDragging = true;
+    startX = e.clientX;
+    scrollStart = track.scrollLeft;
+    track.classList.add('dragging');
+    e.preventDefault();
+  });
+  document.addEventListener('mouseup', () => {
+    if (isDragging) { isDragging = false; track.classList.remove('dragging'); }
+  });
+  document.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    track.scrollLeft = scrollStart - (e.clientX - startX);
+  });
+});
+
+/* HERO STAT NUMBERS (simpler treatment — just display) */
+document.querySelectorAll('.hero-stat-num[data-count]').forEach(el => {
+  const target = parseInt(el.dataset.count, 10);
+  el.textContent = target + (el.dataset.count > 99 ? '+' : '+');
+});
+
+/* LIGHTBOX */
+function openLightbox(item) {
+  const img = item.querySelector('img');
+  document.getElementById('lightbox-img').src = img.src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+/* FORM SUBMIT */
+function handleFormSubmit(e, type) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type="submit"]');
+  const original = btn.textContent;
+  btn.textContent = '✓ Жіберілді! Жақын арада хабарласамыз.';
+  btn.style.background = '#2E7D32';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = original;
+    btn.style.background = '';
+    btn.disabled = false;
+    e.target.reset();
+  }, 3000);
+}
+
+/* NAV ACTIVE LINK */
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + current
+      ? 'var(--gold-light)'
+      : '';
+  });
+}, { passive: true });
+</script>
+
+</body>
+</html>
