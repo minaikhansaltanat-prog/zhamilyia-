@@ -769,6 +769,129 @@ body.menu-open nav { opacity: 0; pointer-events: none; }
   box-shadow: 0 4px 16px rgba(200,149,42,0.3);
 }
 
+/* Review tabs */
+.review-tabs {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+.review-tab-btn {
+  padding: 10px 24px; border-radius: 50px;
+  border: 1.5px solid var(--border);
+  background: transparent; cursor: pointer;
+  font-family: var(--font-body); font-size: 15px; font-weight: 600;
+  color: var(--muted);
+  transition: all 0.22s cubic-bezier(0.16,1,0.3,1);
+  display: flex; align-items: center; gap: 8px;
+}
+.review-tab-btn:hover { border-color: var(--gold); color: var(--gold-dark); }
+.review-tab-btn.active {
+  background: var(--dark); color: var(--gold-light);
+  border-color: var(--dark);
+  box-shadow: 0 4px 16px rgba(12,10,6,0.18);
+}
+.review-tab-btn .tab-icon { font-size: 16px; }
+.review-panel { display: none; }
+.review-panel.active { display: block; }
+
+/* Video / Audio review cards */
+.video-review-card {
+  flex: 0 0 320px; scroll-snap-align: start;
+  border-radius: 16px; overflow: hidden;
+  background: var(--dark);
+  position: relative; aspect-ratio: 9/16;
+  max-height: 360px; cursor: pointer;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s;
+}
+.video-review-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.25); }
+.video-review-card img { width:100%;height:100%;object-fit:cover;display:block; }
+.video-review-overlay {
+  position:absolute;inset:0;
+  background: linear-gradient(to top, rgba(12,10,6,0.85) 0%, transparent 55%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+}
+.video-review-play {
+  width:56px;height:56px;border-radius:50%;
+  background:rgba(200,149,42,0.9);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 0 6px rgba(200,149,42,0.2);
+}
+.video-review-play svg { width:22px;height:22px;fill:#0C0A06;margin-left:3px; }
+.video-review-name {
+  position:absolute;bottom:16px;left:16px;right:16px;
+  color:#fff;font-size:14px;font-weight:600;
+}
+.video-review-city { font-size:12px;color:rgba(255,255,255,0.65);margin-top:2px;font-weight:400; }
+
+/* Audio review cards */
+.audio-review-card {
+  flex: 0 0 300px; scroll-snap-align: start;
+  border-radius: 16px; padding: 24px;
+  background: var(--cream); border: 1px solid var(--border);
+  display:flex;flex-direction:column;gap:16px;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.audio-review-card:hover { box-shadow:0 8px 28px rgba(200,149,42,0.1);transform:translateY(-3px); }
+.audio-waveform {
+  display:flex;align-items:center;gap:3px;height:40px;
+}
+.audio-waveform span {
+  flex:1;background:var(--gold);border-radius:2px;opacity:0.7;
+  animation: wavePulse 1.2s ease-in-out infinite alternate;
+}
+.audio-waveform span:nth-child(2n) { animation-delay:0.15s; opacity:0.45; }
+.audio-waveform span:nth-child(3n) { animation-delay:0.3s; opacity:0.6; }
+@keyframes wavePulse {
+  from { transform: scaleY(0.4); }
+  to   { transform: scaleY(1); }
+}
+.audio-play-row {
+  display:flex;align-items:center;gap:12px;
+}
+.audio-play-btn {
+  width:44px;height:44px;border-radius:50%;
+  background:var(--dark);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background 0.2s;flex-shrink:0;
+}
+.audio-play-btn:hover { background:var(--gold-dark); }
+.audio-play-btn svg { width:18px;height:18px;fill:var(--gold-light);margin-left:2px; }
+.audio-duration { font-size:13px;color:var(--muted); }
+
+/* Telegram review cards */
+.tg-review-card {
+  flex: 0 0 340px; scroll-snap-align: start;
+  border-radius: 16px; overflow:hidden;
+  border: 1px solid var(--border);
+  background:#fff;
+  box-shadow:0 4px 16px rgba(0,0,0,0.06);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.tg-review-card:hover { box-shadow:0 10px 32px rgba(0,149,211,0.12);transform:translateY(-3px); }
+.tg-card-header {
+  background:linear-gradient(135deg,#0088cc,#229ED9);
+  padding:14px 18px;
+  display:flex;align-items:center;gap:10px;
+}
+.tg-avatar {
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(255,255,255,0.25);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:700;color:#fff;flex-shrink:0;
+}
+.tg-name { color:#fff;font-size:14px;font-weight:700; }
+.tg-handle { color:rgba(255,255,255,0.7);font-size:12px; }
+.tg-card-body {
+  padding:18px;font-size:14px;line-height:1.65;color:var(--text);
+}
+.tg-card-footer {
+  padding:0 18px 14px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.tg-stars { color:var(--gold);font-size:14px; }
+.tg-date { font-size:12px;color:var(--muted); }
+
 @media (max-width: 900px) {
   .gallery-carousel .gallery-item { flex: 0 0 300px; height: 220px; }
   .reviews-carousel .review-card { flex: 0 0 300px; }
@@ -1325,12 +1448,12 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
   .hero-inner { grid-template-columns: 1fr; text-align: center; padding-top: 80px; padding-bottom: 40px; gap: 28px; }
-  .hero-text { order: 2; }
-  .hero-photo-wrap { order: 1; }
+  .hero-text { order: 2; padding-top: 16px; }
+  .hero-photo-wrap { order: 1; padding-bottom: 0; }
   .hero-sub { margin-left: auto; margin-right: auto; }
   .hero-btns { justify-content: center; }
   .hero-stats { justify-content: center; gap: 20px; }
-  .hero-badge { left: 50%; transform: translateX(-50%); bottom: -12px; }
+  .hero-badge { left: 50%; transform: translateX(-50%); bottom: 20px; z-index: 4; }
   .scroll-hint { display: none; }
   .hero-photo-frame { max-width: 340px; margin: 0 auto; }
   .hero-photo-frame img { max-height: 420px; }
@@ -1776,82 +1899,289 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
   <div class="container">
     <div class="section-header section-header--center fade-up">
       <span class="eyebrow">Пікірлер</span>
-      <h2 style="margin-top:16px">Олар ne айтады?</h2>
+      <h2 style="margin-top:16px">Клиенттерім сөйлесін</h2>
       <p class="lead" style="margin-top:12px">Нақты серіктестер мен клиенттердің пікірлері.</p>
     </div>
 
-    <div class="carousel-wrap reviews-carousel fade-up" style="padding:0 32px">
-      <div class="carousel-track" id="reviews-track">
-
-        <div class="review-card">
-          <div class="review-quote">"</div>
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">Жәмила апаймен жұмыс жасай бастағаннан кейін менің командам 2 есеге өсті. ЖИ жүйесі шынымен жұмыс жасайды! Алғашқыда күмәндандым, бірақ нәтижені көргеннен кейін — сенімдімін.</p>
-          <div class="review-author">
-            <div class="review-avatar">А</div>
-            <div>
-              <div class="review-name">Айгүл Бекова</div>
-              <div class="review-city">Нур-Сұлтан · MLM серіктес</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="review-quote">"</div>
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">Маркетинг стратегиясын жасап берді — нарықта өзімді дұрыс позициялай бастадым. Айлық кіріс 40%-ке өсті. Жәмила апай тек маман ғана емес, нағыз ментор!</p>
-          <div class="review-author">
-            <div class="review-avatar">Д</div>
-            <div>
-              <div class="review-name">Динара Сейткали</div>
-              <div class="review-city">Алматы · Кәсіпкер</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="review-quote">"</div>
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">Бренд-менеджмент қызметі өмірімді өзгертті. Енді менің брендім бар, нарықта танылдым. ЖИ аватар мен контент — тіпті сенбейтіндей нәтиже бергені рас.</p>
-          <div class="review-author">
-            <div class="review-avatar">З</div>
-            <div>
-              <div class="review-name">Зарина Нурова</div>
-              <div class="review-city">Шымкент · ТОП-лидер</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="review-quote">"</div>
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">Жеке бренд упаковкасы мен сату воронкасын орнатқаннан кейін кірісім 3 айда 2,5 есеге өсті. Ешқандай жарнамасыз — тек жүйе жұмыс жасады!</p>
-          <div class="review-author">
-            <div class="review-avatar">М</div>
-            <div>
-              <div class="review-name">Мадина Қасымова</div>
-              <div class="review-city">Алматы · Онлайн кәсіпкер</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="review-quote">"</div>
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">Өзімді упаковать етіп, Instagram-да дұрыс позициялай бастадым. 1 ай ішінде алғашқы 5 клиентімді алдым. Жәмила апайдың жүйесі шынымен жұмыс жасайды!</p>
-          <div class="review-author">
-            <div class="review-avatar">С</div>
-            <div>
-              <div class="review-name">Сандугаш Ергали</div>
-              <div class="review-city">Нур-Сұлтан · Эксперт</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <button class="carousel-btn carousel-btn-prev" data-track="reviews-track" aria-label="Артқа">‹</button>
-      <button class="carousel-btn carousel-btn-next" data-track="reviews-track" aria-label="Алға">›</button>
+    <!-- TABS -->
+    <div class="review-tabs fade-up" style="transition-delay:0.08s">
+      <button class="review-tab-btn active" data-tab="jazbashar">
+        <span class="tab-icon">✍️</span> Жазбаша
+      </button>
+      <button class="review-tab-btn" data-tab="video">
+        <span class="tab-icon">▶️</span> Видео
+      </button>
+      <button class="review-tab-btn" data-tab="audio">
+        <span class="tab-icon">🎙️</span> Аудио
+      </button>
+      <button class="review-tab-btn" data-tab="telegram">
+        <span class="tab-icon">✈️</span> Телеграм-да
+      </button>
     </div>
+
+    <!-- ЖАЗБАША -->
+    <div class="review-panel active" id="panel-jazbashar">
+      <div class="carousel-wrap reviews-carousel" style="padding:0 32px">
+        <div class="carousel-track" id="reviews-track">
+
+          <div class="review-card">
+            <div class="review-quote">"</div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">Жәмила апаймен жұмыс жасай бастағаннан кейін менің командам 2 есеге өсті. ЖИ жүйесі шынымен жұмыс жасайды! Алғашқыда күмәндандым, бірақ нәтижені көргеннен кейін — сенімдімін.</p>
+            <div class="review-author">
+              <div class="review-avatar">А</div>
+              <div><div class="review-name">Айгүл Бекова</div><div class="review-city">Нур-Сұлтан · MLM серіктес</div></div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-quote">"</div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">Маркетинг стратегиясын жасап берді — нарықта өзімді дұрыс позициялай бастадым. Айлық кіріс 40%-ке өсті. Жәмила апай тек маман ғана емес, нағыз ментор!</p>
+            <div class="review-author">
+              <div class="review-avatar">Д</div>
+              <div><div class="review-name">Динара Сейткали</div><div class="review-city">Алматы · Кәсіпкер</div></div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-quote">"</div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">Бренд-менеджмент қызметі өмірімді өзгертті. Енді менің брендім бар, нарықта танылдым. ЖИ аватар мен контент — тіпті сенбейтіндей нәтиже бергені рас.</p>
+            <div class="review-author">
+              <div class="review-avatar">З</div>
+              <div><div class="review-name">Зарина Нурова</div><div class="review-city">Шымкент · ТОП-лидер</div></div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-quote">"</div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">Жеке бренд упаковкасы мен сату воронкасын орнатқаннан кейін кірісім 3 айда 2,5 есеге өсті. Ешқандай жарнамасыз — тек жүйе жұмыс жасады!</p>
+            <div class="review-author">
+              <div class="review-avatar">М</div>
+              <div><div class="review-name">Мадина Қасымова</div><div class="review-city">Алматы · Онлайн кәсіпкер</div></div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-quote">"</div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">Өзімді упаковать етіп, Instagram-да дұрыс позициялай бастадым. 1 ай ішінде алғашқы 5 клиентімді алдым. Жәмила апайдың жүйесі шынымен жұмыс жасайды!</p>
+            <div class="review-author">
+              <div class="review-avatar">С</div>
+              <div><div class="review-name">Сандугаш Ергали</div><div class="review-city">Нур-Сұлтан · Эксперт</div></div>
+            </div>
+          </div>
+
+        </div>
+        <button class="carousel-btn carousel-btn-prev" data-track="reviews-track" aria-label="Артқа">‹</button>
+        <button class="carousel-btn carousel-btn-next" data-track="reviews-track" aria-label="Алға">›</button>
+      </div>
+    </div>
+
+    <!-- ВИДЕО -->
+    <div class="review-panel" id="panel-video">
+      <div class="carousel-wrap" style="padding:0 32px">
+        <div class="carousel-track" id="video-reviews-track">
+
+          <a class="video-review-card" href="https://youtube.com/channel/UCOWcbjUoi3KrkN0SPh-VUYw" target="_blank" rel="noopener">
+            <img src="Photo/Photo00387.jpg" alt="Видео пікір">
+            <div class="video-review-overlay">
+              <div class="video-review-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            </div>
+            <div class="video-review-name">Айгүл Бекова<div class="video-review-city">Нур-Сұлтан · MLM серіктес</div></div>
+          </a>
+
+          <a class="video-review-card" href="https://youtube.com/channel/UCOWcbjUoi3KrkN0SPh-VUYw" target="_blank" rel="noopener">
+            <img src="Photo/Photo00395.jpg" alt="Видео пікір">
+            <div class="video-review-overlay">
+              <div class="video-review-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            </div>
+            <div class="video-review-name">Динара Сейткали<div class="video-review-city">Алматы · Кәсіпкер</div></div>
+          </a>
+
+          <a class="video-review-card" href="https://youtube.com/channel/UCOWcbjUoi3KrkN0SPh-VUYw" target="_blank" rel="noopener">
+            <img src="Photo/Photo00457.jpg" alt="Видео пікір">
+            <div class="video-review-overlay">
+              <div class="video-review-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            </div>
+            <div class="video-review-name">Зарина Нурова<div class="video-review-city">Шымкент · ТОП-лидер</div></div>
+          </a>
+
+          <a class="video-review-card" href="https://youtube.com/channel/UCOWcbjUoi3KrkN0SPh-VUYw" target="_blank" rel="noopener">
+            <img src="Photo/Photo00575.jpg" alt="Видео пікір">
+            <div class="video-review-overlay">
+              <div class="video-review-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            </div>
+            <div class="video-review-name">Мадина Қасымова<div class="video-review-city">Алматы · Онлайн кәсіпкер</div></div>
+          </a>
+
+          <a class="video-review-card" href="https://youtube.com/channel/UCOWcbjUoi3KrkN0SPh-VUYw" target="_blank" rel="noopener">
+            <img src="Photo/Photo00609.jpg" alt="Видео пікір">
+            <div class="video-review-overlay">
+              <div class="video-review-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            </div>
+            <div class="video-review-name">Сандугаш Ергали<div class="video-review-city">Нур-Сұлтан · Эксперт</div></div>
+          </a>
+
+        </div>
+        <button class="carousel-btn carousel-btn-prev" data-track="video-reviews-track" aria-label="Артқа" style="background:var(--gold);color:#fff">‹</button>
+        <button class="carousel-btn carousel-btn-next" data-track="video-reviews-track" aria-label="Алға" style="background:var(--gold);color:#fff">›</button>
+      </div>
+    </div>
+
+    <!-- АУДИО -->
+    <div class="review-panel" id="panel-audio">
+      <div class="carousel-wrap" style="padding:0 32px">
+        <div class="carousel-track" id="audio-reviews-track">
+
+          <div class="audio-review-card">
+            <div class="review-quote" style="font-size:32px;margin-bottom:8px">"</div>
+            <p style="font-size:14px;line-height:1.6;color:var(--text);margin-bottom:16px">«Жәмила апайдың кеңесінен кейін бизнесімнің бағытын толық өзгерттім. Нәтиже 3 айда көрінді.»</p>
+            <div class="audio-play-row">
+              <button class="audio-play-btn" aria-label="Ойнату"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+              <div>
+                <div class="audio-waveform">
+                  <span style="height:60%"></span><span style="height:80%"></span><span style="height:45%"></span>
+                  <span style="height:90%"></span><span style="height:55%"></span><span style="height:70%"></span>
+                  <span style="height:40%"></span><span style="height:85%"></span><span style="height:60%"></span>
+                  <span style="height:75%"></span><span style="height:50%"></span><span style="height:95%"></span>
+                </div>
+                <div class="audio-duration">0:48</div>
+              </div>
+            </div>
+            <div class="review-author" style="margin-top:16px">
+              <div class="review-avatar">А</div>
+              <div><div class="review-name">Айгүл Бекова</div><div class="review-city">Нур-Сұлтан · MLM серіктес</div></div>
+            </div>
+          </div>
+
+          <div class="audio-review-card">
+            <div class="review-quote" style="font-size:32px;margin-bottom:8px">"</div>
+            <p style="font-size:14px;line-height:1.6;color:var(--text);margin-bottom:16px">«ЖИ контент жүйесін орнатқаннан кейін күн сайын жаңа клиент келеді. Бұрын мұны армандамаушы едім.»</p>
+            <div class="audio-play-row">
+              <button class="audio-play-btn" aria-label="Ойнату"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+              <div>
+                <div class="audio-waveform">
+                  <span style="height:50%"></span><span style="height:95%"></span><span style="height:60%"></span>
+                  <span style="height:75%"></span><span style="height:40%"></span><span style="height:88%"></span>
+                  <span style="height:65%"></span><span style="height:72%"></span><span style="height:48%"></span>
+                  <span style="height:80%"></span><span style="height:55%"></span><span style="height:68%"></span>
+                </div>
+                <div class="audio-duration">1:12</div>
+              </div>
+            </div>
+            <div class="review-author" style="margin-top:16px">
+              <div class="review-avatar">Д</div>
+              <div><div class="review-name">Динара Сейткали</div><div class="review-city">Алматы · Кәсіпкер</div></div>
+            </div>
+          </div>
+
+          <div class="audio-review-card">
+            <div class="review-quote" style="font-size:32px;margin-bottom:8px">"</div>
+            <p style="font-size:14px;line-height:1.6;color:var(--text);margin-bottom:16px">«Воронка орнатылды — енді ұйықтап жатқанда да кіріс келеді. Жәмила апайдың уәдесі орындалды!»</p>
+            <div class="audio-play-row">
+              <button class="audio-play-btn" aria-label="Ойнату"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+              <div>
+                <div class="audio-waveform">
+                  <span style="height:70%"></span><span style="height:45%"></span><span style="height:90%"></span>
+                  <span style="height:60%"></span><span style="height:80%"></span><span style="height:52%"></span>
+                  <span style="height:76%"></span><span style="height:42%"></span><span style="height:88%"></span>
+                  <span style="height:63%"></span><span style="height:78%"></span><span style="height:55%"></span>
+                </div>
+                <div class="audio-duration">0:55</div>
+              </div>
+            </div>
+            <div class="review-author" style="margin-top:16px">
+              <div class="review-avatar">З</div>
+              <div><div class="review-name">Зарина Нурова</div><div class="review-city">Шымкент · ТОП-лидер</div></div>
+            </div>
+          </div>
+
+          <div class="audio-review-card">
+            <div class="review-quote" style="font-size:32px;margin-bottom:8px">"</div>
+            <p style="font-size:14px;line-height:1.6;color:var(--text);margin-bottom:16px">«3 айда кірісім 2,5 есеге өсті. Жүйе жұмыс жасайды — бұл шындық.»</p>
+            <div class="audio-play-row">
+              <button class="audio-play-btn" aria-label="Ойнату"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+              <div>
+                <div class="audio-waveform">
+                  <span style="height:55%"></span><span style="height:82%"></span><span style="height:48%"></span>
+                  <span style="height:93%"></span><span style="height:62%"></span><span style="height:74%"></span>
+                  <span style="height:45%"></span><span style="height:87%"></span><span style="height:58%"></span>
+                  <span style="height:70%"></span><span style="height:40%"></span><span style="height:80%"></span>
+                </div>
+                <div class="audio-duration">0:38</div>
+              </div>
+            </div>
+            <div class="review-author" style="margin-top:16px">
+              <div class="review-avatar">М</div>
+              <div><div class="review-name">Мадина Қасымова</div><div class="review-city">Алматы · Онлайн кәсіпкер</div></div>
+            </div>
+          </div>
+
+        </div>
+        <button class="carousel-btn carousel-btn-prev" data-track="audio-reviews-track" aria-label="Артқа" style="background:var(--gold);color:#fff">‹</button>
+        <button class="carousel-btn carousel-btn-next" data-track="audio-reviews-track" aria-label="Алға" style="background:var(--gold);color:#fff">›</button>
+      </div>
+    </div>
+
+    <!-- ТЕЛЕГРАМ-ДА -->
+    <div class="review-panel" id="panel-telegram">
+      <div class="carousel-wrap" style="padding:0 32px">
+        <div class="carousel-track" id="tg-reviews-track">
+
+          <div class="tg-review-card">
+            <div class="tg-card-header">
+              <div class="tg-avatar">А</div>
+              <div><div class="tg-name">Айгүл Бекова</div><div class="tg-handle">@aigul_bekova</div></div>
+            </div>
+            <div class="tg-card-body">Жәмила апаймен жұмыс жасай бастағаннан кейін менің командам 2 есеге өсті. ЖИ жүйесі шынымен жұмыс жасайды! Алғашқыда күмәндандым, бірақ нәтижені көргеннен кейін — сенімдімін. 🔥</div>
+            <div class="tg-card-footer"><span class="tg-stars">★★★★★</span><span class="tg-date">Наурыз 2025</span></div>
+          </div>
+
+          <div class="tg-review-card">
+            <div class="tg-card-header">
+              <div class="tg-avatar">Д</div>
+              <div><div class="tg-name">Динара Сейткали</div><div class="tg-handle">@dinara_s</div></div>
+            </div>
+            <div class="tg-card-body">Маркетинг стратегиясын жасап берді — нарықта өзімді дұрыс позициялай бастадым. Айлық кіріс 40%-ке өсті 📈 Жәмила апай тек маман ғана емес, нағыз ментор!</div>
+            <div class="tg-card-footer"><span class="tg-stars">★★★★★</span><span class="tg-date">Ақпан 2025</span></div>
+          </div>
+
+          <div class="tg-review-card">
+            <div class="tg-card-header">
+              <div class="tg-avatar">З</div>
+              <div><div class="tg-name">Зарина Нурова</div><div class="tg-handle">@zarina_nur</div></div>
+            </div>
+            <div class="tg-card-body">Бренд-менеджмент қызметі өмірімді өзгертті. Енді менің брендім бар, нарықта танылдым 💫 ЖИ аватар мен контент — тіпті сенбейтіндей нәтиже бергені рас.</div>
+            <div class="tg-card-footer"><span class="tg-stars">★★★★★</span><span class="tg-date">Қаңтар 2025</span></div>
+          </div>
+
+          <div class="tg-review-card">
+            <div class="tg-card-header">
+              <div class="tg-avatar">М</div>
+              <div><div class="tg-name">Мадина Қасымова</div><div class="tg-handle">@madina_kas</div></div>
+            </div>
+            <div class="tg-card-body">Жеке бренд упаковкасы мен сату воронкасын орнатқаннан кейін кірісім 3 айда 2,5 есеге өсті ✨ Ешқандай жарнамасыз — тек жүйе жұмыс жасады!</div>
+            <div class="tg-card-footer"><span class="tg-stars">★★★★★</span><span class="tg-date">Желтоқсан 2024</span></div>
+          </div>
+
+          <div class="tg-review-card">
+            <div class="tg-card-header">
+              <div class="tg-avatar">С</div>
+              <div><div class="tg-name">Сандугаш Ергали</div><div class="tg-handle">@sandugash_e</div></div>
+            </div>
+            <div class="tg-card-body">Өзімді упаковать етіп, Instagram-да дұрыс позициялай бастадым. 1 ай ішінде алғашқы 5 клиентімді алдым 🎯 Жәмила апайдың жүйесі шынымен жұмыс жасайды!</div>
+            <div class="tg-card-footer"><span class="tg-stars">★★★★★</span><span class="tg-date">Қараша 2024</span></div>
+          </div>
+
+        </div>
+        <button class="carousel-btn carousel-btn-prev" data-track="tg-reviews-track" aria-label="Артқа" style="background:#0088cc;color:#fff">‹</button>
+        <button class="carousel-btn carousel-btn-next" data-track="tg-reviews-track" aria-label="Алға" style="background:#0088cc;color:#fff">›</button>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -2405,6 +2735,16 @@ const counterIO = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.counter').forEach(el => {
   counterIO.observe(el);
+});
+
+/* ─── REVIEW TABS ─── */
+document.querySelectorAll('.review-tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.review-tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.review-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+  });
 });
 
 /* ─── CAROUSELS ─── */
