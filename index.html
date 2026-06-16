@@ -1052,7 +1052,11 @@ body.menu-open nav { opacity: 0; pointer-events: none; }
   .carousel-btn-prev { left: -12px; }
   .carousel-btn-next { right: -12px; }
 }
+@media (max-width: 900px) {
+  .oo-masonry-grid { column-count: 2; column-gap: 12px; }
+}
 @media (max-width: 600px) {
+  .oo-masonry-grid { column-count: 2; column-gap: 10px; }
   .gallery-carousel .gallery-item { flex: 0 0 260px; height: 190px; }
   .reviews-carousel .review-card { flex: 0 0 280px; }
   .carousel-btn { width: 34px; height: 34px; }
@@ -1109,6 +1113,40 @@ body.menu-open nav { opacity: 0; pointer-events: none; }
 #gallery { background: var(--dark2); }
 #gallery .section-header h2 { color: #fff; }
 #gallery .section-header .lead { color: rgba(255,255,255,0.45); }
+
+/* ─── SCREENSHOT REVIEWS MASONRY ─── */
+.oo-masonry-grid {
+  column-count: 4;
+  column-gap: 14px;
+  padding: 4px 2px 8px;
+}
+.oo-screenshot-item {
+  break-inside: avoid;
+  margin-bottom: 14px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 3px 18px rgba(0,0,0,0.09), 0 1px 4px rgba(0,0,0,0.05);
+  border: 1.5px solid rgba(200,149,42,0.15);
+  cursor: zoom-in;
+  transition: transform 0.28s var(--ease-out), box-shadow 0.28s;
+  background: #fff;
+  position: relative;
+}
+.oo-screenshot-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  border: 1.5px solid rgba(200,149,42,0);
+  transition: border-color 0.25s;
+  pointer-events: none;
+}
+.oo-screenshot-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 40px rgba(200,149,42,0.18), 0 4px 12px rgba(0,0,0,0.07);
+}
+.oo-screenshot-item:hover::after { border-color: rgba(200,149,42,0.5); }
+.oo-screenshot-item img { width: 100%; display: block; border-radius: 15px; }
 
 .gallery-item {
   border-radius: 14px;
@@ -2167,62 +2205,99 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
 
     <!-- ЖАЗБАША -->
     <div class="review-panel active" id="panel-jazbashar">
-      <div class="carousel-wrap reviews-carousel" style="padding:0 32px">
-        <div class="carousel-track" id="reviews-track">
+      <div class="oo-masonry-grid">
 
-          <div class="review-card">
-            <div class="review-quote">"</div>
-            <div class="review-stars">★★★★★</div>
-            <p class="review-text">Жәмила апаймен жұмыс жасай бастағаннан кейін менің командам 2 есеге өсті. ЖИ жүйесі шынымен жұмыс жасайды! Алғашқыда күмәндандым, бірақ нәтижені көргеннен кейін — сенімдімін.</p>
-            <div class="review-author">
-              <div class="review-avatar">А</div>
-              <div><div class="review-name">Айгүл Бекова</div><div class="review-city">Нур-Сұлтан · MLM серіктес</div></div>
-            </div>
-          </div>
-
-          <div class="review-card">
-            <div class="review-quote">"</div>
-            <div class="review-stars">★★★★★</div>
-            <p class="review-text">Маркетинг стратегиясын жасап берді — нарықта өзімді дұрыс позициялай бастадым. Айлық кіріс 40%-ке өсті. Жәмила апай тек маман ғана емес, нағыз ментор!</p>
-            <div class="review-author">
-              <div class="review-avatar">Д</div>
-              <div><div class="review-name">Динара Сейткали</div><div class="review-city">Алматы · Кәсіпкер</div></div>
-            </div>
-          </div>
-
-          <div class="review-card">
-            <div class="review-quote">"</div>
-            <div class="review-stars">★★★★★</div>
-            <p class="review-text">Бренд-менеджмент қызметі өмірімді өзгертті. Енді менің брендім бар, нарықта танылдым. ЖИ аватар мен контент — тіпті сенбейтіндей нәтиже бергені рас.</p>
-            <div class="review-author">
-              <div class="review-avatar">З</div>
-              <div><div class="review-name">Зарина Нурова</div><div class="review-city">Шымкент · ТОП-лидер</div></div>
-            </div>
-          </div>
-
-          <div class="review-card">
-            <div class="review-quote">"</div>
-            <div class="review-stars">★★★★★</div>
-            <p class="review-text">Жеке бренд упаковкасы мен сату воронкасын орнатқаннан кейін кірісім 3 айда 2,5 есеге өсті. Ешқандай жарнамасыз — тек жүйе жұмыс жасады!</p>
-            <div class="review-author">
-              <div class="review-avatar">М</div>
-              <div><div class="review-name">Мадина Қасымова</div><div class="review-city">Алматы · Онлайн кәсіпкер</div></div>
-            </div>
-          </div>
-
-          <div class="review-card">
-            <div class="review-quote">"</div>
-            <div class="review-stars">★★★★★</div>
-            <p class="review-text">Өзімді упаковать етіп, Instagram-да дұрыс позициялай бастадым. 1 ай ішінде алғашқы 5 клиентімді алдым. Жәмила апайдың жүйесі шынымен жұмыс жасайды!</p>
-            <div class="review-author">
-              <div class="review-avatar">С</div>
-              <div><div class="review-name">Сандугаш Ергали</div><div class="review-city">Нур-Сұлтан · Эксперт</div></div>
-            </div>
-          </div>
-
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-21-01-45-63_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
         </div>
-        <button class="carousel-btn carousel-btn-prev" data-track="reviews-track" aria-label="Артқа"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <button class="carousel-btn carousel-btn-next" data-track="reviews-track" aria-label="Алға"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-21-02-10-23_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
+        </div>
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-21-04-56-94_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
+        </div>
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-21-05-18-21_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
+        </div>
+
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-21-01-58-65_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
+        </div>
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-21-02-21-85_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
+        </div>
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-21-03-34-05_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
+        </div>
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-21-05-09-08_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
+        </div>
+
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-21-02-35-46_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
+        </div>
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-21-02-45-83_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
+        </div>
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-21-03-45-07_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
+        </div>
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-21-05-32-24_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
+        </div>
+
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-21-02-56-86_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
+        </div>
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-21-03-10-70_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
+        </div>
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-21-03-58-89_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
+        </div>
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-21-05-46-75_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
+        </div>
+
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-20-59-35-70_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
+        </div>
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-21-03-24-04_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
+        </div>
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-21-04-13-20_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
+        </div>
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-21-04-29-93_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
+        </div>
+
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-20-59-56-69_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
+        </div>
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-21-00-33-18_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
+        </div>
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-21-01-01-59_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
+        </div>
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-21-04-42-72_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
+        </div>
+
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-21-00-15-89_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
+        </div>
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-21-00-46-03_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
+        </div>
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-21-01-13-94_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
+        </div>
+        <div class="oo-screenshot-item" onclick="openLightbox(this)">
+          <img src="Photo/OO/Screenshot_2026-06-16-21-01-27-53_1c337646f29875672b5a61192b9010f9.jpg.jpeg" alt="Клиент пікірі" loading="lazy">
+        </div>
+
       </div>
     </div>
 
