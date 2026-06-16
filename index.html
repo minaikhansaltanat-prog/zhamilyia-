@@ -280,6 +280,68 @@ body.menu-open nav { opacity: 0; pointer-events: none; }
   font-weight: 600 !important;
 }
 
+/* ─── LANGUAGE SWITCHER ─── */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-right: 10px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 8px;
+  padding: 3px;
+  flex-shrink: 0;
+}
+.lang-btn {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.45);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+.lang-btn.active {
+  background: var(--gold);
+  color: var(--dark);
+}
+.lang-btn:hover:not(.active) {
+  color: var(--gold-light);
+  background: rgba(200,149,42,0.15);
+}
+.mobile-lang-switcher {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+.mobile-lang-btn {
+  padding: 9px 24px;
+  border-radius: 8px;
+  border: 1.5px solid rgba(200,149,42,0.4);
+  background: transparent;
+  color: rgba(255,255,255,0.55);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.06em;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+}
+.mobile-lang-btn.active {
+  background: var(--gold);
+  color: var(--dark);
+  border-color: var(--gold);
+}
+.mobile-lang-btn:hover:not(.active) {
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+
 /* ─── HERO ─── */
 #hero {
   min-height: 100vh;
@@ -1602,6 +1664,10 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
       <li><a href="#platform">Платформа</a></li>
       <li><a href="#contact">Байланыс</a></li>
     </ul>
+    <div class="lang-switcher" aria-label="Тіл таңдау / Язык">
+      <button class="lang-btn active" data-lang="kk" onclick="setLang('kk')" aria-pressed="true">ҚАЗ</button>
+      <button class="lang-btn" data-lang="ru" onclick="setLang('ru')" aria-pressed="false">РУС</button>
+    </div>
     <a href="https://wa.me/77474106388" target="_blank" class="btn btn-gold nav-cta" rel="noopener">
       Кеңес алу
     </a>
@@ -1623,6 +1689,10 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
   <a href="https://wa.me/77474106388" target="_blank" rel="noopener" class="mobile-menu-wa">
     📱 WhatsApp: +7 747 410 63 88
   </a>
+  <div class="mobile-lang-switcher">
+    <button class="mobile-lang-btn active" data-lang="kk" onclick="setLang('kk');closeMenu()">ҚАЗ</button>
+    <button class="mobile-lang-btn" data-lang="ru" onclick="setLang('ru');closeMenu()">РУС</button>
+  </div>
 </div>
 
 <!-- ═══════════════════════════════════════ -->
@@ -2966,7 +3036,7 @@ function handleFormSubmit(e, type) {
   e.preventDefault();
   const btn = e.target.querySelector('button[type="submit"]');
   const original = btn.textContent;
-  btn.textContent = '✓ Жіберілді! Жақын арада хабарласамыз.';
+  btn.textContent = currentLang === 'ru' ? '✓ Отправлено! Свяжемся скоро.' : '✓ Жіберілді! Жақын арада хабарласамыз.';
   btn.style.background = '#2E7D32';
   btn.disabled = true;
   setTimeout(() => {
@@ -2991,6 +3061,451 @@ window.addEventListener('scroll', () => {
       : '';
   });
 }, { passive: true });
+
+/* ─────────────────────────────────────────
+   i18n — Bilingual KK / RU
+───────────────────────────────────────── */
+let currentLang = localStorage.getItem('lang') || 'kk';
+
+const T = {
+  kk: {
+    'nav.about':'Мен туралы','nav.services':'Қызметтер','nav.results':'Нәтижелер',
+    'nav.content':'Контент','nav.platform':'Платформа','nav.contact':'Байланыс','nav.cta':'Кеңес алу',
+    'mob.about':'Мен туралы','mob.services':'Қызметтер','mob.results':'Нәтижелер',
+    'mob.content':'Контент','mob.platform':'Платформа','mob.contact':'Байланыс',
+    'mob.wa':'📱 WhatsApp: +7 747 410 63 88',
+    'hero.eyebrow':'Кәсіпкерлер · Эксперттер · Онлайн бизнес иелері үшін',
+    'hero.h1':'Өзіңді және өніміңді упаковать етіп,<br>контент пен сатуды <em>автоматтандыр!</em>',
+    'hero.sub':'Жеке брендіңізді нарыққа дұрыс шығарамын, сату воронкасын орнатамын — ЖИ арқылы бизнесіңіз ұйықтап жатқанда да кіріс әкеледі.',
+    'hero.cta1':'Тегін кеңес алу →','hero.cta2':'Қызметтерді қарау',
+    'hero.stat1':'Жыл тәжірибе','hero.stat2':'Команда мүшелері','hero.stat3':'Регион саны',
+    'hero.badge.strong':'Ментор','hero.badge.sub':'Маркетинг. Жүйе',
+    'about.eyebrow':'Менің жолым',
+    'about.h2':'10 жыл бойы кәсіпкерлер мен эксперттерді нарыққа шығарамын.',
+    'about.p1':'Мен өзім нолден бастадым — ешқандай байланыс, бастапқы капиталсыз. 10 жыл ішінде 500+ кәсіпкерге жеке брендін упаковать ету мен сату жүйесін орнатуға көмектестім.',
+    'about.p2':'Бүгін мен бизнестің барлық бағытын жабамын: жеке бренд стратегиясынан бастап, ЖИ-рекрутинг, автоматты сату воронкасы, чат-бот, контент жүйесіне дейін.',
+    'about.p3':'ЖИ технологияларын бизнеске қосқан сәттен нәтижелер 3–4 есе тездеді. Осы жүйені сіздің бизнесіңізге де орнатамын.',
+    'about.stat1':'Жыл тәжірибе','about.stat2':'Эксперт & кәсіпкер','about.stat3':'Регион саны','about.stat4':'₸ айлық айналым',
+    'svc.eyebrow':'Қызметтер','svc.h2':'Упаковка. Автоматтандыру. Масштаб.',
+    'svc.lead':'Кәсіпкерлер мен эксперттер үшін — брендтен автоматты сату жүйесіне дейін.',
+    'svc1.h3':'Жеке бренд упаковкасы','svc1.p':'Тәжірибеңіз бен нарықтағы бағаңызды анықтаймыз. Позиционирование, фирмстиль, контент стратегиясы — бәрі сіздің мінезіңізге сай.',
+    'svc2.h3':'Өнімді нарыққа дайындау','svc2.p':'Білім немесе өніміңізді нарыққа дұрыс упаковать ету: оффер жасау, баға стратегиясы, тапсырыс беру жолы.',
+    'svc3.h3':'Эксперт позиционировать ету','svc3.p':'Instagram, Telegram, сайт арқылы нарықта дұрыс орын алу. Аудиторияңыз сізді эксперт ретінде таниды.',
+    'svc4.h3':'ЖИ сату воронкасы','svc4.p':'Клиентті тартудан сатып алуға дейінгі бүкіл жол автоматтандырылады. Ұйықтап жатқанда да сату жүреді.',
+    'svc5.h3':'Чат-бот + CRM жүйесі','svc5.p':'WhatsApp, Telegram чат-боты тәулік бойы клиентке жауап береді, сұрыптайды, мәмілеге жетелейді.',
+    'svc6.h3':'ЖИ контент + маркетинг','svc6.p':'Контент жоспары, аватар, таргет — барлығы ЖИ арқылы автоматты. Сіздің уақытыңызды алмайды.',
+    'svc7.h3':'Сату каналдарын масштабтау','svc7.p':'Жұмыс жасайтын каналдарды анықтаймыз және 2–5 есе масштабтаймыз. Нәтиже — бірнеше ай ішінде.',
+    'svc8.h3':'Онлайн мектеп / курс іске қосу','svc8.p':'Білімді өнімге айналдырамыз: курс, марафон, коучинг — нолден іске қосу және автоматты сату.',
+    'svc9.h3':'Жеке менторлық','svc9.p':'Мен қасыңызда жүріп стратегия, сценарий, нәтижені бақылаймын. Қадам-қадам жетекшілік — нәтижеге дейін.',
+    'proc.eyebrow':'Процесс','proc.h2':'Упаковкадан автоматты сатуға — 6 қадам',
+    'proc.lead':'Кәсіпіңіздің деңгейін көтеріп, ЖИ жүйелері арқылы сату каналдарыңызды автоматтандырамыз.',
+    'proc1.h3':'Аудит + стратегия','proc1.p':'Сіздің нишаңызды, бәсекелестерді, мақсатты аудиторияны талдаймыз. Упаковка мен сату стратегиясын жасаймыз.','proc1.who':'Жәмила + сіз (оффлайн/онлайн)',
+    'proc2.h3':'Жеке бренд упаковкасы','proc2.p':'Позиционирование, стиль, оффер, баға стратегиясы жасалады. Нарық сізді эксперт ретінде таниды.','proc2.who':'Жәмила · бренд команда',
+    'proc3.h3':'Автоматты сату жүйесі орнатылады','proc3.p':'Сайт, CRM, воронка, чат-бот іске қосылады. Клиент тартудан мәмілеге дейін — автомат.','proc3.who':'IT команда + Жәмила',
+    'proc4.h3':'ЖИ контент + маркетинг жіберіледі','proc4.p':'Контент автоматты жасалады, таргет жарнама іске қосылады, ЖИ аватар тәулік бойы жауап береді.','proc4.who':'ЖИ жүйесі · автомат',
+    'proc5.h3':'Клиенттер мен тапсырыстар ағыны басталады','proc5.p':'Воронка жұмыс жасайды. Сіз ұйықтап жатсаңыз да өтінімдер, тапсырыстар, төлемдер келіп жатады.','proc5.who':'Жүйе · автомат',
+    'proc6.h3':'Нәтижені өлшеп, масштабтаймыз','proc6.p':'Ай сайын аналитика, оптимизация, масштаб. Кіріс пен клиент санын бірге өсіреміз.','proc6.who':'Жәмила · ай сайын',
+    'proc.note':'<strong>Маңызды:</strong> ЖИ — бізге жұмыс жасайтын ҚҰРАЛ. Сіз эксперт ретінде стратегияны басқарасыз, жүйе сату мен клиент тартуды өзі жасайды.',
+    'res.eyebrow':'Нәтижелер','res.h2':'Нақты адамдардың нақты нәтижелері','res.lead':'Сенімді дәлелдер. Санмен өлшенген жетістіктер.',
+    'res1.tag':'Команда','res1.h3':'«3 айда 80 серіктес»','res1.p':'Айгүл, Нур-Сұлтан — ЖИ-рекрутинг жүйесін қосқаннан кейін команда 3 есе өсті.',
+    'res2.tag':'Айналым','res2.h3':'«Айлық айналым ×3»','res2.p':'Динара, Алматы — 4 ай ішінде тауар айналымды 3 есе арттырды. ЖИ чат-бот + таргет.',
+    'res3.tag':'Бренд','res3.h3':'«Жаңа регион ашты»','res3.p':'Бота, Шымкент — 2 ай ішінде жаңа регион ашып, 50+ серіктес жинады.',
+    'res.stat1':'Серіктес нәтижеге жетті','res.stat2':'Регион ашылды','res.stat3':'₸ командалық айналым',
+    'res.igbtn':'Толық кейстарды Instagram-да қараңыз →',
+    'rev.eyebrow':'Пікірлер','rev.h2':'Клиенттерім сөйлесін','rev.lead':'Нақты серіктестер мен клиенттердің пікірлері.',
+    'rev.tgbtn':'Телеграм арнасында барлық пікірлерді оқу →',
+    'gal.eyebrow':'Галерея','gal.h2':'Жұмыс барысынан фотолар','gal.lead':'Команда, оқыту, іс-шаралар — барлығы осында.',
+    'gal.igbtn':'Барлық фотоларды Instagram-да қараңыз →',
+    'pod.eyebrow':'Менің контентім','pod.h2':'Тыңдаңыз. Оқыңыз. Іске асырыңыз.',
+    'pod.lead':'«АШЫҚ ӘҢГІМЕ» подкасты арқылы бизнес туралы білімді тегін алыңыз.',
+    'pod.embed.label':'«АШЫҚ ӘҢГІМЕ» подкасты','pod.embed.sub':'Жәмила Оразбай каналы',
+    'pod.yt':'▶ YouTube каналы','pod.ig':'📸 Instagram',
+    'pod.art.eyebrow':'Мақалалар','pod.art.h2':'Пайдалы материалдар',
+    'pod.art.lead':'MLM, рекрутинг, ЖИ, тұлғалық өсу тақырыптарындағы мақалалар.',
+    'art1.h4':'ЖИ рекрутинг: жаңа серіктесті қалай автоматты тарту керек?','art1.p':'ChatGPT, таргет, чат-бот — бәрі бір жүйеде',
+    'art2.h4':'MLM-де жеке бренд: неге ол тауарыңыздан маңыздырақ?','art2.p':'Нарықта өзіңізді қалай орналастыруыңыз керек',
+    'art3.h4':'Регион ашу — дайын жоспар: 90 күнде нәтижеге жету','art3.p':'Іс-тәжірибеден алынған қадам-қадам нұсқаулық',
+    'pkg.eyebrow':'Серіктестік пакеті','pkg.h2':'Жүйеге қосылыңыз.','pkg.lead':'Бизнесіңізді жаңа деңгейге шығаратын кешенді пакет.',
+    'pkg.badge':'5 орын ғана','pkg.sub.eyebrow':'Premium пакет','pkg.card.h2':'Толық ЖИ Жүйе',
+    'pkg.subtitle':'Бизнесіңізді автоматтандырудың барлығы — бір жерде.',
+    'pkg.f1':'ЖИ-рекрутинг жүйесі (24/7)','pkg.f2':'Команда оқыту платформасы',
+    'pkg.f3':'Жеке бренд упаковкасы (сайт + CRM + чат-бот)','pkg.f4':'ЖИ фотосессия + аватар + контент',
+    'pkg.f5':'Айлық ЖИ таргетолог 24/7','pkg.f6':'Подкаст жасау (оффлайн, Жәмила қасыңызда)',
+    'pkg.f7':'Ай сайын нәтиже есебі','pkg.f8':'Жеке менторлық кездесулер',
+    'pkg.price.old':'Нарықтағы бағасы: 2 000 000+ ₸','pkg.price.new':'Бағаны сұрату →',
+    'pkg.price.monthly':'Айлық ұстау: ~100 000 ₸/ай (хостинг + ЖИ жазылымдар)',
+    'pkg.cta1':'Өтінім қалдыру →','pkg.cta2':'📞 Қоңырау',
+    'pkg.urgency':'⚡ Қазір тек <strong>5 орын</strong> бар. Сіздің саланыздағы орынды алып қалыңыз.',
+    'plt.eyebrow':'Команда платформасы','plt.h2':'Жаңа серіктестерге арналған','plt.lead':'Тіркеліп, оқып, жылдам іске қосылыңыз. Барлығы онлайн.',
+    'plt.f1.h3':'Жылдам тіркелу','plt.f1.p':'Жаңа серіктес аты, байланысы, деңгейімен тіркеледі. Жәмилаға хабарлама дереу жетеді.',
+    'plt.f2.h3':'Оқыту панелі','plt.f2.p':'Видео сабақтар, PDF материалдар, тапсырмалар — бәрі бір жерде. YouTube + PDF.',
+    'plt.f3.h3':'Чат-бот 24/7','plt.f3.p':'Сұрақтарға автоматты жауап. Telegram жабық топ + WhatsApp Bot — бір уақытта жұмыс жасайды.',
+    'plt.f4.h3':'Нәтиже деңгейі','plt.f4.p':'Жаңа серіктес өз прогресін өзі көреді. Progress tracker арқылы мотивация жоғары болады.',
+    'plt.form.h3':'Командаға қосылу','plt.form.p':'Өтінімді толтырыңыз — Жәмила апай 24 сағат ішінде хабарласады.',
+    'plt.form.name.label':'Атыңыз','plt.form.name.ph':'Аты-жөніңіз',
+    'plt.form.phone.label':'Телефон','plt.form.phone.ph':'+7 (___) ___ __ __',
+    'plt.form.level.label':'Тәжірибе деңгейі',
+    'plt.form.level.opt0':'Таңдаңыз...','plt.form.level.opt1':'Жаңадан бастаушы',
+    'plt.form.level.opt2':'1-2 жыл тәжірибем бар','plt.form.level.opt3':'3+ жыл тәжірибем бар','plt.form.level.opt4':'ТОП-лидер',
+    'plt.form.submit':'Командаға қосылу →',
+    'plt.link.tg':'✈ Telegram топ','plt.link.wa':'💬 WhatsApp',
+    'ai.eyebrow':'Экономика','ai.h2':'ЖИ vs Дәстүрлі — Математика','ai.lead':'ЖИ жүйесінің экономикалық тиімділігін бірден түсіну.',
+    'ai.th1':'Маман / Қызмет','ai.th2':'Дәстүрлі шығын/ай','ai.th3':'ЖИ жүйесімен','ai.th4':'Үнем',
+    'ai.all.label':'барлық жүйе','ai.tf1':'ЖЫЛДЫҚ ҮНЕМ',
+    'ai.summary':'<strong>10 маманның жұмысын</strong> — 1 ЖИ жүйесі атқарады. Сіз тек нәтижені бақылайсыз.',
+    'cnt.eyebrow':'Бүгін бастаңыз','cnt.h2':'Алғашқы 30 минуттық кеңес — тегін','cnt.lead':'Өтінімді қалдырыңыз. 24 сағат ішінде хабарласамыз.',
+    'cnt.name.label':'Атыңыз','cnt.name.ph':'Аты-жөніңіз',
+    'cnt.phone.label':'Телефон','cnt.phone.ph':'+7 (___) ___ __ __',
+    'cnt.need.label':'Маған ең қажеті',
+    'cnt.need.opt0':'Таңдаңыз...','cnt.need.opt1':'ЖИ-рекрутинг жүйесі','cnt.need.opt2':'Команда оқыту',
+    'cnt.need.opt3':'Жеке бренд упаковкасы','cnt.need.opt4':'Менторлық','cnt.need.opt5':'Маркетинг стратегиясы',
+    'cnt.need.opt6':'Бренд-менеджмент','cnt.need.opt7':'Барлығы қызықты',
+    'cnt.submit':'Тегін кеңеске жазылу →','cnt.info.h3':'Байланыс',
+    'cnt.phone.label2':'Телефон','cnt.wa.label':'WhatsApp','cnt.wa.val':'Жазу → +7 747 410 63 88',
+    'cnt.email.label':'Email','cnt.podcast.label':'YouTube подкаст','cnt.podcast.val':'«АШЫҚ ӘҢГІМЕ» канал',
+    'cnt.loc.label':'Орналасқан жері','cnt.loc.val':'Алматы, Қазақстан',
+    'footer.copy':'© 2024–2025 Жәмила Оразбай. Барлық құқықтар қорғалған.',
+  },
+  ru: {
+    'nav.about':'Обо мне','nav.services':'Услуги','nav.results':'Результаты',
+    'nav.content':'Контент','nav.platform':'Платформа','nav.contact':'Контакты','nav.cta':'Консультация',
+    'mob.about':'Обо мне','mob.services':'Услуги','mob.results':'Результаты',
+    'mob.content':'Контент','mob.platform':'Платформа','mob.contact':'Контакты',
+    'mob.wa':'📱 WhatsApp: +7 747 410 63 88',
+    'hero.eyebrow':'Для предпринимателей · Экспертов · Онлайн-бизнеса',
+    'hero.h1':'Упакуй себя и свой продукт,<br>автоматизируй контент и продажи <em>с AI!</em>',
+    'hero.sub':'Правильно вывожу личный бренд на рынок, выстраиваю воронку продаж — с AI ваш бизнес приносит доход даже пока вы спите.',
+    'hero.cta1':'Получить консультацию бесплатно →','hero.cta2':'Посмотреть услуги',
+    'hero.stat1':'Лет опыта','hero.stat2':'Членов команды','hero.stat3':'Регионов',
+    'hero.badge.strong':'Ментор','hero.badge.sub':'Маркетинг. Система',
+    'about.eyebrow':'Мой путь',
+    'about.h2':'10 лет вывожу предпринимателей и экспертов на рынок.',
+    'about.p1':'Я сама начала с нуля — без связей, без стартового капитала. За 10 лет помогла 500+ предпринимателям упаковать личный бренд и выстроить систему продаж.',
+    'about.p2':'Сегодня я закрываю все направления бизнеса: от стратегии личного бренда до AI-рекрутинга, автоматической воронки продаж, чат-бота и системы контента.',
+    'about.p3':'С момента внедрения AI-технологий результаты ускорились в 3–4 раза. Эту систему я установлю и в вашем бизнесе.',
+    'about.stat1':'Лет опыта','about.stat2':'Экспертов & предпринимателей','about.stat3':'Регионов','about.stat4':'₸ ежемесячный оборот',
+    'svc.eyebrow':'Услуги','svc.h2':'Упаковка. Автоматизация. Масштаб.',
+    'svc.lead':'Для предпринимателей и экспертов — от бренда до автоматической системы продаж.',
+    'svc1.h3':'Упаковка личного бренда','svc1.p':'Определяем ваш опыт и ценность на рынке. Позиционирование, фирменный стиль, контент-стратегия — всё под ваш характер.',
+    'svc2.h3':'Подготовка продукта к рынку','svc2.p':'Правильная упаковка знаний или продукта: создание оффера, ценовая стратегия, путь заказа.',
+    'svc3.h3':'Позиционирование эксперта','svc3.p':'Занять правильное место на рынке через Instagram, Telegram, сайт. Аудитория воспримет вас как эксперта.',
+    'svc4.h3':'AI-воронка продаж','svc4.p':'Весь путь от привлечения клиента до покупки автоматизирован. Продажи идут даже пока вы спите.',
+    'svc5.h3':'Чат-бот + CRM система','svc5.p':'Чат-боты в WhatsApp и Telegram отвечают клиентам круглосуточно, фильтруют и ведут к сделке.',
+    'svc6.h3':'AI контент + маркетинг','svc6.p':'Контент-план, аватар, таргет — всё автоматизировано через AI. Не требует вашего времени.',
+    'svc7.h3':'Масштабирование каналов продаж','svc7.p':'Определяем работающие каналы и масштабируем в 2–5 раз. Результат — в течение нескольких месяцев.',
+    'svc8.h3':'Запуск онлайн-школы / курса','svc8.p':'Превращаем знания в продукт: курс, марафон, коучинг — запуск с нуля и автоматические продажи.',
+    'svc9.h3':'Личный менторинг','svc9.p':'Я рядом — контролирую стратегию, сценарии, результат. Пошаговое руководство до цели.',
+    'proc.eyebrow':'Процесс','proc.h2':'От упаковки до автопродаж — 6 шагов',
+    'proc.lead':'Поднимем уровень вашего бизнеса и автоматизируем каналы продаж через AI-системы.',
+    'proc1.h3':'Аудит + стратегия','proc1.p':'Анализируем вашу нишу, конкурентов, целевую аудиторию. Разрабатываем стратегию упаковки и продаж.','proc1.who':'Жәмила + вы (оффлайн/онлайн)',
+    'proc2.h3':'Упаковка личного бренда','proc2.p':'Создаём позиционирование, стиль, оффер, ценовую стратегию. Рынок воспримет вас как эксперта.','proc2.who':'Жәмила · бренд-команда',
+    'proc3.h3':'Устанавливается автоматическая система продаж','proc3.p':'Запускаются сайт, CRM, воронка, чат-бот. От привлечения клиента до сделки — автомат.','proc3.who':'IT команда + Жәмила',
+    'proc4.h3':'Запускается AI контент + маркетинг','proc4.p':'Контент создаётся автоматически, таргетированная реклама запускается, AI-аватар отвечает круглосуточно.','proc4.who':'AI система · автомат',
+    'proc5.h3':'Начинается поток клиентов и заказов','proc5.p':'Воронка работает. Заявки, заказы, оплаты поступают даже пока вы спите.','proc5.who':'Система · автомат',
+    'proc6.h3':'Измеряем результат и масштабируем','proc6.p':'Ежемесячная аналитика, оптимизация, масштаб. Вместе увеличиваем доход и число клиентов.','proc6.who':'Жәмила · ежемесячно',
+    'proc.note':'<strong>Важно:</strong> AI — это ИНСТРУМЕНТ, работающий на нас. Вы управляете стратегией как эксперт, система сама привлекает клиентов и совершает продажи.',
+    'res.eyebrow':'Результаты','res.h2':'Реальные результаты реальных людей','res.lead':'Проверенные доказательства. Достижения в цифрах.',
+    'res1.tag':'Команда','res1.h3':'«80 партнёров за 3 месяца»','res1.p':'Айгуль, Нур-Султан — после внедрения AI-рекрутинга команда выросла в 3 раза.',
+    'res2.tag':'Оборот','res2.h3':'«Месячный оборот ×3»','res2.p':'Динара, Алматы — за 4 месяца увеличила товарооборот в 3 раза. AI чат-бот + таргет.',
+    'res3.tag':'Бренд','res3.h3':'«Открыла новый регион»','res3.p':'Бота, Шымкент — за 2 месяца открыла новый регион и собрала 50+ партнёров.',
+    'res.stat1':'Партнёров достигли результата','res.stat2':'Регионов открыто','res.stat3':'₸ командный оборот',
+    'res.igbtn':'Смотреть все кейсы в Instagram →',
+    'rev.eyebrow':'Отзывы','rev.h2':'Пусть говорят мои клиенты','rev.lead':'Отзывы реальных партнёров и клиентов.',
+    'rev.tgbtn':'Читать все отзывы в Telegram-канале →',
+    'gal.eyebrow':'Галерея','gal.h2':'Фото из рабочего процесса','gal.lead':'Команда, обучение, мероприятия — всё здесь.',
+    'gal.igbtn':'Смотреть все фото в Instagram →',
+    'pod.eyebrow':'Мой контент','pod.h2':'Слушайте. Читайте. Внедряйте.',
+    'pod.lead':'Получайте бесплатные знания о бизнесе через подкаст «АШЫҚ ӘҢГІМЕ».',
+    'pod.embed.label':'Подкаст «АШЫҚ ӘҢГІМЕ»','pod.embed.sub':'Канал Жәмилы Оразбай',
+    'pod.yt':'▶ YouTube канал','pod.ig':'📸 Instagram',
+    'pod.art.eyebrow':'Статьи','pod.art.h2':'Полезные материалы',
+    'pod.art.lead':'Статьи по темам MLM, рекрутинг, AI, личностный рост.',
+    'art1.h4':'AI-рекрутинг: как автоматически привлекать новых партнёров?','art1.p':'ChatGPT, таргет, чат-бот — всё в одной системе',
+    'art2.h4':'Личный бренд в MLM: почему он важнее товара?','art2.p':'Как правильно позиционировать себя на рынке',
+    'art3.h4':'Открытие региона — готовый план: результат за 90 дней','art3.p':'Пошаговое руководство из реального опыта',
+    'pkg.eyebrow':'Партнёрский пакет','pkg.h2':'Присоединяйтесь к системе.','pkg.lead':'Комплексный пакет для вывода вашего бизнеса на новый уровень.',
+    'pkg.badge':'Только 5 мест','pkg.sub.eyebrow':'Premium пакет','pkg.card.h2':'Полная AI Система',
+    'pkg.subtitle':'Всё для автоматизации вашего бизнеса — в одном месте.',
+    'pkg.f1':'AI-рекрутинг система (24/7)','pkg.f2':'Платформа обучения команды',
+    'pkg.f3':'Упаковка личного бренда (сайт + CRM + чат-бот)','pkg.f4':'AI фотосессия + аватар + контент',
+    'pkg.f5':'Ежемесячный AI таргетолог 24/7','pkg.f6':'Запись подкаста (оффлайн, Жәмила рядом)',
+    'pkg.f7':'Ежемесячный отчёт о результатах','pkg.f8':'Встречи личного менторинга',
+    'pkg.price.old':'Рыночная цена: 2 000 000+ ₸','pkg.price.new':'Узнать цену →',
+    'pkg.price.monthly':'Ежемесячное обслуживание: ~100 000 ₸/мес (хостинг + AI подписки)',
+    'pkg.cta1':'Оставить заявку →','pkg.cta2':'📞 Позвонить',
+    'pkg.urgency':'⚡ Сейчас доступно только <strong>5 мест</strong>. Займите место в вашей нише.',
+    'plt.eyebrow':'Командная платформа','plt.h2':'Для новых партнёров','plt.lead':'Зарегистрируйтесь, обучайтесь, быстро запускайтесь. Всё онлайн.',
+    'plt.f1.h3':'Быстрая регистрация','plt.f1.p':'Новый партнёр регистрируется с именем, контактом и уровнем. Уведомление Жәмиле приходит мгновенно.',
+    'plt.f2.h3':'Панель обучения','plt.f2.p':'Видео-уроки, PDF-материалы, задания — всё в одном месте. YouTube + PDF.',
+    'plt.f3.h3':'Чат-бот 24/7','plt.f3.p':'Автоматические ответы на вопросы. Закрытая группа Telegram + WhatsApp Bot работают одновременно.',
+    'plt.f4.h3':'Уровень результата','plt.f4.p':'Новый партнёр сам видит свой прогресс. Progress tracker повышает мотивацию.',
+    'plt.form.h3':'Вступить в команду','plt.form.p':'Заполните заявку — Жәмила свяжется с вами в течение 24 часов.',
+    'plt.form.name.label':'Ваше имя','plt.form.name.ph':'Имя и фамилия',
+    'plt.form.phone.label':'Телефон','plt.form.phone.ph':'+7 (___) ___ __ __',
+    'plt.form.level.label':'Уровень опыта',
+    'plt.form.level.opt0':'Выберите...','plt.form.level.opt1':'Новичок',
+    'plt.form.level.opt2':'Есть 1-2 года опыта','plt.form.level.opt3':'Есть 3+ года опыта','plt.form.level.opt4':'ТОП-лидер',
+    'plt.form.submit':'Вступить в команду →',
+    'plt.link.tg':'✈ Telegram группа','plt.link.wa':'💬 WhatsApp',
+    'ai.eyebrow':'Экономика','ai.h2':'AI vs Традиционный — Математика','ai.lead':'Понять экономическую эффективность AI-системы с первого взгляда.',
+    'ai.th1':'Специалист / Услуга','ai.th2':'Традиционные расходы/мес','ai.th3':'С AI системой','ai.th4':'Экономия',
+    'ai.all.label':'вся система','ai.tf1':'ГОДОВАЯ ЭКОНОМИЯ',
+    'ai.summary':'<strong>Работу 10 специалистов</strong> выполняет 1 AI система. Вы только отслеживаете результат.',
+    'cnt.eyebrow':'Начните сегодня','cnt.h2':'Первые 30 минут консультации — бесплатно','cnt.lead':'Оставьте заявку. Свяжемся в течение 24 часов.',
+    'cnt.name.label':'Ваше имя','cnt.name.ph':'Имя и фамилия',
+    'cnt.phone.label':'Телефон','cnt.phone.ph':'+7 (___) ___ __ __',
+    'cnt.need.label':'Что мне нужно больше всего',
+    'cnt.need.opt0':'Выберите...','cnt.need.opt1':'AI-рекрутинг система','cnt.need.opt2':'Обучение команды',
+    'cnt.need.opt3':'Упаковка личного бренда','cnt.need.opt4':'Менторинг','cnt.need.opt5':'Маркетинговая стратегия',
+    'cnt.need.opt6':'Бренд-менеджмент','cnt.need.opt7':'Всё интересно',
+    'cnt.submit':'Записаться на бесплатную консультацию →','cnt.info.h3':'Контакты',
+    'cnt.phone.label2':'Телефон','cnt.wa.label':'WhatsApp','cnt.wa.val':'Написать → +7 747 410 63 88',
+    'cnt.email.label':'Email','cnt.podcast.label':'YouTube подкаст','cnt.podcast.val':'Канал «АШЫҚ ӘҢГІМЕ»',
+    'cnt.loc.label':'Местоположение','cnt.loc.val':'Алматы, Казахстан',
+    'footer.copy':'© 2024–2025 Жәмила Оразбай. Все права защищены.',
+  }
+};
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+  document.documentElement.lang = lang === 'kk' ? 'kk' : 'ru';
+  const t = T[lang];
+
+  function _txt(el, key) { if (el && t[key] !== undefined) el.textContent = t[key]; }
+  function _html(el, key) { if (el && t[key] !== undefined) el.innerHTML = t[key]; }
+
+  /* Lang toggle UI */
+  document.querySelectorAll('.lang-btn, .mobile-lang-btn').forEach(btn => {
+    const isActive = btn.dataset.lang === lang;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-pressed', isActive);
+  });
+
+  /* NAV */
+  const nl = document.querySelectorAll('.nav-links a');
+  ['nav.about','nav.services','nav.results','nav.content','nav.platform','nav.contact'].forEach((k,i) => { if (nl[i]) nl[i].textContent = t[k]; });
+  _txt(document.querySelector('.nav-cta'), 'nav.cta');
+
+  /* MOBILE MENU */
+  const ml = document.querySelectorAll('#mobile-menu a:not(.mobile-menu-wa)');
+  ['mob.about','mob.services','mob.results','mob.content','mob.platform','mob.contact'].forEach((k,i) => { if (ml[i]) ml[i].textContent = t[k]; });
+  _txt(document.querySelector('.mobile-menu-wa'), 'mob.wa');
+
+  /* HERO */
+  _txt(document.querySelector('#hero .eyebrow'), 'hero.eyebrow');
+  _html(document.querySelector('.hero-h1'), 'hero.h1');
+  _txt(document.querySelector('.hero-sub'), 'hero.sub');
+  _txt(document.querySelector('#hero .hero-btns .btn-gold'), 'hero.cta1');
+  _txt(document.querySelector('#hero .hero-btns .btn-ghost'), 'hero.cta2');
+  document.querySelectorAll('.hero-stat-label').forEach((el, i) => {
+    const k = ['hero.stat1','hero.stat2','hero.stat3'][i]; if (k) el.textContent = t[k];
+  });
+  const badgeTxt = document.querySelector('.hero-badge-text');
+  if (badgeTxt) badgeTxt.innerHTML = '<strong>' + t['hero.badge.strong'] + '</strong>\n          ' + t['hero.badge.sub'] + '\n        ';
+
+  /* ABOUT */
+  _txt(document.querySelector('#about .eyebrow'), 'about.eyebrow');
+  _txt(document.querySelector('#about h2'), 'about.h2');
+  document.querySelectorAll('#about .about-text > p').forEach((el, i) => {
+    const k = ['about.p1','about.p2','about.p3'][i]; if (k) el.textContent = t[k];
+  });
+  document.querySelectorAll('.about-stat-label').forEach((el, i) => {
+    const k = ['about.stat1','about.stat2','about.stat3','about.stat4'][i]; if (k) el.textContent = t[k];
+  });
+
+  /* SERVICES */
+  const svcH = document.querySelector('#services .section-header');
+  if (svcH) { _txt(svcH.querySelector('.eyebrow'),'svc.eyebrow'); _txt(svcH.querySelector('h2'),'svc.h2'); _txt(svcH.querySelector('.lead'),'svc.lead'); }
+  document.querySelectorAll('.service-card').forEach((c, i) => {
+    const pairs = [['svc1.h3','svc1.p'],['svc2.h3','svc2.p'],['svc3.h3','svc3.p'],['svc4.h3','svc4.p'],['svc5.h3','svc5.p'],['svc6.h3','svc6.p'],['svc7.h3','svc7.p'],['svc8.h3','svc8.p'],['svc9.h3','svc9.p']];
+    if (pairs[i]) { _txt(c.querySelector('h3'), pairs[i][0]); _txt(c.querySelector('p'), pairs[i][1]); }
+  });
+
+  /* PROCESS */
+  const procH = document.querySelector('#process .section-header');
+  if (procH) { _txt(procH.querySelector('.eyebrow'),'proc.eyebrow'); _txt(procH.querySelector('h2'),'proc.h2'); _txt(procH.querySelector('.lead'),'proc.lead'); }
+  document.querySelectorAll('.process-card').forEach((c, i) => {
+    const triples = [['proc1.h3','proc1.p','proc1.who'],['proc2.h3','proc2.p','proc2.who'],['proc3.h3','proc3.p','proc3.who'],['proc4.h3','proc4.p','proc4.who'],['proc5.h3','proc5.p','proc5.who'],['proc6.h3','proc6.p','proc6.who']];
+    if (triples[i]) { _txt(c.querySelector('h3'),triples[i][0]); _txt(c.querySelector('p'),triples[i][1]); _txt(c.querySelector('.process-who'),triples[i][2]); }
+  });
+  _html(document.querySelector('.process-note'), 'proc.note');
+
+  /* RESULTS */
+  const resH = document.querySelector('#results .section-header');
+  if (resH) { _txt(resH.querySelector('.eyebrow'),'res.eyebrow'); _txt(resH.querySelector('h2'),'res.h2'); _txt(resH.querySelector('.lead'),'res.lead'); }
+  document.querySelectorAll('.result-card').forEach((c, i) => {
+    const triples = [['res1.tag','res1.h3','res1.p'],['res2.tag','res2.h3','res2.p'],['res3.tag','res3.h3','res3.p']];
+    if (triples[i]) { _txt(c.querySelector('.result-tag'),triples[i][0]); _txt(c.querySelector('h3'),triples[i][1]); _txt(c.querySelector('p'),triples[i][2]); }
+  });
+  document.querySelectorAll('.results-stat-label').forEach((el, i) => {
+    const k = ['res.stat1','res.stat2','res.stat3'][i]; if (k) el.textContent = t[k];
+  });
+  const resIgBtn = document.querySelector('#results .btn');
+  if (resIgBtn) resIgBtn.textContent = t['res.igbtn'];
+
+  /* REVIEWS */
+  const revH = document.querySelector('#reviews .section-header');
+  if (revH) { _txt(revH.querySelector('.eyebrow'),'rev.eyebrow'); _txt(revH.querySelector('h2'),'rev.h2'); _txt(revH.querySelector('.lead'),'rev.lead'); }
+  const tabLabels = { kk:['Жазбаша','Видео','Аудио','Телеграм-да'], ru:['Письменные','Видео','Аудио','В Telegram'] };
+  const tabIcons = ['✍️','▶️','🎙️','✈️'];
+  document.querySelectorAll('.review-tab-btn').forEach((btn, i) => {
+    if (tabLabels[lang] && tabLabels[lang][i] !== undefined)
+      btn.innerHTML = '<span class="tab-icon">' + tabIcons[i] + '</span> ' + tabLabels[lang][i];
+  });
+  const tgRevBtn = document.querySelector('#panel-telegram [href*="t.me"]');
+  if (tgRevBtn) {
+    const svgEl = tgRevBtn.querySelector('svg');
+    tgRevBtn.innerHTML = (svgEl ? svgEl.outerHTML : '') + '\n          ' + t['rev.tgbtn'] + '\n        ';
+  }
+
+  /* GALLERY */
+  const galH = document.querySelector('#gallery .section-header');
+  if (galH) { _txt(galH.querySelector('.eyebrow'),'gal.eyebrow'); _txt(galH.querySelector('h2'),'gal.h2'); _txt(galH.querySelector('.lead'),'gal.lead'); }
+  _txt(document.querySelector('#gallery .btn-ghost'), 'gal.igbtn');
+
+  /* PODCAST */
+  const podH = document.querySelector('#podcast .section-header');
+  if (podH) { _txt(podH.querySelector('.eyebrow'),'pod.eyebrow'); _txt(podH.querySelector('h2'),'pod.h2'); _txt(podH.querySelector('.lead'),'pod.lead'); }
+  _txt(document.querySelector('.podcast-embed-label'), 'pod.embed.label');
+  const podSub = document.querySelector('.podcast-embed-sub');
+  if (podSub) {
+    const badge = podSub.querySelector('.podcast-yt-badge');
+    podSub.innerHTML = '\n            ' + (badge ? badge.outerHTML : '') + '\n            ' + t['pod.embed.sub'] + '\n          ';
+  }
+  const podGrid1Btns = document.querySelectorAll('#podcast .podcast-grid > div:first-child .btn');
+  if (podGrid1Btns[0]) podGrid1Btns[0].textContent = t['pod.yt'];
+  if (podGrid1Btns[1]) podGrid1Btns[1].textContent = t['pod.ig'];
+  const podInfo = document.querySelector('.podcast-info');
+  if (podInfo) {
+    _txt(podInfo.querySelector('.eyebrow'), 'pod.art.eyebrow');
+    _txt(podInfo.querySelector('h2'), 'pod.art.h2');
+    _txt(podInfo.querySelector('p'), 'pod.art.lead');
+    podInfo.querySelectorAll('.article-item').forEach((item, i) => {
+      const pairs = [['art1.h4','art1.p'],['art2.h4','art2.p'],['art3.h4','art3.p']];
+      if (pairs[i]) { _txt(item.querySelector('h4'), pairs[i][0]); _txt(item.querySelector('p'), pairs[i][1]); }
+    });
+  }
+
+  /* PACKAGE */
+  const pkgSecH = document.querySelector('#package .section-header');
+  if (pkgSecH) { _txt(pkgSecH.querySelector('.eyebrow'),'pkg.eyebrow'); _txt(pkgSecH.querySelector('h2'),'pkg.h2'); _txt(pkgSecH.querySelector('.lead'),'pkg.lead'); }
+  _txt(document.querySelector('.package-badge'), 'pkg.badge');
+  const pkgCard = document.querySelector('.package-card');
+  if (pkgCard) {
+    _txt(pkgCard.querySelector('.eyebrow'), 'pkg.sub.eyebrow');
+    _txt(pkgCard.querySelector('h2'), 'pkg.card.h2');
+    _txt(pkgCard.querySelector('.package-subtitle'), 'pkg.subtitle');
+    pkgCard.querySelectorAll('.package-feature').forEach((f, i) => {
+      const fKeys = ['pkg.f1','pkg.f2','pkg.f3','pkg.f4','pkg.f5','pkg.f6','pkg.f7','pkg.f8'];
+      if (fKeys[i] && t[fKeys[i]]) {
+        const chk = f.querySelector('.check-icon');
+        f.innerHTML = (chk ? chk.outerHTML : '') + '\n          ' + t[fKeys[i]] + '\n        ';
+      }
+    });
+    _txt(pkgCard.querySelector('.price-old'), 'pkg.price.old');
+    _txt(pkgCard.querySelector('.price-new'), 'pkg.price.new');
+    _txt(pkgCard.querySelector('.price-monthly'), 'pkg.price.monthly');
+    const pkgBtns = pkgCard.querySelectorAll('.btn');
+    if (pkgBtns[0]) pkgBtns[0].textContent = t['pkg.cta1'];
+    if (pkgBtns[1]) pkgBtns[1].textContent = t['pkg.cta2'];
+    _html(pkgCard.querySelector('.package-urgency'), 'pkg.urgency');
+  }
+
+  /* PLATFORM */
+  const pltH = document.querySelector('#platform .section-header');
+  if (pltH) { _txt(pltH.querySelector('.eyebrow'),'plt.eyebrow'); _txt(pltH.querySelector('h2'),'plt.h2'); _txt(pltH.querySelector('.lead'),'plt.lead'); }
+  document.querySelectorAll('.platform-feature').forEach((f, i) => {
+    const pairs = [['plt.f1.h3','plt.f1.p'],['plt.f2.h3','plt.f2.p'],['plt.f3.h3','plt.f3.p'],['plt.f4.h3','plt.f4.p']];
+    if (pairs[i]) { _txt(f.querySelector('h3'), pairs[i][0]); _txt(f.querySelector('p'), pairs[i][1]); }
+  });
+  const pltFW = document.querySelector('.platform-form-wrap');
+  if (pltFW) {
+    _txt(pltFW.querySelector('h3'), 'plt.form.h3');
+    _txt(pltFW.querySelector('p'), 'plt.form.p');
+    const pltLbls = pltFW.querySelectorAll('label');
+    if (pltLbls[0]) pltLbls[0].textContent = t['plt.form.name.label'];
+    if (pltLbls[1]) pltLbls[1].textContent = t['plt.form.phone.label'];
+    if (pltLbls[2]) pltLbls[2].textContent = t['plt.form.level.label'];
+    const pltTxt = pltFW.querySelector('input[type="text"]');
+    const pltTel = pltFW.querySelector('input[type="tel"]');
+    if (pltTxt) pltTxt.placeholder = t['plt.form.name.ph'];
+    if (pltTel) pltTel.placeholder = t['plt.form.phone.ph'];
+    const pltSel = pltFW.querySelector('select');
+    if (pltSel) {
+      ['plt.form.level.opt0','plt.form.level.opt1','plt.form.level.opt2','plt.form.level.opt3','plt.form.level.opt4'].forEach((k, i) => {
+        if (pltSel.options[i]) pltSel.options[i].text = t[k];
+      });
+    }
+    const pltSub = pltFW.querySelector('button[type="submit"]');
+    if (pltSub) pltSub.textContent = t['plt.form.submit'];
+  }
+  const formLinks = document.querySelector('.form-links');
+  if (formLinks) {
+    const fls = formLinks.querySelectorAll('a');
+    if (fls[0]) fls[0].textContent = t['plt.link.tg'];
+    if (fls[1]) fls[1].textContent = t['plt.link.wa'];
+  }
+
+  /* AI TABLE */
+  const aiH = document.querySelector('#ai .section-header');
+  if (aiH) { _txt(aiH.querySelector('.eyebrow'),'ai.eyebrow'); _txt(aiH.querySelector('h2'),'ai.h2'); _txt(aiH.querySelector('.lead'),'ai.lead'); }
+  document.querySelectorAll('.ai-table thead th').forEach((th, i) => {
+    const k = ['ai.th1','ai.th2','ai.th3','ai.th4'][i]; if (k) th.textContent = t[k];
+  });
+  const aiLbl = document.querySelector('.ai-table td[rowspan] div:last-child');
+  if (aiLbl) aiLbl.textContent = t['ai.all.label'];
+  const aiTf = document.querySelector('.ai-table tfoot tr td:first-child');
+  if (aiTf) aiTf.textContent = t['ai.tf1'];
+  _html(document.querySelector('.ai-summary'), 'ai.summary');
+
+  /* CONTACT */
+  const cntF = document.querySelector('.contact-form');
+  if (cntF) {
+    _txt(cntF.querySelector('.eyebrow'), 'cnt.eyebrow');
+    _txt(cntF.querySelector('h2'), 'cnt.h2');
+    _txt(cntF.querySelector('.lead'), 'cnt.lead');
+    const cntLbls = cntF.querySelectorAll('label');
+    if (cntLbls[0]) cntLbls[0].textContent = t['cnt.name.label'];
+    if (cntLbls[1]) cntLbls[1].textContent = t['cnt.phone.label'];
+    if (cntLbls[2]) cntLbls[2].textContent = t['cnt.need.label'];
+    const cntInputs = cntF.querySelectorAll('input');
+    if (cntInputs[0]) cntInputs[0].placeholder = t['cnt.name.ph'];
+    if (cntInputs[1]) cntInputs[1].placeholder = t['cnt.phone.ph'];
+    const cntSel = cntF.querySelector('select');
+    if (cntSel) {
+      ['cnt.need.opt0','cnt.need.opt1','cnt.need.opt2','cnt.need.opt3','cnt.need.opt4','cnt.need.opt5','cnt.need.opt6','cnt.need.opt7'].forEach((k, i) => {
+        if (cntSel.options[i]) cntSel.options[i].text = t[k];
+      });
+    }
+    const cntSub = cntF.querySelector('button[type="submit"]');
+    if (cntSub) cntSub.textContent = t['cnt.submit'];
+  }
+  const cntInfo = document.querySelector('#contact .fade-up:not(.contact-form)');
+  if (cntInfo) {
+    _txt(cntInfo.querySelector('h3'), 'cnt.info.h3');
+    const cntDL = cntInfo.querySelectorAll('.contact-detail-label');
+    const cntDV = cntInfo.querySelectorAll('.contact-detail-val');
+    if (cntDL[0]) cntDL[0].textContent = t['cnt.phone.label2'];
+    if (cntDL[1]) cntDL[1].textContent = t['cnt.wa.label'];
+    if (cntDV[1]) { const a = cntDV[1].querySelector('a'); if (a) a.textContent = t['cnt.wa.val']; }
+    if (cntDL[2]) cntDL[2].textContent = t['cnt.email.label'];
+    if (cntDL[3]) cntDL[3].textContent = t['cnt.podcast.label'];
+    if (cntDV[3]) { const a = cntDV[3].querySelector('a'); if (a) a.textContent = t['cnt.podcast.val']; }
+    if (cntDL[4]) cntDL[4].textContent = t['cnt.loc.label'];
+    if (cntDV[4]) cntDV[4].textContent = t['cnt.loc.val'];
+  }
+
+  /* FOOTER */
+  const footerP = document.querySelector('footer p');
+  if (footerP) {
+    const footerA = footerP.querySelector('a');
+    footerP.innerHTML = t['footer.copy'] + (footerA ? ' · ' + footerA.outerHTML : '');
+  }
+}
+
+/* Initialize language on page load */
+setLang(currentLang);
 </script>
 
 </body>
