@@ -752,6 +752,49 @@ body.menu-open nav { opacity: 0; pointer-events: none; }
 .result-card-body h3 { font-size: 17px; margin-bottom: 8px; }
 .result-card-body p { color: var(--muted); font-size: 14px; }
 
+/* ─── FOUNDER RESULT CARD ─── */
+.result-card--founder { border: 1.5px solid rgba(200,149,42,0.35); }
+.result-card--founder .result-card-img { height: 260px; }
+.result-card--founder .result-card-img img {
+  filter: saturate(1.22) contrast(1.08) brightness(1.04);
+  object-position: center top;
+}
+.result-tag--gold {
+  background: linear-gradient(135deg, rgba(200,149,42,0.22), rgba(232,188,90,0.15));
+  color: var(--gold-dark);
+  border: 1px solid rgba(200,149,42,0.4);
+}
+.result-kpi-list {
+  list-style: none;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.result-kpi-list li {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+  padding-left: 16px;
+  position: relative;
+}
+.result-kpi-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-size: 12px;
+  top: 1px;
+}
+.result-kpi-list li strong {
+  color: var(--gold-dark);
+  font-weight: 700;
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 .results-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -2025,11 +2068,27 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
   <div class="container">
     <div class="section-header section-header--center fade-up">
       <span class="eyebrow">Нәтижелер</span>
-      <h2 style="margin-top:16px">Нақты адамдардың нақты нәтижелері</h2>
+      <h2 style="margin-top:16px">Өзіме дәлелдеп, екінші өзгеге көмек жасадым</h2>
       <p class="lead" style="margin-top:12px">Сенімді дәлелдер. Санмен өлшенген жетістіктер.</p>
     </div>
 
     <div class="results-grid">
+
+      <!-- Жәмила өзіне өзі кейс — бірінші карточка -->
+      <div class="result-card result-card--founder fade-up">
+        <div class="result-card-img">
+          <img src="Photo/22.jpg" alt="Жәмила Оразбайқызы — жеке нәтиже">
+        </div>
+        <div class="result-card-body">
+          <span class="result-tag result-tag--gold">Өзіме кейс</span>
+          <h3>Бірінші өзіме өзім кейспін</h3>
+          <ul class="result-kpi-list">
+            <li><strong>Күніне</strong>6 000 000 ₸</li>
+            <li><strong>Айына</strong>100 000 000 ₸ айналым · таза пайда 15 000 000 ₸</li>
+            <li><strong>Жылына</strong>1 500 000 000 ₸ айналым жасадым</li>
+          </ul>
+        </div>
+      </div>
 
       <div class="result-card fade-up">
         <div class="result-card-img">
@@ -3181,7 +3240,9 @@ const T = {
     'proc5.h3':'Клиенттер мен тапсырыстар ағыны басталады','proc5.p':'Воронка жұмыс жасайды. Сіз ұйықтап жатсаңыз да өтінімдер, тапсырыстар, төлемдер келіп жатады.','proc5.who':'Жүйе · автомат',
     'proc6.h3':'Нәтижені өлшеп, масштабтаймыз','proc6.p':'Ай сайын аналитика, оптимизация, масштаб. Кіріс пен клиент санын бірге өсіреміз.','proc6.who':'Жәмила · ай сайын',
     'proc.note':'<strong>Маңызды:</strong> ЖИ — бізге жұмыс жасайтын ҚҰРАЛ. Сіз эксперт ретінде стратегияны басқарасыз, жүйе сату мен клиент тартуды өзі жасайды.',
-    'res.eyebrow':'Нәтижелер','res.h2':'Нақты адамдардың нақты нәтижелері','res.lead':'Сенімді дәлелдер. Санмен өлшенген жетістіктер.',
+    'res.eyebrow':'Нәтижелер','res.h2':'Өзіме дәлелдеп, екінші өзгеге көмек жасадым','res.lead':'Сенімді дәлелдер. Санмен өлшенген жетістіктер.',
+    'res0.tag':'Өзіме кейс','res0.h3':'Бірінші өзіме өзім кейспін',
+    'res0.kpi1':'<strong>Күніне</strong>6 000 000 ₸','res0.kpi2':'<strong>Айына</strong>100 000 000 ₸ айналым · таза пайда 15 000 000 ₸','res0.kpi3':'<strong>Жылына</strong>1 500 000 000 ₸ айналым жасадым',
     'res1.tag':'Команда','res1.h3':'«3 айда 80 серіктес»','res1.p':'Айгүл, Нур-Сұлтан — ЖИ-рекрутинг жүйесін қосқаннан кейін команда 3 есе өсті.',
     'res2.tag':'Айналым','res2.h3':'«Айлық айналым ×3»','res2.p':'Динара, Алматы — 4 ай ішінде тауар айналымды 3 есе арттырды. ЖИ чат-бот + таргет.',
     'res3.tag':'Бренд','res3.h3':'«Жаңа регион ашты»','res3.p':'Бота, Шымкент — 2 ай ішінде жаңа регион ашып, 50+ серіктес жинады.',
@@ -3280,7 +3341,9 @@ const T = {
     'proc5.h3':'Начинается поток клиентов и заказов','proc5.p':'Воронка работает. Заявки, заказы, оплаты поступают даже пока вы спите.','proc5.who':'Система · автомат',
     'proc6.h3':'Измеряем результат и масштабируем','proc6.p':'Ежемесячная аналитика, оптимизация, масштаб. Вместе увеличиваем доход и число клиентов.','proc6.who':'Жәмила · ежемесячно',
     'proc.note':'<strong>Важно:</strong> AI — это ИНСТРУМЕНТ, работающий на нас. Вы управляете стратегией как эксперт, система сама привлекает клиентов и совершает продажи.',
-    'res.eyebrow':'Результаты','res.h2':'Реальные результаты реальных людей','res.lead':'Проверенные доказательства. Достижения в цифрах.',
+    'res.eyebrow':'Результаты','res.h2':'Доказала себе — помогла другим','res.lead':'Проверенные доказательства. Достижения в цифрах.',
+    'res0.tag':'Кейс на себя','res0.h3':'Первый кейс — на себя',
+    'res0.kpi1':'<strong>В день</strong>6 000 000 ₸','res0.kpi2':'<strong>В месяц</strong>100 000 000 ₸ оборот · чистая прибыль 15 000 000 ₸','res0.kpi3':'<strong>В год</strong>1 500 000 000 ₸ оборот',
     'res1.tag':'Команда','res1.h3':'«80 партнёров за 3 месяца»','res1.p':'Айгуль, Нур-Султан — после внедрения AI-рекрутинга команда выросла в 3 раза.',
     'res2.tag':'Оборот','res2.h3':'«Месячный оборот ×3»','res2.p':'Динара, Алматы — за 4 месяца увеличила товарооборот в 3 раза. AI чат-бот + таргет.',
     'res3.tag':'Бренд','res3.h3':'«Открыла новый регион»','res3.p':'Бота, Шымкент — за 2 месяца открыла новый регион и собрала 50+ партнёров.',
@@ -3411,7 +3474,17 @@ function setLang(lang) {
   /* RESULTS */
   const resH = document.querySelector('#results .section-header');
   if (resH) { _txt(resH.querySelector('.eyebrow'),'res.eyebrow'); _txt(resH.querySelector('h2'),'res.h2'); _txt(resH.querySelector('.lead'),'res.lead'); }
-  document.querySelectorAll('.result-card').forEach((c, i) => {
+  /* Founder card */
+  const fc = document.querySelector('.result-card--founder');
+  if (fc) {
+    _txt(fc.querySelector('.result-tag'), 'res0.tag');
+    _txt(fc.querySelector('h3'), 'res0.h3');
+    fc.querySelectorAll('.result-kpi-list li').forEach((li, i) => {
+      const k = ['res0.kpi1','res0.kpi2','res0.kpi3'][i]; if (k && t[k]) li.innerHTML = t[k];
+    });
+  }
+  /* Regular result cards */
+  document.querySelectorAll('.result-card:not(.result-card--founder)').forEach((c, i) => {
     const triples = [['res1.tag','res1.h3','res1.p'],['res2.tag','res2.h3','res2.p'],['res3.tag','res3.h3','res3.p']];
     if (triples[i]) { _txt(c.querySelector('.result-tag'),triples[i][0]); _txt(c.querySelector('h3'),triples[i][1]); _txt(c.querySelector('p'),triples[i][2]); }
   });
