@@ -347,7 +347,7 @@ body.menu-open nav { opacity: 0; pointer-events: none; }
   min-height: 100vh;
   background: var(--dark);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   overflow: hidden;
   position: relative;
 }
@@ -372,7 +372,7 @@ body.menu-open nav { opacity: 0; pointer-events: none; }
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 80px 20px 40px;
+  padding: 88px 20px 40px;
   display: grid;
   grid-template-columns: 1fr 1.15fr;
   align-items: flex-end;
@@ -1382,8 +1382,8 @@ body.menu-open nav { opacity: 0; pointer-events: none; }
   outline: none;
 }
 .form-field input::placeholder,
-.form-field select option,
 .form-field textarea::placeholder { color: rgba(255,255,255,0.30); }
+.form-field select option { color: #1a1a0e; background: #f8f5ee; }
 .form-field input:focus,
 .form-field select:focus,
 .form-field textarea:focus {
@@ -1717,7 +1717,7 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
 <body>
 
 <!-- FLOATING WHATSAPP -->
-<a id="wa-float" href="https://wa.me/77474106388" target="_blank" rel="noopener" aria-label="WhatsApp">
+<a id="wa-float" href="https://wa.me/77051906085" target="_blank" rel="noopener" aria-label="WhatsApp">
   <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.123 1.529 5.855L.057 23.454a.5.5 0 00.587.648l5.804-1.524A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.65-.5-5.18-1.374l-.364-.215-3.782.992.992-3.682-.233-.378A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
 </a>
 
@@ -1743,7 +1743,7 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
       <button class="lang-btn active" data-lang="kk" onclick="setLang('kk')" aria-pressed="true">ҚАЗ</button>
       <button class="lang-btn" data-lang="ru" onclick="setLang('ru')" aria-pressed="false">РУС</button>
     </div>
-    <a href="https://wa.me/77474106388" target="_blank" class="btn btn-gold nav-cta" rel="noopener">
+    <a href="https://wa.me/77051906085" target="_blank" class="btn btn-gold nav-cta" rel="noopener">
       Кеңес алу
     </a>
     <button class="hamburger" id="hamburger-btn" aria-label="Меню ашу" aria-expanded="false">
@@ -1761,8 +1761,8 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
   <a href="#podcast"  onclick="closeMenu()">Контент</a>
   <a href="#platform" onclick="closeMenu()">Платформа</a>
   <a href="#contact"  onclick="closeMenu()">Байланыс</a>
-  <a href="https://wa.me/77474106388" target="_blank" rel="noopener" class="mobile-menu-wa">
-    📱 WhatsApp: +7 747 410 63 88
+  <a href="https://wa.me/77051906085" target="_blank" rel="noopener" class="mobile-menu-wa">
+    📱 WhatsApp: +7 705 190 60 85
   </a>
   <div class="mobile-lang-switcher">
     <button class="mobile-lang-btn active" data-lang="kk" onclick="setLang('kk');closeMenu()">ҚАЗ</button>
@@ -1789,7 +1789,7 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
         Жеке брендіңізді нарыққа дұрыс шығарамын, сату воронкасын орнатамын — ЖИ арқылы бизнесіңіз ұйықтап жатқанда да кіріс әкеледі.
       </p>
       <div class="hero-btns">
-        <a href="https://wa.me/77474106388?text=Сәлем%20Жәмила!%20Тегін%20кеңеске%20жазылғым%20келеді." target="_blank" rel="noopener" class="btn btn-gold">
+        <a href="https://wa.me/77051906085?text=Сәлем%20Жәмила!%20Тегін%20кеңеске%20жазылғым%20келеді." target="_blank" rel="noopener" class="btn btn-gold">
           Тегін кеңес алу →
         </a>
         <a href="#services" class="btn btn-ghost">Қызметтерді қарау</a>
@@ -2247,15 +2247,6 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
             </div>
           </div>
 
-          <div class="video-review-card">
-            <video controls preload="metadata" poster="video/WhatsApp Image 2026-06-16 at 00.52.37.jpeg">
-              <source src="video/134DC6DC2910C0B83B23A0C58934D6AD_video_dashinit.mp4" type="video/mp4">
-            </video>
-            <div class="video-review-footer">
-              <div class="video-review-name">Клиент пікірі #6</div>
-              <div class="video-review-city">Видео отзыв</div>
-            </div>
-          </div>
 
           <div class="video-review-card">
             <video controls preload="metadata">
@@ -2609,8 +2600,8 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
         </div>
 
         <div style="margin-top:20px">
-          <a href="tel:+77474106388" class="btn btn-dark" style="font-size:14px;padding:12px 22px">
-            📞 +7 747 410 63 88
+          <a href="tel:+77051906085" class="btn btn-dark" style="font-size:14px;padding:12px 22px">
+            📞 +7 705 190 60 85
           </a>
         </div>
       </div>
@@ -2680,11 +2671,11 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
       </div>
 
       <div style="display:flex;gap:12px;flex-wrap:wrap">
-        <a href="https://wa.me/77474106388?text=Сәлем!%20Premium%20пакетке%20өтінім%20қалдырғым%20келеді." target="_blank" rel="noopener"
+        <a href="https://wa.me/77051906085?text=Сәлем!%20Premium%20пакетке%20өтінім%20қалдырғым%20келеді." target="_blank" rel="noopener"
            class="btn btn-gold" style="flex:1;justify-content:center">
           Өтінім қалдыру →
         </a>
-        <a href="tel:+77474106388" class="btn btn-ghost" style="flex:0 0 auto;padding:14px 20px">
+        <a href="tel:+77051906085" class="btn btn-ghost" style="flex:0 0 auto;padding:14px 20px">
           📞 Қоңырау
         </a>
       </div>
@@ -2773,7 +2764,7 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
           <a href="https://t.me/+7IajzTZcKQs2ZDQy" target="_blank" rel="noopener" class="form-link-btn form-link-tg">
             ✈ Telegram топ
           </a>
-          <a href="https://wa.me/77474106388" target="_blank" rel="noopener" class="form-link-btn form-link-wa">
+          <a href="https://wa.me/77051906085" target="_blank" rel="noopener" class="form-link-btn form-link-wa">
             💬 WhatsApp
           </a>
         </div>
@@ -2896,7 +2887,7 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
           <div>
             <div class="contact-detail-label">Телефон</div>
             <div class="contact-detail-val">
-              <a href="tel:+77474106388">+7 747 410 63 88</a>
+              <a href="tel:+77051906085">+7 705 190 60 85</a>
             </div>
           </div>
         </div>
@@ -2906,7 +2897,7 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
           <div>
             <div class="contact-detail-label">WhatsApp</div>
             <div class="contact-detail-val">
-              <a href="https://wa.me/77474106388" target="_blank" rel="noopener">Жазу → +7 747 410 63 88</a>
+              <a href="https://wa.me/77051906085" target="_blank" rel="noopener">Жазу → +7 705 190 60 85</a>
             </div>
           </div>
         </div>
@@ -2949,7 +2940,7 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
           <a href="https://t.me/+7IajzTZcKQs2ZDQy" target="_blank" rel="noopener" class="social-btn" aria-label="Telegram">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color:rgba(255,255,255,0.7)"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
           </a>
-          <a href="https://wa.me/77474106388" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp" style="color:#25D366">
+          <a href="https://wa.me/77051906085" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp" style="color:#25D366">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.123 1.529 5.855L.057 23.454a.5.5 0 00.587.648l5.804-1.524A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.65-.5-5.18-1.374l-.364-.215-3.782.992.992-3.682-.233-.378A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
           </a>
         </div>
@@ -3157,7 +3148,7 @@ const T = {
     'nav.content':'Контент','nav.platform':'Платформа','nav.contact':'Байланыс','nav.cta':'Кеңес алу',
     'mob.about':'Мен туралы','mob.services':'Қызметтер','mob.results':'Нәтижелер',
     'mob.content':'Контент','mob.platform':'Платформа','mob.contact':'Байланыс',
-    'mob.wa':'📱 WhatsApp: +7 747 410 63 88',
+    'mob.wa':'📱 WhatsApp: +7 705 190 60 85',
     'hero.eyebrow':'Кәсіпкерлер · Эксперттер · Онлайн бизнес иелері үшін',
     'hero.h1':'Өзіңді және өніміңді упаковать етіп,<br>контент пен сатуды <em>автоматтандыр!</em>',
     'hero.sub':'Жеке брендіңізді нарыққа дұрыс шығарамын, сату воронкасын орнатамын — ЖИ арқылы бизнесіңіз ұйықтап жатқанда да кіріс әкеледі.',
@@ -3246,7 +3237,7 @@ const T = {
     'cnt.need.opt3':'Жеке бренд упаковкасы','cnt.need.opt4':'Менторлық','cnt.need.opt5':'Маркетинг стратегиясы',
     'cnt.need.opt6':'Бренд-менеджмент','cnt.need.opt7':'Барлығы қызықты',
     'cnt.submit':'Тегін кеңеске жазылу →','cnt.info.h3':'Байланыс',
-    'cnt.phone.label2':'Телефон','cnt.wa.label':'WhatsApp','cnt.wa.val':'Жазу → +7 747 410 63 88',
+    'cnt.phone.label2':'Телефон','cnt.wa.label':'WhatsApp','cnt.wa.val':'Жазу → +7 705 190 60 85',
     'cnt.email.label':'Email','cnt.podcast.label':'YouTube подкаст','cnt.podcast.val':'«АШЫҚ ӘҢГІМЕ» канал',
     'cnt.loc.label':'Орналасқан жері','cnt.loc.val':'Алматы, Қазақстан',
     'footer.copy':'© 2024–2025 Жәмила Оразбай. Барлық құқықтар қорғалған.',
@@ -3256,7 +3247,7 @@ const T = {
     'nav.content':'Контент','nav.platform':'Платформа','nav.contact':'Контакты','nav.cta':'Консультация',
     'mob.about':'Обо мне','mob.services':'Услуги','mob.results':'Результаты',
     'mob.content':'Контент','mob.platform':'Платформа','mob.contact':'Контакты',
-    'mob.wa':'📱 WhatsApp: +7 747 410 63 88',
+    'mob.wa':'📱 WhatsApp: +7 705 190 60 85',
     'hero.eyebrow':'Для предпринимателей · Экспертов · Онлайн-бизнеса',
     'hero.h1':'Упакуй себя и свой продукт,<br>автоматизируй контент и продажи <em>с AI!</em>',
     'hero.sub':'Правильно вывожу личный бренд на рынок, выстраиваю воронку продаж — с AI ваш бизнес приносит доход даже пока вы спите.',
@@ -3345,7 +3336,7 @@ const T = {
     'cnt.need.opt3':'Упаковка личного бренда','cnt.need.opt4':'Менторинг','cnt.need.opt5':'Маркетинговая стратегия',
     'cnt.need.opt6':'Бренд-менеджмент','cnt.need.opt7':'Всё интересно',
     'cnt.submit':'Записаться на бесплатную консультацию →','cnt.info.h3':'Контакты',
-    'cnt.phone.label2':'Телефон','cnt.wa.label':'WhatsApp','cnt.wa.val':'Написать → +7 747 410 63 88',
+    'cnt.phone.label2':'Телефон','cnt.wa.label':'WhatsApp','cnt.wa.val':'Написать → +7 705 190 60 85',
     'cnt.email.label':'Email','cnt.podcast.label':'YouTube подкаст','cnt.podcast.val':'Канал «АШЫҚ ӘҢГІМЕ»',
     'cnt.loc.label':'Местоположение','cnt.loc.val':'Алматы, Казахстан',
     'footer.copy':'© 2024–2025 Жәмила Оразбай. Все права защищены.',
