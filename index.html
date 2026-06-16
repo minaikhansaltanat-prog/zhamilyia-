@@ -2899,7 +2899,7 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
           </div>
           <div class="form-field">
             <label>Тәжірибе деңгейі</label>
-            <select>
+            <select required>
               <option value="">Таңдаңыз...</option>
               <option>Жаңадан бастаушы</option>
               <option>1-2 жыл тәжірибем бар</option>
@@ -3258,19 +3258,48 @@ function closeLightbox() {
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
-/* FORM SUBMIT */
+/* FORM SUBMIT → WhatsApp */
+const WA_NUMBER = '77051906085';
+
 function handleFormSubmit(e, type) {
   e.preventDefault();
-  const btn = e.target.querySelector('button[type="submit"]');
-  const original = btn.textContent;
-  btn.textContent = currentLang === 'ru' ? '✓ Отправлено! Свяжемся скоро.' : '✓ Жіберілді! Жақын арада хабарласамыз.';
-  btn.style.background = '#2E7D32';
-  btn.disabled = true;
+  const form = e.target;
+  const fields = [...form.querySelectorAll('input, select, textarea')];
+  const isRu = currentLang === 'ru';
+
+  const name  = fields[0]?.value?.trim() || '';
+  const phone = fields[1]?.value?.trim() || '';
+  const extra = fields[2]?.value?.trim() || '';
+
+  // Validate required: name + phone must not be empty
+  if (!name || !phone) return;
+
+  let msg;
+  if (type === 'registration') {
+    msg = isRu
+      ? `Здравствуйте! Хочу вступить в команду.\n\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n📊 Опыт: ${extra || 'Не указан'}`
+      : `Сәлем! Командаға қосылғым келеді.\n\n👤 Аты-жөні: ${name}\n📞 Телефон: ${phone}\n📊 Тәжірибе деңгейі: ${extra || 'Көрсетілмеген'}`;
+  } else {
+    msg = isRu
+      ? `Здравствуйте! Хочу записаться на бесплатную консультацию.\n\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n💼 Интересует: ${extra || 'Не указано'}`
+      : `Сәлем! Тегін кеңеске жазылғым келеді.\n\n👤 Аты-жөні: ${name}\n📞 Телефон: ${phone}\n💼 Қажет қызмет: ${extra || 'Көрсетілмеген'}`;
+  }
+
+  window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+
+  // Success state on button
+  const btn = form.querySelector('button[type="submit"]');
+  const saved = btn.innerHTML;
+  btn.innerHTML = '✓ WhatsApp ашылуда...';
+  btn.style.cssText += ';background:#25D366!important;color:#fff!important;pointer-events:none';
   setTimeout(() => {
-    btn.textContent = original;
-    btn.style.background = '';
+    btn.innerHTML = saved;
+    btn.style.cssText = btn.style.cssText
+      .replace(/background:[^;]+!important;?/g, '')
+      .replace(/color:[^;]+!important;?/g, '')
+      .replace(/pointer-events:[^;]+;?/g, '');
     btn.disabled = false;
-    e.target.reset();
+    form.reset();
   }, 3000);
 }
 
