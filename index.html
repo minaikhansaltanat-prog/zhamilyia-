@@ -1481,6 +1481,11 @@ body.menu-open nav { opacity: 0; pointer-events: none; }
 }
 .ai-summary strong { font-weight: 700; color: #fff; }
 
+/* ─── AI MOBILE PRICE BANNER ─── */
+.ai-mobile-price {
+  display: none;
+}
+
 /* ─── CONTACT / FOOTER ─── */
 #contact { background: var(--dark); }
 .contact-grid {
@@ -1632,8 +1637,78 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
   .section-header { margin-bottom: 24px; }
 
   .package-card { padding: 28px 20px; }
-  .ai-table { font-size: 12px; }
-  .ai-table thead th, .ai-table tbody td, .ai-table tfoot td { padding: 10px 12px; }
+
+  /* ── AI TABLE MOBILE ── */
+  .ai-table-wrap { overflow: visible; border-radius: 14px; }
+
+  /* Show the mobile AI price banner */
+  .ai-mobile-price {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: linear-gradient(135deg, rgba(200,149,42,0.13) 0%, rgba(200,149,42,0.05) 100%);
+    border: 1.5px solid rgba(200,149,42,0.45);
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+  }
+  .ai-mobile-price-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+  .ai-mobile-price-num {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .ai-mobile-price-label {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 3px;
+    line-height: 1.4;
+  }
+
+  /* Hide 3rd col header (ЖИ жүйесімен) and 4th col header (Үнем) */
+  .ai-table thead th:nth-child(3),
+  .ai-table thead th:nth-child(4) { display: none; }
+
+  /* Hide the rowspan AI price cell in body */
+  .ai-table td[rowspan] { display: none !important; }
+
+  /* Hide savings column (last-child covers rows 2-6 which have 3 tds,
+     and row 1's 4th td after rowspan is hidden) */
+  .ai-table tbody td:last-child { display: none; }
+
+  /* Body rows: only name + traditional cost remain */
+  .ai-table { font-size: 14px; width: 100%; }
+  .ai-table thead th { padding: 12px 16px; }
+  .ai-table tbody td { padding: 12px 16px; }
+  .ai-table thead th:first-child { width: 52%; }
+  .ai-table thead th:nth-child(2) { width: 48%; }
+
+  /* Footer: show all 4 cells stacked vertically */
+  .ai-table tfoot tr {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 18px;
+    gap: 5px;
+  }
+  .ai-table tfoot td {
+    padding: 0;
+    font-size: 13px;
+    display: block;
+    width: 100%;
+  }
+  .ai-table tfoot td:first-child {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: rgba(255,255,255,0.55);
+  }
+  .ai-table tfoot td:nth-child(3) { color: var(--gold) !important; font-weight: 700; }
+  .ai-table tfoot td:nth-child(4) { color: var(--gold-light) !important; font-weight: 700; font-size: 15px; }
   .form-links { flex-direction: column; }
   #wa-float { bottom: 20px; right: 16px; width: 52px; height: 52px; font-size: 24px; }
 }
@@ -2719,6 +2794,15 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
       <p class="lead" style="margin-top:12px">ЖИ жүйесінің экономикалық тиімділігін бірден түсіну.</p>
     </div>
 
+    <!-- Mobile-only AI price highlight (hidden on desktop) -->
+    <div class="ai-mobile-price fade-up">
+      <div class="ai-mobile-price-icon">🤖</div>
+      <div>
+        <div class="ai-mobile-price-num" id="ai-mob-price">~100 000 ₸/ай</div>
+        <div class="ai-mobile-price-label" id="ai-mob-label">барлық жүйе — ЖИ жүйесімен</div>
+      </div>
+    </div>
+
     <div class="ai-table-wrap fade-up">
       <table class="ai-table">
         <thead>
@@ -3153,6 +3237,7 @@ const T = {
     'ai.th1':'Маман / Қызмет','ai.th2':'Дәстүрлі шығын/ай','ai.th3':'ЖИ жүйесімен','ai.th4':'Үнем',
     'ai.all.label':'барлық жүйе','ai.tf1':'ЖЫЛДЫҚ ҮНЕМ',
     'ai.summary':'<strong>10 маманның жұмысын</strong> — 1 ЖИ жүйесі атқарады. Сіз тек нәтижені бақылайсыз.',
+    'ai.mob.price':'~100 000 ₸/ай','ai.mob.label':'барлық жүйе — ЖИ жүйесімен',
     'cnt.eyebrow':'Бүгін бастаңыз','cnt.h2':'Алғашқы 30 минуттық кеңес — тегін','cnt.lead':'Өтінімді қалдырыңыз. 24 сағат ішінде хабарласамыз.',
     'cnt.name.label':'Атыңыз','cnt.name.ph':'Аты-жөніңіз',
     'cnt.phone.label':'Телефон','cnt.phone.ph':'+7 (___) ___ __ __',
@@ -3251,6 +3336,7 @@ const T = {
     'ai.th1':'Специалист / Услуга','ai.th2':'Традиционные расходы/мес','ai.th3':'С AI системой','ai.th4':'Экономия',
     'ai.all.label':'вся система','ai.tf1':'ГОДОВАЯ ЭКОНОМИЯ',
     'ai.summary':'<strong>Работу 10 специалистов</strong> выполняет 1 AI система. Вы только отслеживаете результат.',
+    'ai.mob.price':'~100 000 ₸/мес','ai.mob.label':'вся система — с AI',
     'cnt.eyebrow':'Начните сегодня','cnt.h2':'Первые 30 минут консультации — бесплатно','cnt.lead':'Оставьте заявку. Свяжемся в течение 24 часов.',
     'cnt.name.label':'Ваше имя','cnt.name.ph':'Имя и фамилия',
     'cnt.phone.label':'Телефон','cnt.phone.ph':'+7 (___) ___ __ __',
@@ -3458,6 +3544,8 @@ function setLang(lang) {
   const aiTf = document.querySelector('.ai-table tfoot tr td:first-child');
   if (aiTf) aiTf.textContent = t['ai.tf1'];
   _html(document.querySelector('.ai-summary'), 'ai.summary');
+  _txt(document.getElementById('ai-mob-price'), 'ai.mob.price');
+  _txt(document.getElementById('ai-mob-label'), 'ai.mob.label');
 
   /* CONTACT */
   const cntF = document.querySelector('.contact-form');
