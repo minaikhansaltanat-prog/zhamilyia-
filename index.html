@@ -1008,7 +1008,12 @@ body.menu-open nav { opacity: 0; pointer-events: none; }
 }
 .audio-play-btn:hover { background:var(--gold-dark); }
 .audio-play-btn svg { width:18px;height:18px;fill:var(--gold-light);margin-left:2px; }
+.audio-play-btn .icon-pause { margin-left:0; }
 .audio-duration { font-size:13px;color:var(--muted); }
+/* Real (functional) audio card — waveform only animates while actually playing */
+.audio-review-card--real .audio-waveform span { animation-play-state: paused; }
+.audio-review-card--real .audio-waveform.playing span { animation-play-state: running; }
+.audio-play-btn[disabled] { opacity:0.5; cursor:wait; }
 
 /* Telegram review cards */
 .tg-review-card {
@@ -2517,6 +2522,34 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
       <div class="carousel-wrap" style="padding:0 32px">
         <div class="carousel-track" id="audio-reviews-track">
 
+          <div class="audio-review-card audio-review-card--real">
+            <div class="review-quote" style="font-size:32px;margin-bottom:8px">"</div>
+            <p style="font-size:14px;line-height:1.6;color:var(--text);margin-bottom:16px">Дауыстық пікір — WhatsApp арқылы жіберілген.</p>
+            <div class="audio-play-row">
+              <button class="audio-play-btn" aria-label="Ойнату">
+                <svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="icon-pause" viewBox="0 0 24 24" style="display:none"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+              </button>
+              <div>
+                <div class="audio-waveform">
+                  <span style="height:60%"></span><span style="height:80%"></span><span style="height:45%"></span>
+                  <span style="height:90%"></span><span style="height:55%"></span><span style="height:70%"></span>
+                  <span style="height:40%"></span><span style="height:85%"></span><span style="height:60%"></span>
+                  <span style="height:75%"></span><span style="height:50%"></span><span style="height:95%"></span>
+                </div>
+                <div class="audio-duration">2:32</div>
+              </div>
+            </div>
+            <audio class="audio-el" preload="metadata">
+              <source src="Audio/1.ogg" type="audio/ogg">
+              <source src="Audio/1.mp3" type="audio/mpeg">
+            </audio>
+            <div class="review-author" style="margin-top:16px">
+              <div class="review-avatar">К</div>
+              <div><div class="review-name">Клиент пікірі</div><div class="review-city">Дауыстық хабарлама</div></div>
+            </div>
+          </div>
+
           <div class="audio-review-card">
             <div class="review-quote" style="font-size:32px;margin-bottom:8px">"</div>
             <p style="font-size:14px;line-height:1.6;color:var(--text);margin-bottom:16px">«Жәмила апайдың кеңесінен кейін бизнесімнің бағытын толық өзгерттім. Нәтиже 3 айда көрінді.»</p>
@@ -3468,6 +3501,59 @@ function closeLightbox() {
   document.body.style.overflow = '';
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+/* AUDIO REVIEW PLAYER (real playback for audio-review-card--real) */
+document.querySelectorAll('.audio-review-card--real').forEach(card => {
+  const btn = card.querySelector('.audio-play-btn');
+  const audio = card.querySelector('audio.audio-el');
+  const iconPlay = card.querySelector('.icon-play');
+  const iconPause = card.querySelector('.icon-pause');
+  const waveform = card.querySelector('.audio-waveform');
+  const durationEl = card.querySelector('.audio-duration');
+  if (!btn || !audio) return;
+
+  function fmtTime(sec) {
+    if (!isFinite(sec) || sec < 0) return null;
+    const m = Math.floor(sec / 60), s = Math.round(sec % 60).toString().padStart(2, '0');
+    return m + ':' + s;
+  }
+  audio.addEventListener('loadedmetadata', () => {
+    const t = fmtTime(audio.duration);
+    if (t) durationEl.textContent = t;
+  });
+  audio.addEventListener('timeupdate', () => {
+    if (!audio.paused) {
+      const t = fmtTime(audio.duration - audio.currentTime);
+      if (t) durationEl.textContent = t;
+    }
+  });
+  audio.addEventListener('error', () => {
+    btn.disabled = true;
+    durationEl.textContent = 'Қате';
+  });
+
+  btn.addEventListener('click', () => {
+    if (audio.paused) {
+      document.querySelectorAll('audio.audio-el').forEach(a => { if (a !== audio) a.pause(); });
+      audio.play().catch(() => {});
+    } else {
+      audio.pause();
+    }
+  });
+  audio.addEventListener('play', () => {
+    iconPlay.style.display = 'none';
+    iconPause.style.display = '';
+    waveform.classList.add('playing');
+  });
+  function onStop() {
+    iconPlay.style.display = '';
+    iconPause.style.display = 'none';
+    waveform.classList.remove('playing');
+    if (audio.ended) { const t = fmtTime(audio.duration); if (t) durationEl.textContent = t; }
+  }
+  audio.addEventListener('pause', onStop);
+  audio.addEventListener('ended', onStop);
+});
 
 /* TEXT MODAL (Толығырақ...) */
 function openTextModal(btn) {
