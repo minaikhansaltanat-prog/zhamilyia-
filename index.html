@@ -1194,6 +1194,72 @@ body.menu-open nav { opacity: 0; pointer-events: none; }
 }
 #lightbox-close:hover { color: #fff; }
 
+/* Text modal (Толығырақ...) */
+#text-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(12,10,6,0.72);
+  z-index: 2100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  padding: 24px;
+}
+#text-modal.open { opacity: 1; pointer-events: auto; }
+.text-modal-card {
+  background: var(--white);
+  border-radius: 20px;
+  max-width: 560px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 36px 32px 32px;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+  transform: translateY(12px) scale(0.98);
+  transition: transform 0.3s var(--ease-out);
+}
+#text-modal.open .text-modal-card { transform: translateY(0) scale(1); }
+.text-modal-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 21px;
+  margin-bottom: 18px;
+  padding-right: 24px;
+  color: var(--dark);
+}
+.text-modal-card p { font-size: 15px; line-height: 1.7; color: var(--muted); margin-bottom: 14px; }
+.text-modal-card p:last-child { margin-bottom: 0; }
+#text-modal-close {
+  position: absolute;
+  top: 16px; right: 18px;
+  font-size: 22px;
+  color: var(--muted);
+  cursor: pointer;
+  background: none; border: none;
+  transition: color 0.2s;
+  line-height: 1;
+}
+#text-modal-close:hover { color: var(--dark); }
+.result-more-btn {
+  margin-top: 6px;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--gold-dark);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: color 0.2s;
+  font-family: inherit;
+}
+.result-more-btn:hover, .result-more-btn:focus-visible { color: var(--gold); }
+.result-card--vivid .result-card-img img {
+  filter: saturate(1.22) contrast(1.08) brightness(1.05);
+}
+
 /* ─── PODCAST ─── */
 #podcast { background: var(--white); }
 .podcast-grid {
@@ -1804,6 +1870,15 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
   <img id="lightbox-img" src="" alt="">
 </div>
 
+<!-- TEXT MODAL -->
+<div id="text-modal" role="dialog" aria-modal="true">
+  <div class="text-modal-card">
+    <button id="text-modal-close" aria-label="Жабу" onclick="closeTextModal()">&#x2715;</button>
+    <h3 id="text-modal-title"></h3>
+    <div id="text-modal-body"></div>
+  </div>
+</div>
+
 <!-- NAVIGATION -->
 <nav id="nav">
   <div class="nav-inner">
@@ -2135,14 +2210,21 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
         </div>
       </div>
 
-      <div class="result-card fade-up" style="transition-delay:0.08s">
+      <div class="result-card result-card--vivid fade-up" style="transition-delay:0.08s">
         <div class="result-card-img">
-          <img src="Photo/Photo00575.jpg" alt="Тауар айналым">
+          <img src="Photo/ava3.PNG" alt="Тауарлы және инфо бизнес нәтижесі" style="object-position:center 30%">
         </div>
         <div class="result-card-body">
-          <span class="result-tag">Айналым</span>
-          <h3>«Айлық айналым ×3»</h3>
-          <p>Динара, Алматы — 4 ай ішінде тауар айналымды 3 есе арттырды. ЖИ чат-бот + таргет.</p>
+          <span class="result-tag">Тәжірибе</span>
+          <h3>Тауарлы және инфо бизнесте миллиондық нәтижелер</h3>
+          <p class="result-text-preview">Таварный бизнесте командамен айына 50-100 миллион оборот жасадым (EJI бренд косметика), (2021-2022 жж)…</p>
+          <div class="result-text-full" hidden>
+            <p>Таварный бизнесте командамен айына 50-100 миллион оборот жасадым (EJI бренд косметика).<br>(2021-2022 жж)</p>
+            <p>Инфо бизнесте ең алғашқы сатылымды, өз менторлық сабағымды 1.5 миллион чекпен, бір күнде 4 адамға саттым!<br>Жылдық табыс 50/60 миллион (2023 ж).<br>Шәкірттерімде чектерін көтеріп жеке брендтерін қалыптастырды!</p>
+            <p>2 жыл декреттік демалыстан кейін инфо бизнеске жаңа бағытпен қайта оралдым!<br>Бірден 1 миллион чекпен 3 эксперт алып, нөлден 2000-5000 подписчик жинап, ЛБ қалыптастырып, нарыққа шығардым!</p>
+            <p>Енді заман талабына сай ЖИ технологиясының көмегімен тіпті де жоғары деңгейде шәкірттер қабылдап бастадым!</p>
+          </div>
+          <button type="button" class="result-more-btn" onclick="openTextModal(this)">Толығырақ...</button>
         </div>
       </div>
 
@@ -3258,6 +3340,24 @@ function closeLightbox() {
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
+/* TEXT MODAL (Толығырақ...) */
+function openTextModal(btn) {
+  const card = btn.closest('.result-card');
+  const full = card.querySelector('.result-text-full');
+  document.getElementById('text-modal-title').textContent = card.querySelector('h3').textContent;
+  document.getElementById('text-modal-body').innerHTML = full.innerHTML;
+  document.getElementById('text-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeTextModal() {
+  document.getElementById('text-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('text-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeTextModal();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeTextModal(); });
+
 /* FORM SUBMIT → WhatsApp */
 const WA_NUMBER = '77051906085';
 
@@ -3366,7 +3466,9 @@ const T = {
     'res0.tag':'Өзіме кейс','res0.h3':'Бірінші өзіме өзім кейспін',
     'res0.kpi1':'<strong>Күніне</strong>6 000 000 ₸','res0.kpi2':'<strong>Айына</strong>100 000 000 ₸ айналым · таза пайда 15 000 000 ₸','res0.kpi3':'<strong>Жылына</strong>1 500 000 000 ₸ айналым жасадым',
     'res1.tag':'Команда','res1.h3':'Сетевой бизнесте аптасына 1-1.5 миллион таза табыс','res1.p':'1 жыл ішінде Алматы қаласынан 3 бөлмелі пәтер және Toyota Camry 30 автокөлігін сатып алдым! (2020 ж)',
-    'res2.tag':'Айналым','res2.h3':'«Айлық айналым ×3»','res2.p':'Динара, Алматы — 4 ай ішінде тауар айналымды 3 есе арттырды. ЖИ чат-бот + таргет.',
+    'res2.tag':'Тәжірибе','res2.h3':'Тауарлы және инфо бизнесте миллиондық нәтижелер','res2.p':'Таварный бизнесте командамен айына 50-100 миллион оборот жасадым (EJI бренд косметика), (2021-2022 жж)…',
+    'res2.more':'Толығырақ...',
+    'res2.full':'<p>Таварный бизнесте командамен айына 50-100 миллион оборот жасадым (EJI бренд косметика).<br>(2021-2022 жж)</p><p>Инфо бизнесте ең алғашқы сатылымды, өз менторлық сабағымды 1.5 миллион чекпен, бір күнде 4 адамға саттым!<br>Жылдық табыс 50/60 миллион (2023 ж).<br>Шәкірттерімде чектерін көтеріп жеке брендтерін қалыптастырды!</p><p>2 жыл декреттік демалыстан кейін инфо бизнеске жаңа бағытпен қайта оралдым!<br>Бірден 1 миллион чекпен 3 эксперт алып, нөлден 2000-5000 подписчик жинап, ЛБ қалыптастырып, нарыққа шығардым!</p><p>Енді заман талабына сай ЖИ технологиясының көмегімен тіпті де жоғары деңгейде шәкірттер қабылдап бастадым!</p>',
     'res3.tag':'Бренд','res3.h3':'«Жаңа регион ашты»','res3.p':'Бота, Шымкент — 2 ай ішінде жаңа регион ашып, 50+ серіктес жинады.',
     'res.stat1':'Серіктес нәтижеге жетті','res.stat2':'Регион ашылды','res.stat3':'₸ командалық айналым',
     'res.igbtn':'Толық кейстарды Instagram-да қараңыз →',
@@ -3467,7 +3569,9 @@ const T = {
     'res0.tag':'Кейс на себя','res0.h3':'Первый кейс — на себя',
     'res0.kpi1':'<strong>В день</strong>6 000 000 ₸','res0.kpi2':'<strong>В месяц</strong>100 000 000 ₸ оборот · чистая прибыль 15 000 000 ₸','res0.kpi3':'<strong>В год</strong>1 500 000 000 ₸ оборот',
     'res1.tag':'Команда','res1.h3':'Чистый доход 1-1.5 млн в неделю в сетевом бизнесе','res1.p':'За 1 год купила 3-комнатную квартиру в Алматы и Toyota Camry 30! (2020 г.)',
-    'res2.tag':'Оборот','res2.h3':'«Месячный оборот ×3»','res2.p':'Динара, Алматы — за 4 месяца увеличила товарооборот в 3 раза. AI чат-бот + таргет.',
+    'res2.tag':'Опыт','res2.h3':'Миллионные результаты в товарном и инфобизнесе','res2.p':'В товарном бизнесе с командой делала оборот 50-100 млн в месяц (бренд косметики EJI), (2021-2022 гг)…',
+    'res2.more':'Подробнее...',
+    'res2.full':'<p>В товарном бизнесе с командой делала оборот 50-100 млн в месяц (бренд косметики EJI).<br>(2021-2022 гг)</p><p>В инфобизнесе совершила самую первую продажу — свой менторский курс с чеком 1.5 млн продала за один день 4 людям!<br>Годовой доход 50-60 млн (2023 г).<br>Мои ученицы поднимали чеки и формировали личные бренды!</p><p>После 2 лет декретного отпуска вернулась в инфобизнес с новым направлением!<br>Сразу взяла 3 эксперта с чеком 1 млн, с нуля собрала 2000-5000 подписчиков, сформировала личный бренд и вышла на рынок!</p><p>Теперь, в соответствии с требованиями времени, с помощью AI-технологий принимаю учеников на ещё более высоком уровне!</p>',
     'res3.tag':'Бренд','res3.h3':'«Открыла новый регион»','res3.p':'Бота, Шымкент — за 2 месяца открыла новый регион и собрала 50+ партнёров.',
     'res.stat1':'Партнёров достигли результата','res.stat2':'Регионов открыто','res.stat3':'₸ командный оборот',
     'res.igbtn':'Смотреть все кейсы в Instagram →',
@@ -3609,6 +3713,10 @@ function setLang(lang) {
   document.querySelectorAll('.result-card:not(.result-card--founder)').forEach((c, i) => {
     const triples = [['res1.tag','res1.h3','res1.p'],['res2.tag','res2.h3','res2.p'],['res3.tag','res3.h3','res3.p']];
     if (triples[i]) { _txt(c.querySelector('.result-tag'),triples[i][0]); _txt(c.querySelector('h3'),triples[i][1]); _txt(c.querySelector('p'),triples[i][2]); }
+    const fullEl = c.querySelector('.result-text-full');
+    const moreBtn = c.querySelector('.result-more-btn');
+    if (fullEl && t['res2.full'] && i === 1) fullEl.innerHTML = t['res2.full'];
+    if (moreBtn && t['res2.more'] && i === 1) moreBtn.textContent = t['res2.more'];
   });
   document.querySelectorAll('.results-stat-label').forEach((el, i) => {
     const k = ['res.stat1','res.stat2','res.stat3'][i]; if (k) el.textContent = t[k];
