@@ -2387,7 +2387,8 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
               src="https://www.youtube.com/embed/Jjg0K-91_Dk"
               title="Клиент пікірі — YouTube Shorts"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen>
+              allowfullscreen
+              loading="lazy">
             </iframe>
             <div class="video-review-footer">
               <div class="video-review-name">Клиент пікірі #1</div>
@@ -2400,7 +2401,8 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
               src="https://www.youtube.com/embed/5nlEzMpXdho"
               title="Клиент пікірі — YouTube Shorts"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen>
+              allowfullscreen
+              loading="lazy">
             </iframe>
             <div class="video-review-footer">
               <div class="video-review-name">Клиент пікірі #2</div>
@@ -2413,7 +2415,8 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
               src="https://www.youtube.com/embed/3zeJgVcsMCs"
               title="Клиент пікірі — YouTube Shorts"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen>
+              allowfullscreen
+              loading="lazy">
             </iframe>
             <div class="video-review-footer">
               <div class="video-review-name">Клиент пікірі #3</div>
@@ -2426,7 +2429,8 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
               src="https://www.youtube.com/embed/i7F8_oP7oe0"
               title="Клиент пікірі — YouTube Shorts"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen>
+              allowfullscreen
+              loading="lazy">
             </iframe>
             <div class="video-review-footer">
               <div class="video-review-name">Клиент пікірі #4</div>
@@ -2439,7 +2443,8 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
               src="https://www.youtube.com/embed/kizcfCiHFTY"
               title="Клиент пікірі — YouTube Shorts"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen>
+              allowfullscreen
+              loading="lazy">
             </iframe>
             <div class="video-review-footer">
               <div class="video-review-name">Клиент пікірі #5</div>
@@ -3390,6 +3395,57 @@ document.querySelectorAll('.carousel-wrap').forEach(wrap => {
     track.scrollLeft = scrollStart - (e.clientX - startX);
   });
 });
+
+/* ─── INFINITE AUTO-SCROLL CAROUSELS (no end — loops forever) ─── */
+function makeInfiniteLoop(trackId, speed) {
+  const track = document.getElementById(trackId);
+  if (!track || !track.children.length) return;
+  // CSS scroll-behavior:smooth and scroll-snap fight per-frame scrollLeft writes — disable both for continuous auto-scroll
+  track.style.scrollBehavior = 'auto';
+  track.style.scrollSnapType = 'none';
+
+  // Duplicate all items once so the seam is invisible when wrapping
+  Array.from(track.children).forEach(child => {
+    const clone = child.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    clone.setAttribute('tabindex', '-1');
+    track.appendChild(clone);
+  });
+
+  let paused = false, resumeTimer = null, pos = track.scrollLeft, downOnTrack = false;
+  function syncPos() { pos = track.scrollLeft; }
+  function pause(ms) {
+    paused = true;
+    clearTimeout(resumeTimer);
+    if (ms) resumeTimer = setTimeout(() => { syncPos(); paused = false; }, ms);
+  }
+  function resume() { clearTimeout(resumeTimer); syncPos(); paused = false; }
+
+  track.addEventListener('mouseenter', () => pause());
+  track.addEventListener('mouseleave', () => resume());
+  track.addEventListener('mousedown', () => { downOnTrack = true; pause(); });
+  document.addEventListener('mouseup', () => { if (downOnTrack) { downOnTrack = false; pause(1500); } });
+  track.addEventListener('touchstart', () => pause(), { passive: true });
+  track.addEventListener('touchend', () => pause(2500), { passive: true });
+  track.addEventListener('wheel', () => pause(2500), { passive: true });
+  const wrap = track.closest('.carousel-wrap');
+  if (wrap) wrap.querySelectorAll('.carousel-btn').forEach(btn => btn.addEventListener('click', () => pause(3000)));
+
+  function tick() {
+    if (!paused && track.offsetWidth > 0) {
+      const half = track.scrollWidth / 2;
+      if (half > 0) {
+        pos += speed;
+        if (pos >= half) pos -= half;
+        track.scrollLeft = pos;
+      }
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+['gallery-track', 'oo-reviews-track', 'video-reviews-track', 'audio-reviews-track', 'tg-reviews-track']
+  .forEach(id => makeInfiniteLoop(id, 0.55));
 
 /* HERO STAT NUMBERS (simpler treatment — just display) */
 document.querySelectorAll('.hero-stat-num[data-count]').forEach(el => {
