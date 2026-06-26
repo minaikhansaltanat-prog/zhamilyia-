@@ -1859,6 +1859,55 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
   .form-links { flex-direction: column; }
   #wa-float { bottom: 20px; right: 16px; width: 52px; height: 52px; font-size: 24px; }
 }
+
+/* ─── FOOTER ─── */
+.site-footer {
+  background: var(--dark);
+  padding: 36px 0 22px;
+  border-top: 1px solid rgba(200,149,42,0.15);
+}
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.footer-qr {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.footer-qr img {
+  width: 86px;
+  height: 86px;
+  border-radius: 12px;
+  box-shadow: 0 6px 22px rgba(200,149,42,0.22), 0 2px 8px rgba(0,0,0,0.3);
+  border: 1px solid rgba(200,149,42,0.35);
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s;
+}
+.footer-qr img:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 30px rgba(200,149,42,0.32), 0 4px 12px rgba(0,0,0,0.35);
+}
+.footer-qr span {
+  font-size: 12.5px;
+  color: rgba(232,188,90,0.65);
+  letter-spacing: 0.02em;
+  max-width: 130px;
+  line-height: 1.4;
+}
+.footer-divider {
+  width: 1px;
+  height: 44px;
+  background: rgba(255,255,255,0.1);
+}
+@media (max-width: 600px) {
+  .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+  .footer-divider { width: 60px; height: 1px; }
+  .footer-qr { flex-direction: column; gap: 8px; }
+  .footer-qr span { max-width: 220px; text-align: center; }
+}
 </style>
 </head>
 <body>
@@ -3295,8 +3344,13 @@ footer p { color: rgba(255,255,255,0.30); font-size: 13px; }
   </div>
 </section>
 
-<footer style="background:rgba(0,0,0,0.5);padding:20px 0;text-align:center;border-top:1px solid rgba(255,255,255,0.05)">
-  <div class="container">
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-qr">
+      <img src="Photo/QR.png" alt="Жәмила Оразбай — платформаға өтуге QR код">
+      <span>Платформаға өту үшін сканерлеңіз</span>
+    </div>
+    <div class="footer-divider"></div>
     <p style="color:rgba(255,255,255,0.25);font-size:13px">
       © 2024–2025 Жәмила Оразбай. Барлық құқықтар қорғалған. ·
       <a href="mailto:Orazbajzamila@gmail.com" style="color:rgba(255,255,255,0.35);transition:color 0.2s" onmouseover="this.style.color='rgba(200,149,42,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Orazbajzamila@gmail.com</a>
